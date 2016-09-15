@@ -1,0 +1,123 @@
+TITLE: START model for POT study
+
+DATA: file is 'Titemparcels.dat';
+
+VARIABLE:
+    NAMES ARE id
+    w1dist1-w1dist3 w2dist1-w2dist3 w3dist1-w3dist3 w4dist1-w4dist3
+    w5dist1-w5dist3 w6dist1-w6dist3 w8dist1-w8dist3 w9dist1-w9dist3
+    w1dep1-w1dep3 w2dep1-w2dep3 w3dep1-w3dep3 w4dep1-w4dep3
+    w5dep1-w5dep3 w6dep1-w6dep3 w8dep1-w8dep3 w9dep1-w9dep3
+    w1anx1-w1anx3 w2anx1-w2anx3 w3anx1-w3anx3 w4anx1-w4anx3
+    w5anx1-w5anx3 w6anx1-w6anx3 w8anx1-w8anx3 w9anx1-w9anx3;
+
+    USEVAR =
+    w1anx1-w9anx3;
+
+    MISSING IS all (999);
+
+
+ANALYSIS: 
+    TYPE = MISSING H1;
+!    BOOTSTRAP = 500;
+    ESTIMATOR = ml;
+    MODEL = NOCOVARIANCES;
+
+MODEL: 
+    f1ANX by w1anx1@1 (l1);
+    f1ANX by w1anx2*1 (l2);
+    f1ANX by w1anx3*1 (l3);
+
+    f2ANX by w2anx1@1 (l1);
+    f2ANX by w2anx2*1 (l2);
+    f2ANX by w2anx3*1 (l3);
+
+    f3ANX by w3anx1@1 (l1);
+    f3ANX by w3anx2*1 (l2);
+    f3ANX by w3anx3*1 (l3);
+
+    f4ANX by w4anx1@1 (l1);
+    f4ANX by w4anx2*1 (l2);
+    f4ANX by w4anx3*1 (l3);
+
+    f5ANX by w5anx1@1 (l1);
+    f5ANX by w5anx2*1 (l2);
+    f5ANX by w5anx3*1 (l3);
+
+    f6ANX by w6anx1@1 (l1);
+    f6ANX by w6anx2*1 (l2);
+    f6ANX by w6anx3*1 (l3);
+
+    f8ANX by w8anx1@1 (l1);
+    f8ANX by w8anx2*1 (l2);
+    f8ANX by w8anx3*1 (l3);
+
+    f9ANX by w9anx1@1 (l1);
+    f9ANX by w9anx2*1 (l2);
+    f9ANX by w9anx3*1 (l3);
+
+    
+    ar1 by f1ANX@1;
+    ar2 by f2ANX@1;
+    ar3 by f3ANX@1;
+    ar4 by f4ANX@1;
+    ar5 by f5ANX@1;
+    ar6 by f6ANX@1;
+    ar7 by f1ANX@0; !This is a phantom variable
+    ar8 by f8ANX@1;
+    ar9 by f9ANX@1;
+
+    s1 by f1ANX@1;
+    s2 by f2ANX@1;
+    s3 by f3ANX@1;
+    s4 by f4ANX@1;
+    s5 by f5ANX@1;
+    s6 by f6ANX@1;
+    s8 by f8ANX@1;
+    s9 by f9ANX@1;
+
+    ar2 on ar1 (arstab);
+    ar3 on ar2 (arstab);
+    ar4 on ar3 (arstab);
+    ar5 on ar4 (arstab);
+    ar6 on ar5 (arstab);
+    ar7 on ar6 (arstab);
+    ar8 on ar7 (arstab);
+    ar9 on ar8 (arstab);
+
+    s1-s9 (S);
+    ar2-ar9 (newAR);
+    ar1 (AR);
+    f1ANX-f9ANX@0;
+
+    w1anx1 with w2anx1 w3anx1 w4anx1 w5anx1 w6anx1 w8anx1 w9anx1*;
+    w2anx1 with w3anx1 w4anx1 w5anx1 w6anx1 w8anx1 w9anx1*;
+    w3anx1 with w4anx1 w5anx1 w6anx1 w8anx1 w9anx1*;
+    w4anx1 with w5anx1 w6anx1 w8anx1 w9anx1*;
+    w5anx1 with w6anx1 w8anx1 w9anx1*;
+    w6anx1 with w8anx1 w9anx1*;
+    w8anx1 with w9anx1*;
+
+    w1anx2 with w2anx2 w3anx2 w4anx2 w5anx2 w6anx2 w8anx2 w9anx2*;
+    w2anx2 with w3anx2 w4anx2 w5anx2 w6anx2 w8anx2 w9anx2*;
+    w3anx2 with w4anx2 w5anx2 w6anx2 w8anx2 w9anx2*;
+    w4anx2 with w5anx2 w6anx2 w8anx2 w9anx2*;
+    w5anx2 with w6anx2 w8anx2 w9anx2*;
+    w6anx2 with w8anx2 w9anx2*;
+    w8anx2 with w9anx2*;
+
+    w1anx3 with w2anx3 w3anx3 w4anx3 w5anx3 w6anx3 w8anx3 w9anx3*;
+    w2anx3 with w3anx3 w4anx3 w5anx3 w6anx3 w8anx3 w9anx3*;
+    w3anx3 with w4anx3 w5anx3 w6anx3 w8anx3 w9anx3*;
+    w4anx3 with w5anx3 w6anx3 w8anx3 w9anx3*;
+    w5anx3 with w6anx3 w8anx3 w9anx3*;
+    w6anx3 with w8anx3 w9anx3*;
+    w8anx3 with w9anx3*;
+
+MODEL CONSTRAINT:
+    newAR = AR - AR*arstab**2;
+
+
+OUTPUT: samp stand tech4 cinterval;
+
+

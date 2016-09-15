@@ -1,0 +1,2974 @@
+Mplus VERSION 5.21
+MUTHEN & MUTHEN
+11/24/2011   1:52 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: START model for POT study
+
+  DATA: file is 'Titemparcels.dat';
+
+  VARIABLE:
+      NAMES ARE id
+      w1dist1-w1dist3 w2dist1-w2dist3 w3dist1-w3dist3 w4dist1-w4dist3
+      w5dist1-w5dist3 w6dist1-w6dist3 w8dist1-w8dist3 w9dist1-w9dist3
+      w1dep1-w1dep3 w2dep1-w2dep3 w3dep1-w3dep3 w4dep1-w4dep3
+      w5dep1-w5dep3 w6dep1-w6dep3 w8dep1-w8dep3 w9dep1-w9dep3
+      w1anx1-w1anx3 w2anx1-w2anx3 w3anx1-w3anx3 w4anx1-w4anx3
+      w5anx1-w5anx3 w6anx1-w6anx3 w8anx1-w8anx3 w9anx1-w9anx3;
+
+      USEVAR =
+      w1dep1-w9dep3;
+
+      MISSING IS all (999);
+
+
+  ANALYSIS:
+      TYPE = MISSING H1;
+  !    BOOTSTRAP = 500;
+      ESTIMATOR = ml;
+      MODEL = NOCOVARIANCES;
+
+  MODEL:
+      f1DEP by w1dep1@1 (l1);
+      f1DEP by w1dep2*1 (l2);
+      f1DEP by w1dep3*1 (l3);
+
+      f2DEP by w2dep1@1 (l1);
+      f2DEP by w2dep2*1 (l2);
+      f2DEP by w2dep3*1 (l3);
+
+      f3DEP by w3dep1@1 (l1);
+      f3DEP by w3dep2*1 (l2);
+      f3DEP by w3dep3*1 (l3);
+
+      f4DEP by w4dep1@1 (l1);
+      f4DEP by w4dep2*1 (l2);
+      f4DEP by w4dep3*1 (l3);
+
+      f5DEP by w5dep1@1 (l1);
+      f5DEP by w5dep2*1 (l2);
+      f5DEP by w5dep3*1 (l3);
+
+      f6DEP by w6dep1@1 (l1);
+      f6DEP by w6dep2*1 (l2);
+      f6DEP by w6dep3*1 (l3);
+
+      f8DEP by w8dep1@1 (l1);
+      f8DEP by w8dep2*1 (l2);
+      f8DEP by w8dep3*1 (l3);
+
+      f9DEP by w9dep1@1 (l1);
+      f9DEP by w9dep2*1 (l2);
+      f9DEP by w9dep3*1 (l3);
+
+
+      trait by f1DEP-f9DEP@1;
+
+      s1 by f1DEP@1;
+      s2 by f2DEP@1;
+      s3 by f3DEP@1;
+      s4 by f4DEP@1;
+      s5 by f5DEP@1;
+      s6 by f6DEP@1;
+      s8 by f8DEP@1;
+      s9 by f9DEP@1;
+
+      s1-s9 (S);
+      f1DEP-f9DEP@0;
+
+      w1dep1 with w2dep1 w3dep1 w4dep1 w5dep1 w6dep1 w8dep1 w9dep1*;
+      w2dep1 with w3dep1 w4dep1 w5dep1 w6dep1 w8dep1 w9dep1*;
+      w3dep1 with w4dep1 w5dep1 w6dep1 w8dep1 w9dep1*;
+      w4dep1 with w5dep1 w6dep1 w8dep1 w9dep1*;
+      w5dep1 with w6dep1 w8dep1 w9dep1*;
+      w6dep1 with w8dep1 w9dep1*;
+      w8dep1 with w9dep1*;
+
+      w1dep2 with w2dep2 w3dep2 w4dep2 w5dep2 w6dep2 w8dep2 w9dep2*;
+      w2dep2 with w3dep2 w4dep2 w5dep2 w6dep2 w8dep2 w9dep2*;
+      w3dep2 with w4dep2 w5dep2 w6dep2 w8dep2 w9dep2*;
+      w4dep2 with w5dep2 w6dep2 w8dep2 w9dep2*;
+      w5dep2 with w6dep2 w8dep2 w9dep2*;
+      w6dep2 with w8dep2 w9dep2*;
+      w8dep2 with w9dep2*;
+
+      w1dep3 with w2dep3 w3dep3 w4dep3 w5dep3 w6dep3 w8dep3 w9dep3*;
+      w2dep3 with w3dep3 w4dep3 w5dep3 w6dep3 w8dep3 w9dep3*;
+      w3dep3 with w4dep3 w5dep3 w6dep3 w8dep3 w9dep3*;
+      w4dep3 with w5dep3 w6dep3 w8dep3 w9dep3*;
+      w5dep3 with w6dep3 w8dep3 w9dep3*;
+      w6dep3 with w8dep3 w9dep3*;
+      w8dep3 with w9dep3*;
+
+
+  OUTPUT: samp stand tech4 cinterval;
+
+
+
+
+
+*** WARNING in ANALYSIS command
+  Starting with Version 5, TYPE=MISSING is the default for all analyses.
+  To obtain listwise deletion, use LISTWISE=ON in the DATA command.
+*** WARNING in ANALYSIS command
+  Starting with Version 5, TYPE=H1 is the default for all analyses with
+  missing data.  To turn off the estimation of the H1 model and the
+  computation of chi-square, use NOCHISQUARE in the OUTPUT command.
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+START model for POT study
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         226
+
+Number of dependent variables                                   24
+Number of independent variables                                  0
+Number of continuous latent variables                           17
+
+Observed dependent variables
+
+  Continuous
+   W1DEP1      W1DEP2      W1DEP3      W2DEP1      W2DEP2      W2DEP3
+   W3DEP1      W3DEP2      W3DEP3      W4DEP1      W4DEP2      W4DEP3
+   W5DEP1      W5DEP2      W5DEP3      W6DEP1      W6DEP2      W6DEP3
+   W8DEP1      W8DEP2      W8DEP3      W9DEP1      W9DEP2      W9DEP3
+
+Continuous latent variables
+   F1DEP       F2DEP       F3DEP       F4DEP       F5DEP       F6DEP
+   F8DEP       F9DEP       TRAIT       S1          S2          S3
+   S4          S5          S6          S8          S9
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  Titemparcels.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns            58
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              W1DEP1        W1DEP2        W1DEP3        W2DEP1        W2DEP2
+              ________      ________      ________      ________      ________
+ W1DEP1         0.978
+ W1DEP2         0.978         0.982
+ W1DEP3         0.978         0.982         0.982
+ W2DEP1         0.912         0.916         0.916         0.934
+ W2DEP2         0.920         0.925         0.925         0.920         0.942
+ W2DEP3         0.934         0.938         0.938         0.934         0.942
+ W3DEP1         0.907         0.912         0.912         0.872         0.881
+ W3DEP2         0.920         0.925         0.925         0.889         0.894
+ W3DEP3         0.925         0.929         0.929         0.889         0.903
+ W4DEP1         0.938         0.942         0.942         0.903         0.912
+ W4DEP2         0.942         0.947         0.947         0.907         0.916
+ W4DEP3         0.942         0.947         0.947         0.907         0.916
+ W5DEP1         0.920         0.925         0.925         0.876         0.876
+ W5DEP2         0.912         0.916         0.916         0.867         0.867
+ W5DEP3         0.920         0.925         0.925         0.876         0.876
+ W6DEP1         0.916         0.920         0.920         0.885         0.885
+ W6DEP2         0.920         0.925         0.925         0.889         0.894
+ W6DEP3         0.925         0.929         0.929         0.889         0.889
+ W8DEP1         0.836         0.841         0.841         0.805         0.805
+ W8DEP2         0.841         0.845         0.845         0.810         0.810
+ W8DEP3         0.858         0.863         0.863         0.827         0.827
+ W9DEP1         0.885         0.889         0.889         0.854         0.854
+ W9DEP2         0.898         0.903         0.903         0.858         0.858
+ W9DEP3         0.903         0.907         0.907         0.863         0.863
+
+
+           Covariance Coverage
+              W2DEP3        W3DEP1        W3DEP2        W3DEP3        W4DEP1
+              ________      ________      ________      ________      ________
+ W2DEP3         0.956
+ W3DEP1         0.894         0.929
+ W3DEP2         0.907         0.920         0.942
+ W3DEP3         0.912         0.925         0.938         0.947
+ W4DEP1         0.925         0.903         0.916         0.920         0.960
+ W4DEP2         0.929         0.903         0.916         0.920         0.951
+ W4DEP3         0.929         0.903         0.916         0.920         0.951
+ W5DEP1         0.889         0.867         0.881         0.885         0.894
+ W5DEP2         0.881         0.858         0.872         0.876         0.885
+ W5DEP3         0.889         0.872         0.885         0.889         0.894
+ W6DEP1         0.898         0.885         0.894         0.898         0.903
+ W6DEP2         0.903         0.885         0.898         0.903         0.912
+ W6DEP3         0.903         0.894         0.903         0.907         0.912
+ W8DEP1         0.819         0.788         0.805         0.805         0.823
+ W8DEP2         0.823         0.792         0.810         0.810         0.827
+ W8DEP3         0.841         0.810         0.827         0.827         0.845
+ W9DEP1         0.867         0.836         0.854         0.854         0.876
+ W9DEP2         0.872         0.850         0.863         0.867         0.889
+ W9DEP3         0.876         0.854         0.867         0.872         0.894
+
+
+           Covariance Coverage
+              W4DEP2        W4DEP3        W5DEP1        W5DEP2        W5DEP3
+              ________      ________      ________      ________      ________
+ W4DEP2         0.965
+ W4DEP3         0.956         0.965
+ W5DEP1         0.898         0.898         0.934
+ W5DEP2         0.889         0.889         0.920         0.925
+ W5DEP3         0.898         0.898         0.929         0.920         0.934
+ W6DEP1         0.903         0.907         0.894         0.894         0.898
+ W6DEP2         0.912         0.912         0.898         0.889         0.903
+ W6DEP3         0.912         0.912         0.907         0.907         0.912
+ W8DEP1         0.823         0.823         0.805         0.796         0.805
+ W8DEP2         0.827         0.827         0.810         0.801         0.810
+ W8DEP3         0.845         0.845         0.827         0.819         0.827
+ W9DEP1         0.872         0.872         0.858         0.845         0.854
+ W9DEP2         0.885         0.885         0.872         0.858         0.867
+ W9DEP3         0.889         0.889         0.876         0.863         0.872
+
+
+           Covariance Coverage
+              W6DEP1        W6DEP2        W6DEP3        W8DEP1        W8DEP2
+              ________      ________      ________      ________      ________
+ W6DEP1         0.938
+ W6DEP2         0.916         0.942
+ W6DEP3         0.925         0.925         0.947
+ W8DEP1         0.819         0.819         0.819         0.854
+ W8DEP2         0.819         0.823         0.823         0.836         0.858
+ W8DEP3         0.836         0.841         0.841         0.854         0.858
+ W9DEP1         0.863         0.881         0.872         0.792         0.796
+ W9DEP2         0.876         0.885         0.885         0.805         0.814
+ W9DEP3         0.885         0.889         0.889         0.814         0.814
+
+
+           Covariance Coverage
+              W8DEP3        W9DEP1        W9DEP2        W9DEP3
+              ________      ________      ________      ________
+ W8DEP3         0.876
+ W9DEP1         0.814         0.903
+ W9DEP2         0.827         0.894         0.916
+ W9DEP3         0.832         0.898         0.912         0.920
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              W1DEP1        W1DEP2        W1DEP3        W2DEP1        W2DEP2
+              ________      ________      ________      ________      ________
+      1         2.706         2.604         2.073         2.818         2.656
+
+
+           Means
+              W2DEP3        W3DEP1        W3DEP2        W3DEP3        W4DEP1
+              ________      ________      ________      ________      ________
+      1         2.150         2.799         2.545         2.084         2.801
+
+
+           Means
+              W4DEP2        W4DEP3        W5DEP1        W5DEP2        W5DEP3
+              ________      ________      ________      ________      ________
+      1         2.566         2.108         2.786         2.534         2.116
+
+
+           Means
+              W6DEP1        W6DEP2        W6DEP3        W8DEP1        W8DEP2
+              ________      ________      ________      ________      ________
+      1         2.793         2.546         2.147         2.455         2.312
+
+
+           Means
+              W8DEP3        W9DEP1        W9DEP2        W9DEP3
+              ________      ________      ________      ________
+      1         1.930         2.639         2.497         2.045
+
+
+           Covariances
+              W1DEP1        W1DEP2        W1DEP3        W2DEP1        W2DEP2
+              ________      ________      ________      ________      ________
+ W1DEP1         0.764
+ W1DEP2         0.499         0.596
+ W1DEP3         0.446         0.388         0.556
+ W2DEP1         0.479         0.343         0.306         0.662
+ W2DEP2         0.400         0.389         0.332         0.454         0.605
+ W2DEP3         0.401         0.334         0.344         0.471         0.452
+ W3DEP1         0.496         0.373         0.351         0.508         0.389
+ W3DEP2         0.394         0.350         0.303         0.407         0.373
+ W3DEP3         0.388         0.309         0.364         0.383         0.368
+ W4DEP1         0.427         0.318         0.310         0.441         0.367
+ W4DEP2         0.414         0.355         0.310         0.406         0.401
+ W4DEP3         0.356         0.295         0.318         0.360         0.388
+ W5DEP1         0.408         0.326         0.294         0.419         0.353
+ W5DEP2         0.365         0.324         0.312         0.368         0.374
+ W5DEP3         0.324         0.261         0.287         0.314         0.329
+ W6DEP1         0.463         0.296         0.297         0.395         0.289
+ W6DEP2         0.359         0.292         0.288         0.317         0.298
+ W6DEP3         0.345         0.251         0.281         0.296         0.276
+ W8DEP1         0.335         0.262         0.195         0.313         0.240
+ W8DEP2         0.272         0.244         0.192         0.251         0.237
+ W8DEP3         0.253         0.216         0.203         0.215         0.220
+ W9DEP1         0.380         0.230         0.185         0.380         0.247
+ W9DEP2         0.373         0.301         0.229         0.355         0.296
+ W9DEP3         0.308         0.242         0.218         0.281         0.233
+
+
+           Covariances
+              W2DEP3        W3DEP1        W3DEP2        W3DEP3        W4DEP1
+              ________      ________      ________      ________      ________
+ W2DEP3         0.659
+ W3DEP1         0.415         0.789
+ W3DEP2         0.385         0.582         0.612
+ W3DEP3         0.408         0.564         0.484         0.612
+ W4DEP1         0.344         0.488         0.383         0.417         0.843
+ W4DEP2         0.384         0.473         0.438         0.405         0.627
+ W4DEP3         0.370         0.373         0.338         0.387         0.584
+ W5DEP1         0.319         0.506         0.399         0.409         0.472
+ W5DEP2         0.342         0.467         0.403         0.376         0.408
+ W5DEP3         0.328         0.404         0.342         0.376         0.347
+ W6DEP1         0.327         0.523         0.354         0.392         0.490
+ W6DEP2         0.293         0.398         0.347         0.314         0.383
+ W6DEP3         0.287         0.401         0.307         0.337         0.394
+ W8DEP1         0.307         0.369         0.275         0.291         0.401
+ W8DEP2         0.274         0.305         0.273         0.268         0.354
+ W8DEP3         0.306         0.237         0.197         0.228         0.288
+ W9DEP1         0.282         0.429         0.284         0.303         0.472
+ W9DEP2         0.302         0.417         0.329         0.321         0.423
+ W9DEP3         0.288         0.349         0.267         0.280         0.372
+
+
+           Covariances
+              W4DEP2        W4DEP3        W5DEP1        W5DEP2        W5DEP3
+              ________      ________      ________      ________      ________
+ W4DEP2         0.746
+ W4DEP3         0.538         0.637
+ W5DEP1         0.454         0.358         0.876
+ W5DEP2         0.450         0.349         0.618         0.694
+ W5DEP3         0.387         0.338         0.598         0.558         0.731
+ W6DEP1         0.431         0.378         0.558         0.445         0.396
+ W6DEP2         0.388         0.335         0.483         0.450         0.389
+ W6DEP3         0.384         0.375         0.459         0.413         0.435
+ W8DEP1         0.336         0.332         0.434         0.369         0.332
+ W8DEP2         0.312         0.290         0.382         0.336         0.291
+ W8DEP3         0.261         0.290         0.287         0.294         0.278
+ W9DEP1         0.394         0.359         0.536         0.389         0.354
+ W9DEP2         0.429         0.366         0.456         0.394         0.352
+ W9DEP3         0.380         0.350         0.379         0.333         0.335
+
+
+           Covariances
+              W6DEP1        W6DEP2        W6DEP3        W8DEP1        W8DEP2
+              ________      ________      ________      ________      ________
+ W6DEP1         0.888
+ W6DEP2         0.626         0.638
+ W6DEP3         0.577         0.524         0.668
+ W8DEP1         0.463         0.347         0.388         0.795
+ W8DEP2         0.366         0.325         0.321         0.595         0.617
+ W8DEP3         0.275         0.238         0.310         0.535         0.476
+ W9DEP1         0.545         0.387         0.364         0.497         0.384
+ W9DEP2         0.470         0.391         0.371         0.440         0.400
+ W9DEP3         0.376         0.315         0.384         0.386         0.332
+
+
+           Covariances
+              W8DEP3        W9DEP1        W9DEP2        W9DEP3
+              ________      ________      ________      ________
+ W8DEP3         0.613
+ W9DEP1         0.330         0.837
+ W9DEP2         0.308         0.624         0.658
+ W9DEP3         0.330         0.572         0.519         0.612
+
+
+           Correlations
+              W1DEP1        W1DEP2        W1DEP3        W2DEP1        W2DEP2
+              ________      ________      ________      ________      ________
+ W1DEP1         1.000
+ W1DEP2         0.739         1.000
+ W1DEP3         0.684         0.675         1.000
+ W2DEP1         0.673         0.546         0.505         1.000
+ W2DEP2         0.589         0.648         0.572         0.718         1.000
+ W2DEP3         0.566         0.533         0.569         0.713         0.715
+ W3DEP1         0.640         0.545         0.530         0.703         0.563
+ W3DEP2         0.577         0.579         0.520         0.639         0.613
+ W3DEP3         0.568         0.512         0.624         0.602         0.605
+ W4DEP1         0.533         0.449         0.452         0.591         0.515
+ W4DEP2         0.549         0.533         0.481         0.578         0.597
+ W4DEP3         0.510         0.479         0.535         0.554         0.625
+ W5DEP1         0.499         0.451         0.421         0.550         0.485
+ W5DEP2         0.502         0.503         0.503         0.543         0.577
+ W5DEP3         0.434         0.395         0.450         0.451         0.495
+ W6DEP1         0.562         0.407         0.422         0.516         0.394
+ W6DEP2         0.514         0.474         0.483         0.488         0.479
+ W6DEP3         0.483         0.398         0.462         0.445         0.435
+ W8DEP1         0.430         0.380         0.294         0.431         0.347
+ W8DEP2         0.396         0.403         0.328         0.393         0.388
+ W8DEP3         0.369         0.358         0.348         0.338         0.361
+ W9DEP1         0.476         0.325         0.271         0.511         0.348
+ W9DEP2         0.526         0.481         0.379         0.538         0.469
+ W9DEP3         0.450         0.401         0.373         0.442         0.383
+
+
+           Correlations
+              W2DEP3        W3DEP1        W3DEP2        W3DEP3        W4DEP1
+              ________      ________      ________      ________      ________
+ W2DEP3         1.000
+ W3DEP1         0.576         1.000
+ W3DEP2         0.606         0.837         1.000
+ W3DEP3         0.643         0.812         0.792         1.000
+ W4DEP1         0.461         0.599         0.533         0.580         1.000
+ W4DEP2         0.548         0.616         0.649         0.599         0.791
+ W4DEP3         0.570         0.526         0.541         0.619         0.797
+ W5DEP1         0.420         0.609         0.545         0.559         0.549
+ W5DEP2         0.506         0.632         0.619         0.577         0.533
+ W5DEP3         0.472         0.532         0.511         0.563         0.442
+ W6DEP1         0.427         0.626         0.480         0.532         0.567
+ W6DEP2         0.453         0.561         0.556         0.503         0.522
+ W6DEP3         0.433         0.552         0.479         0.526         0.525
+ W8DEP1         0.424         0.466         0.394         0.418         0.490
+ W8DEP2         0.430         0.437         0.445         0.437         0.491
+ W8DEP3         0.481         0.341         0.322         0.372         0.401
+ W9DEP1         0.379         0.527         0.397         0.423         0.562
+ W9DEP2         0.459         0.580         0.519         0.505         0.567
+ W9DEP3         0.453         0.502         0.436         0.457         0.517
+
+
+           Correlations
+              W4DEP2        W4DEP3        W5DEP1        W5DEP2        W5DEP3
+              ________      ________      ________      ________      ________
+ W4DEP2         1.000
+ W4DEP3         0.780         1.000
+ W5DEP1         0.562         0.480         1.000
+ W5DEP2         0.626         0.525         0.792         1.000
+ W5DEP3         0.523         0.495         0.748         0.783         1.000
+ W6DEP1         0.530         0.502         0.632         0.567         0.491
+ W6DEP2         0.562         0.526         0.647         0.677         0.570
+ W6DEP3         0.544         0.575         0.600         0.606         0.622
+ W8DEP1         0.437         0.467         0.520         0.496         0.435
+ W8DEP2         0.460         0.462         0.520         0.513         0.433
+ W8DEP3         0.386         0.465         0.392         0.450         0.415
+ W9DEP1         0.499         0.491         0.626         0.510         0.453
+ W9DEP2         0.613         0.565         0.601         0.583         0.507
+ W9DEP3         0.562         0.561         0.518         0.510         0.501
+
+
+           Correlations
+              W6DEP1        W6DEP2        W6DEP3        W8DEP1        W8DEP2
+              ________      ________      ________      ________      ________
+ W6DEP1         1.000
+ W6DEP2         0.832         1.000
+ W6DEP3         0.749         0.803         1.000
+ W8DEP1         0.552         0.487         0.532         1.000
+ W8DEP2         0.495         0.519         0.500         0.851         1.000
+ W8DEP3         0.372         0.381         0.484         0.767         0.775
+ W9DEP1         0.632         0.530         0.486         0.609         0.534
+ W9DEP2         0.616         0.603         0.559         0.609         0.628
+ W9DEP3         0.510         0.505         0.601         0.553         0.540
+
+
+           Correlations
+              W8DEP3        W9DEP1        W9DEP2        W9DEP3
+              ________      ________      ________      ________
+ W8DEP3         1.000
+ W9DEP1         0.461         1.000
+ W9DEP2         0.484         0.841         1.000
+ W9DEP3         0.539         0.799         0.817         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS   -3593.088
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+TESTS OF MODEL FIT
+
+Chi-Square Test of Model Fit
+
+          Value                            311.515
+          Degrees of Freedom                   188
+          P-Value                           0.0000
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           5290.667
+          Degrees of Freedom                   276
+          P-Value                           0.0000
+
+CFI/TLI
+
+          CFI                                0.975
+          TLI                                0.964
+
+Loglikelihood
+
+          H0 Value                       -3748.845
+          H1 Value                       -3593.088
+
+Information Criteria
+
+          Number of Free Parameters            136
+          Akaike (AIC)                    7769.690
+          Bayesian (BIC)                  8234.883
+          Sample-Size Adjusted BIC        7803.866
+            (n* = (n + 2) / 24)
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.054
+          90 Percent C.I.                    0.043  0.064
+          Probability RMSEA <= .05           0.264
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.078
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ F1DEP    BY
+    W1DEP1             1.000      0.000    999.000    999.000
+    W1DEP2             0.895      0.023     39.583      0.000
+    W1DEP3             0.843      0.023     37.071      0.000
+
+ F2DEP    BY
+    W2DEP1             1.000      0.000    999.000    999.000
+    W2DEP2             0.895      0.023     39.583      0.000
+    W2DEP3             0.843      0.023     37.071      0.000
+
+ F3DEP    BY
+    W3DEP1             1.000      0.000    999.000    999.000
+    W3DEP2             0.895      0.023     39.583      0.000
+    W3DEP3             0.843      0.023     37.071      0.000
+
+ F4DEP    BY
+    W4DEP1             1.000      0.000    999.000    999.000
+    W4DEP2             0.895      0.023     39.583      0.000
+    W4DEP3             0.843      0.023     37.071      0.000
+
+ F5DEP    BY
+    W5DEP1             1.000      0.000    999.000    999.000
+    W5DEP2             0.895      0.023     39.583      0.000
+    W5DEP3             0.843      0.023     37.071      0.000
+
+ F6DEP    BY
+    W6DEP1             1.000      0.000    999.000    999.000
+    W6DEP2             0.895      0.023     39.583      0.000
+    W6DEP3             0.843      0.023     37.071      0.000
+
+ F8DEP    BY
+    W8DEP1             1.000      0.000    999.000    999.000
+    W8DEP2             0.895      0.023     39.583      0.000
+    W8DEP3             0.843      0.023     37.071      0.000
+
+ F9DEP    BY
+    W9DEP1             1.000      0.000    999.000    999.000
+    W9DEP2             0.895      0.023     39.583      0.000
+    W9DEP3             0.843      0.023     37.071      0.000
+
+ TRAIT    BY
+    F1DEP              1.000      0.000    999.000    999.000
+    F2DEP              1.000      0.000    999.000    999.000
+    F3DEP              1.000      0.000    999.000    999.000
+    F4DEP              1.000      0.000    999.000    999.000
+    F5DEP              1.000      0.000    999.000    999.000
+    F6DEP              1.000      0.000    999.000    999.000
+    F8DEP              1.000      0.000    999.000    999.000
+    F9DEP              1.000      0.000    999.000    999.000
+
+ S1       BY
+    F1DEP              1.000      0.000    999.000    999.000
+
+ S2       BY
+    F2DEP              1.000      0.000    999.000    999.000
+
+ S3       BY
+    F3DEP              1.000      0.000    999.000    999.000
+
+ S4       BY
+    F4DEP              1.000      0.000    999.000    999.000
+
+ S5       BY
+    F5DEP              1.000      0.000    999.000    999.000
+
+ S6       BY
+    F6DEP              1.000      0.000    999.000    999.000
+
+ S8       BY
+    F8DEP              1.000      0.000    999.000    999.000
+
+ S9       BY
+    F9DEP              1.000      0.000    999.000    999.000
+
+ W1DEP1   WITH
+    W2DEP1             0.075      0.020      3.665      0.000
+    W3DEP1             0.038      0.017      2.195      0.028
+    W4DEP1             0.027      0.019      1.415      0.157
+    W5DEP1             0.026      0.021      1.245      0.213
+    W6DEP1             0.072      0.020      3.680      0.000
+    W8DEP1             0.034      0.019      1.809      0.070
+    W9DEP1             0.056      0.019      2.925      0.003
+
+ W2DEP1   WITH
+    W3DEP1             0.071      0.017      4.145      0.000
+    W4DEP1             0.070      0.019      3.641      0.000
+    W5DEP1             0.057      0.020      2.792      0.005
+    W6DEP1             0.059      0.019      3.078      0.002
+    W8DEP1             0.043      0.019      2.262      0.024
+    W9DEP1             0.069      0.019      3.664      0.000
+
+ W3DEP1   WITH
+    W4DEP1             0.030      0.016      1.873      0.061
+    W5DEP1             0.019      0.017      1.111      0.267
+    W6DEP1             0.058      0.016      3.589      0.000
+    W8DEP1             0.033      0.016      2.094      0.036
+    W9DEP1             0.040      0.015      2.620      0.009
+
+ W4DEP1   WITH
+    W5DEP1             0.042      0.020      2.111      0.035
+    W6DEP1             0.048      0.018      2.696      0.007
+    W8DEP1             0.015      0.017      0.866      0.386
+    W9DEP1             0.066      0.018      3.707      0.000
+
+ W5DEP1   WITH
+    W6DEP1             0.052      0.020      2.642      0.008
+    W8DEP1             0.027      0.019      1.411      0.158
+    W9DEP1             0.095      0.020      4.731      0.000
+
+ W6DEP1   WITH
+    W8DEP1             0.053      0.018      2.934      0.003
+    W9DEP1             0.088      0.018      4.797      0.000
+
+ W8DEP1   WITH
+    W9DEP1             0.057      0.017      3.344      0.001
+
+ W1DEP2   WITH
+    W2DEP2             0.052      0.018      2.892      0.004
+    W3DEP2             0.035      0.015      2.362      0.018
+    W4DEP2             0.019      0.016      1.146      0.252
+    W5DEP2             0.002      0.015      0.106      0.916
+    W6DEP2             0.012      0.014      0.863      0.388
+    W8DEP2             0.002      0.014      0.141      0.888
+    W9DEP2             0.019      0.014      1.302      0.193
+
+ W2DEP2   WITH
+    W3DEP2             0.009      0.015      0.609      0.542
+    W4DEP2             0.003      0.017      0.161      0.872
+    W5DEP2             0.016      0.016      1.019      0.308
+    W6DEP2             0.014      0.014      0.954      0.340
+    W8DEP2            -0.002      0.015     -0.125      0.901
+    W9DEP2             0.001      0.015      0.081      0.935
+
+ W3DEP2   WITH
+    W4DEP2             0.036      0.015      2.479      0.013
+    W5DEP2             0.018      0.013      1.387      0.166
+    W6DEP2             0.042      0.012      3.442      0.001
+    W8DEP2             0.018      0.012      1.510      0.131
+    W9DEP2             0.007      0.012      0.575      0.565
+
+ W4DEP2   WITH
+    W5DEP2             0.027      0.016      1.731      0.083
+    W6DEP2             0.013      0.013      0.972      0.331
+    W8DEP2            -0.001      0.014     -0.068      0.946
+    W9DEP2             0.019      0.014      1.363      0.173
+
+ W5DEP2   WITH
+    W6DEP2             0.030      0.013      2.269      0.023
+    W8DEP2            -0.006      0.013     -0.492      0.623
+    W9DEP2             0.000      0.013      0.034      0.973
+
+ W6DEP2   WITH
+    W8DEP2             0.019      0.012      1.546      0.122
+    W9DEP2             0.002      0.012      0.176      0.861
+
+ W8DEP2   WITH
+    W9DEP2             0.027      0.012      2.254      0.024
+
+ W1DEP3   WITH
+    W2DEP3             0.036      0.019      1.953      0.051
+    W3DEP3             0.069      0.017      3.991      0.000
+    W4DEP3             0.043      0.016      2.734      0.006
+    W5DEP3             0.028      0.018      1.563      0.118
+    W6DEP3             0.014      0.017      0.840      0.401
+    W8DEP3             0.030      0.018      1.659      0.097
+    W9DEP3             0.021      0.015      1.371      0.170
+
+ W2DEP3   WITH
+    W3DEP3             0.044      0.016      2.810      0.005
+    W4DEP3             0.026      0.016      1.668      0.095
+    W5DEP3             0.032      0.018      1.749      0.080
+    W6DEP3             0.005      0.017      0.280      0.779
+    W8DEP3             0.061      0.018      3.314      0.001
+    W9DEP3             0.034      0.016      2.157      0.031
+
+ W3DEP3   WITH
+    W4DEP3             0.044      0.014      3.267      0.001
+    W5DEP3             0.036      0.016      2.292      0.022
+    W6DEP3             0.011      0.014      0.751      0.453
+    W8DEP3             0.015      0.016      0.916      0.360
+    W9DEP3             0.009      0.013      0.680      0.497
+
+ W4DEP3   WITH
+    W5DEP3             0.031      0.016      1.997      0.046
+    W6DEP3             0.035      0.014      2.420      0.016
+    W8DEP3             0.041      0.015      2.719      0.007
+    W9DEP3             0.020      0.013      1.491      0.136
+
+ W5DEP3   WITH
+    W6DEP3             0.066      0.017      3.792      0.000
+    W8DEP3             0.035      0.018      1.971      0.049
+    W9DEP3             0.032      0.016      2.060      0.039
+
+ W6DEP3   WITH
+    W8DEP3             0.047      0.017      2.819      0.005
+    W9DEP3             0.079      0.015      5.071      0.000
+
+ W8DEP3   WITH
+    W9DEP3             0.046      0.015      3.096      0.002
+
+ Intercepts
+    W1DEP1             2.704      0.062     43.915      0.000
+    W1DEP2             2.602      0.056     46.788      0.000
+    W1DEP3             2.071      0.055     37.914      0.000
+    W2DEP1             2.818      0.061     45.927      0.000
+    W2DEP2             2.660      0.056     47.369      0.000
+    W2DEP3             2.150      0.055     38.786      0.000
+    W3DEP1             2.801      0.059     47.415      0.000
+    W3DEP2             2.545      0.054     47.125      0.000
+    W3DEP3             2.084      0.052     39.796      0.000
+    W4DEP1             2.797      0.061     45.882      0.000
+    W4DEP2             2.561      0.056     46.124      0.000
+    W4DEP3             2.108      0.052     40.536      0.000
+    W5DEP1             2.784      0.063     44.427      0.000
+    W5DEP2             2.533      0.054     46.686      0.000
+    W5DEP3             2.112      0.056     37.807      0.000
+    W6DEP1             2.795      0.062     45.318      0.000
+    W6DEP2             2.546      0.052     48.513      0.000
+    W6DEP3             2.148      0.054     39.770      0.000
+    W8DEP1             2.464      0.062     39.958      0.000
+    W8DEP2             2.319      0.054     43.124      0.000
+    W8DEP3             1.936      0.055     34.942      0.000
+    W9DEP1             2.641      0.061     42.992      0.000
+    W9DEP2             2.496      0.053     46.837      0.000
+    W9DEP3             2.045      0.053     38.844      0.000
+
+ Variances
+    TRAIT              0.424      0.047      9.062      0.000
+    S1                 0.232      0.012     18.794      0.000
+    S2                 0.232      0.012     18.794      0.000
+    S3                 0.232      0.012     18.794      0.000
+    S4                 0.232      0.012     18.794      0.000
+    S5                 0.232      0.012     18.794      0.000
+    S6                 0.232      0.012     18.794      0.000
+    S8                 0.232      0.012     18.794      0.000
+    S9                 0.232      0.012     18.794      0.000
+
+ Residual Variances
+    W1DEP1             0.192      0.028      6.858      0.000
+    W1DEP2             0.167      0.023      7.146      0.000
+    W1DEP3             0.202      0.025      8.051      0.000
+    W2DEP1             0.173      0.027      6.408      0.000
+    W2DEP2             0.167      0.024      6.812      0.000
+    W2DEP3             0.211      0.026      8.145      0.000
+    W3DEP1             0.111      0.019      5.901      0.000
+    W3DEP2             0.116      0.017      6.937      0.000
+    W3DEP3             0.138      0.018      7.765      0.000
+    W4DEP1             0.170      0.025      6.861      0.000
+    W4DEP2             0.159      0.022      7.267      0.000
+    W4DEP3             0.135      0.019      7.245      0.000
+    W5DEP1             0.201      0.029      6.926      0.000
+    W5DEP2             0.116      0.020      5.748      0.000
+    W5DEP3             0.212      0.026      8.265      0.000
+    W6DEP1             0.183      0.025      7.412      0.000
+    W6DEP2             0.083      0.016      5.229      0.000
+    W6DEP3             0.177      0.022      8.168      0.000
+    W8DEP1             0.143      0.023      6.286      0.000
+    W8DEP2             0.083      0.016      5.242      0.000
+    W8DEP3             0.180      0.022      8.084      0.000
+    W9DEP1             0.163      0.023      7.118      0.000
+    W9DEP2             0.090      0.016      5.559      0.000
+    W9DEP3             0.135      0.018      7.506      0.000
+    F1DEP              0.000      0.000    999.000    999.000
+    F2DEP              0.000      0.000    999.000    999.000
+    F3DEP              0.000      0.000    999.000    999.000
+    F4DEP              0.000      0.000    999.000    999.000
+    F5DEP              0.000      0.000    999.000    999.000
+    F6DEP              0.000      0.000    999.000    999.000
+    F8DEP              0.000      0.000    999.000    999.000
+    F9DEP              0.000      0.000    999.000    999.000
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ F1DEP    BY
+    W1DEP1             0.880      0.017     51.973      0.000
+    W1DEP2             0.871      0.017     51.593      0.000
+    W1DEP3             0.835      0.019     44.913      0.000
+
+ F2DEP    BY
+    W2DEP1             0.890      0.016     54.951      0.000
+    W2DEP2             0.871      0.018     49.373      0.000
+    W2DEP3             0.830      0.019     42.763      0.000
+
+ F3DEP    BY
+    W3DEP1             0.925      0.013     71.424      0.000
+    W3DEP2             0.905      0.013     67.554      0.000
+    W3DEP3             0.879      0.015     56.895      0.000
+
+ F4DEP    BY
+    W4DEP1             0.891      0.015     57.963      0.000
+    W4DEP2             0.876      0.016     53.111      0.000
+    W4DEP3             0.880      0.016     54.668      0.000
+
+ F5DEP    BY
+    W5DEP1             0.875      0.017     51.028      0.000
+    W5DEP2             0.905      0.016     56.622      0.000
+    W5DEP3             0.829      0.019     43.485      0.000
+
+ F6DEP    BY
+    W6DEP1             0.884      0.015     57.741      0.000
+    W6DEP2             0.929      0.013     69.093      0.000
+    W6DEP3             0.851      0.017     49.046      0.000
+
+ F8DEP    BY
+    W8DEP1             0.906      0.015     61.572      0.000
+    W8DEP2             0.929      0.013     69.180      0.000
+    W8DEP3             0.850      0.017     48.999      0.000
+
+ F9DEP    BY
+    W9DEP1             0.895      0.014     61.911      0.000
+    W9DEP2             0.924      0.014     67.050      0.000
+    W9DEP3             0.880      0.016     56.482      0.000
+
+ TRAIT    BY
+    F1DEP              0.804      0.017     48.583      0.000
+    F2DEP              0.804      0.017     48.583      0.000
+    F3DEP              0.804      0.017     48.583      0.000
+    F4DEP              0.804      0.017     48.583      0.000
+    F5DEP              0.804      0.017     48.583      0.000
+    F6DEP              0.804      0.017     48.583      0.000
+    F8DEP              0.804      0.017     48.583      0.000
+    F9DEP              0.804      0.017     48.583      0.000
+
+ S1       BY
+    F1DEP              0.595      0.022     26.617      0.000
+
+ S2       BY
+    F2DEP              0.595      0.022     26.617      0.000
+
+ S3       BY
+    F3DEP              0.595      0.022     26.617      0.000
+
+ S4       BY
+    F4DEP              0.595      0.022     26.617      0.000
+
+ S5       BY
+    F5DEP              0.595      0.022     26.617      0.000
+
+ S6       BY
+    F6DEP              0.595      0.022     26.617      0.000
+
+ S8       BY
+    F8DEP              0.595      0.022     26.617      0.000
+
+ S9       BY
+    F9DEP              0.595      0.022     26.617      0.000
+
+ W1DEP1   WITH
+    W2DEP1             0.412      0.091      4.518      0.000
+    W3DEP1             0.258      0.105      2.463      0.014
+    W4DEP1             0.149      0.100      1.479      0.139
+    W5DEP1             0.130      0.101      1.284      0.199
+    W6DEP1             0.386      0.088      4.398      0.000
+    W8DEP1             0.207      0.107      1.933      0.053
+    W9DEP1             0.318      0.095      3.350      0.001
+
+ W2DEP1   WITH
+    W3DEP1             0.513      0.094      5.478      0.000
+    W4DEP1             0.406      0.093      4.368      0.000
+    W5DEP1             0.305      0.097      3.144      0.002
+    W6DEP1             0.331      0.094      3.515      0.000
+    W8DEP1             0.273      0.108      2.525      0.012
+    W9DEP1             0.414      0.093      4.451      0.000
+
+ W3DEP1   WITH
+    W4DEP1             0.220      0.108      2.049      0.041
+    W5DEP1             0.127      0.111      1.150      0.250
+    W6DEP1             0.408      0.091      4.502      0.000
+    W8DEP1             0.259      0.113      2.299      0.022
+    W9DEP1             0.297      0.102      2.912      0.004
+
+ W4DEP1   WITH
+    W5DEP1             0.226      0.099      2.277      0.023
+    W6DEP1             0.274      0.091      3.013      0.003
+    W8DEP1             0.097      0.109      0.886      0.376
+    W9DEP1             0.394      0.088      4.492      0.000
+
+ W5DEP1   WITH
+    W6DEP1             0.271      0.091      2.980      0.003
+    W8DEP1             0.160      0.109      1.463      0.143
+    W9DEP1             0.526      0.083      6.319      0.000
+
+ W6DEP1   WITH
+    W8DEP1             0.328      0.096      3.413      0.001
+    W9DEP1             0.511      0.077      6.668      0.000
+
+ W8DEP1   WITH
+    W9DEP1             0.376      0.093      4.038      0.000
+
+ W1DEP2   WITH
+    W2DEP2             0.311      0.093      3.339      0.001
+    W3DEP2             0.253      0.096      2.630      0.009
+    W4DEP2             0.115      0.097      1.181      0.237
+    W5DEP2             0.012      0.110      0.106      0.915
+    W6DEP2             0.103      0.116      0.893      0.372
+    W8DEP2             0.017      0.121      0.142      0.887
+    W9DEP2             0.153      0.111      1.377      0.168
+
+ W2DEP2   WITH
+    W3DEP2             0.065      0.105      0.623      0.533
+    W4DEP2             0.016      0.102      0.161      0.872
+    W5DEP2             0.118      0.112      1.061      0.289
+    W6DEP2             0.116      0.117      0.990      0.322
+    W8DEP2            -0.016      0.128     -0.124      0.901
+    W9DEP2             0.010      0.121      0.082      0.935
+
+ W3DEP2   WITH
+    W4DEP2             0.265      0.096      2.757      0.006
+    W5DEP2             0.158      0.108      1.455      0.146
+    W6DEP2             0.431      0.098      4.409      0.000
+    W8DEP2             0.186      0.117      1.598      0.110
+    W9DEP2             0.066      0.113      0.586      0.558
+
+ W4DEP2   WITH
+    W5DEP2             0.202      0.109      1.850      0.064
+    W6DEP2             0.114      0.112      1.013      0.311
+    W8DEP2            -0.008      0.123     -0.068      0.946
+    W9DEP2             0.159      0.109      1.451      0.147
+
+ W5DEP2   WITH
+    W6DEP2             0.304      0.114      2.661      0.008
+    W8DEP2            -0.066      0.136     -0.486      0.627
+    W9DEP2             0.004      0.130      0.034      0.973
+
+ W6DEP2   WITH
+    W8DEP2             0.223      0.131      1.703      0.089
+    W9DEP2             0.024      0.135      0.178      0.859
+
+ W8DEP2   WITH
+    W9DEP2             0.311      0.117      2.661      0.008
+
+ W1DEP3   WITH
+    W2DEP3             0.177      0.085      2.076      0.038
+    W3DEP3             0.411      0.084      4.917      0.000
+    W4DEP3             0.260      0.087      2.980      0.003
+    W5DEP3             0.137      0.085      1.610      0.107
+    W6DEP3             0.077      0.090      0.853      0.394
+    W8DEP3             0.159      0.093      1.715      0.086
+    W9DEP3             0.128      0.090      1.416      0.157
+
+ W2DEP3   WITH
+    W3DEP3             0.260      0.083      3.142      0.002
+    W4DEP3             0.154      0.088      1.749      0.080
+    W5DEP3             0.152      0.083      1.826      0.068
+    W6DEP3             0.024      0.087      0.282      0.778
+    W8DEP3             0.313      0.083      3.755      0.000
+    W9DEP3             0.202      0.087      2.319      0.020
+
+ W3DEP3   WITH
+    W4DEP3             0.325      0.087      3.756      0.000
+    W5DEP3             0.212      0.087      2.432      0.015
+    W6DEP3             0.067      0.088      0.764      0.445
+    W8DEP3             0.094      0.101      0.932      0.351
+    W9DEP3             0.063      0.091      0.689      0.491
+
+ W4DEP3   WITH
+    W5DEP3             0.186      0.088      2.114      0.035
+    W6DEP3             0.227      0.086      2.622      0.009
+    W8DEP3             0.265      0.090      2.949      0.003
+    W9DEP3             0.145      0.093      1.559      0.119
+
+ W5DEP3   WITH
+    W6DEP3             0.340      0.075      4.504      0.000
+    W8DEP3             0.179      0.087      2.058      0.040
+    W9DEP3             0.189      0.086      2.196      0.028
+
+ W6DEP3   WITH
+    W8DEP3             0.264      0.084      3.133      0.002
+    W9DEP3             0.507      0.070      7.238      0.000
+
+ W8DEP3   WITH
+    W9DEP3             0.294      0.083      3.555      0.000
+
+ Intercepts
+    W1DEP1             2.937      0.116     25.209      0.000
+    W1DEP2             3.127      0.121     25.789      0.000
+    W1DEP3             2.535      0.106     23.799      0.000
+    W2DEP1             3.095      0.125     24.753      0.000
+    W2DEP2             3.197      0.124     25.880      0.000
+    W2DEP3             2.613      0.107     24.466      0.000
+    W3DEP1             3.199      0.126     25.338      0.000
+    W3DEP2             3.177      0.124     25.547      0.000
+    W3DEP3             2.683      0.110     24.354      0.000
+    W4DEP1             3.078      0.122     25.302      0.000
+    W4DEP2             3.095      0.118     26.181      0.000
+    W4DEP3             2.719      0.112     24.284      0.000
+    W5DEP1             3.007      0.120     25.143      0.000
+    W5DEP2             3.164      0.124     25.532      0.000
+    W5DEP3             2.564      0.106     24.129      0.000
+    W6DEP1             3.050      0.120     25.518      0.000
+    W6DEP2             3.263      0.128     25.441      0.000
+    W6DEP3             2.679      0.109     24.509      0.000
+    W8DEP1             2.757      0.115     24.033      0.000
+    W8DEP2             2.973      0.120     24.678      0.000
+    W8DEP3             2.410      0.105     22.950      0.000
+    W9DEP1             2.918      0.118     24.751      0.000
+    W9DEP2             3.181      0.124     25.635      0.000
+    W9DEP3             2.638      0.110     23.923      0.000
+
+ Variances
+    TRAIT              1.000      0.000    999.000    999.000
+    S1                 1.000      0.000    999.000    999.000
+    S2                 1.000      0.000    999.000    999.000
+    S3                 1.000      0.000    999.000    999.000
+    S4                 1.000      0.000    999.000    999.000
+    S5                 1.000      0.000    999.000    999.000
+    S6                 1.000      0.000    999.000    999.000
+    S8                 1.000      0.000    999.000    999.000
+    S9                 1.000      0.000    999.000    999.000
+
+ Residual Variances
+    W1DEP1             0.226      0.030      7.599      0.000
+    W1DEP2             0.241      0.029      8.197      0.000
+    W1DEP3             0.302      0.031      9.733      0.000
+    W2DEP1             0.209      0.029      7.247      0.000
+    W2DEP2             0.241      0.031      7.823      0.000
+    W2DEP3             0.312      0.032      9.678      0.000
+    W3DEP1             0.145      0.024      6.042      0.000
+    W3DEP2             0.181      0.024      7.463      0.000
+    W3DEP3             0.228      0.027      8.396      0.000
+    W4DEP1             0.206      0.027      7.505      0.000
+    W4DEP2             0.233      0.029      8.051      0.000
+    W4DEP3             0.225      0.028      7.939      0.000
+    W5DEP1             0.234      0.030      7.810      0.000
+    W5DEP2             0.180      0.029      6.224      0.000
+    W5DEP3             0.313      0.032      9.904      0.000
+    W6DEP1             0.218      0.027      8.070      0.000
+    W6DEP2             0.137      0.025      5.470      0.000
+    W6DEP3             0.275      0.030      9.315      0.000
+    W8DEP1             0.179      0.027      6.700      0.000
+    W8DEP2             0.136      0.025      5.461      0.000
+    W8DEP3             0.278      0.029      9.443      0.000
+    W9DEP1             0.199      0.026      7.693      0.000
+    W9DEP2             0.146      0.025      5.744      0.000
+    W9DEP3             0.225      0.027      8.202      0.000
+    F1DEP              0.000    999.000    999.000    999.000
+    F2DEP              0.000    999.000    999.000    999.000
+    F3DEP              0.000    999.000    999.000    999.000
+    F4DEP              0.000    999.000    999.000    999.000
+    F5DEP              0.000    999.000    999.000    999.000
+    F6DEP              0.000    999.000    999.000    999.000
+    F8DEP              0.000    999.000    999.000    999.000
+    F9DEP              0.000    999.000    999.000    999.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ F1DEP    BY
+    W1DEP1             0.880      0.017     51.973      0.000
+    W1DEP2             0.871      0.017     51.593      0.000
+    W1DEP3             0.835      0.019     44.913      0.000
+
+ F2DEP    BY
+    W2DEP1             0.890      0.016     54.951      0.000
+    W2DEP2             0.871      0.018     49.373      0.000
+    W2DEP3             0.830      0.019     42.763      0.000
+
+ F3DEP    BY
+    W3DEP1             0.925      0.013     71.424      0.000
+    W3DEP2             0.905      0.013     67.554      0.000
+    W3DEP3             0.879      0.015     56.895      0.000
+
+ F4DEP    BY
+    W4DEP1             0.891      0.015     57.963      0.000
+    W4DEP2             0.876      0.016     53.111      0.000
+    W4DEP3             0.880      0.016     54.668      0.000
+
+ F5DEP    BY
+    W5DEP1             0.875      0.017     51.028      0.000
+    W5DEP2             0.905      0.016     56.622      0.000
+    W5DEP3             0.829      0.019     43.485      0.000
+
+ F6DEP    BY
+    W6DEP1             0.884      0.015     57.741      0.000
+    W6DEP2             0.929      0.013     69.093      0.000
+    W6DEP3             0.851      0.017     49.046      0.000
+
+ F8DEP    BY
+    W8DEP1             0.906      0.015     61.572      0.000
+    W8DEP2             0.929      0.013     69.180      0.000
+    W8DEP3             0.850      0.017     48.999      0.000
+
+ F9DEP    BY
+    W9DEP1             0.895      0.014     61.911      0.000
+    W9DEP2             0.924      0.014     67.050      0.000
+    W9DEP3             0.880      0.016     56.482      0.000
+
+ TRAIT    BY
+    F1DEP              0.804      0.017     48.583      0.000
+    F2DEP              0.804      0.017     48.583      0.000
+    F3DEP              0.804      0.017     48.583      0.000
+    F4DEP              0.804      0.017     48.583      0.000
+    F5DEP              0.804      0.017     48.583      0.000
+    F6DEP              0.804      0.017     48.583      0.000
+    F8DEP              0.804      0.017     48.583      0.000
+    F9DEP              0.804      0.017     48.583      0.000
+
+ S1       BY
+    F1DEP              0.595      0.022     26.617      0.000
+
+ S2       BY
+    F2DEP              0.595      0.022     26.617      0.000
+
+ S3       BY
+    F3DEP              0.595      0.022     26.617      0.000
+
+ S4       BY
+    F4DEP              0.595      0.022     26.617      0.000
+
+ S5       BY
+    F5DEP              0.595      0.022     26.617      0.000
+
+ S6       BY
+    F6DEP              0.595      0.022     26.617      0.000
+
+ S8       BY
+    F8DEP              0.595      0.022     26.617      0.000
+
+ S9       BY
+    F9DEP              0.595      0.022     26.617      0.000
+
+ W1DEP1   WITH
+    W2DEP1             0.412      0.091      4.518      0.000
+    W3DEP1             0.258      0.105      2.463      0.014
+    W4DEP1             0.149      0.100      1.479      0.139
+    W5DEP1             0.130      0.101      1.284      0.199
+    W6DEP1             0.386      0.088      4.398      0.000
+    W8DEP1             0.207      0.107      1.933      0.053
+    W9DEP1             0.318      0.095      3.350      0.001
+
+ W2DEP1   WITH
+    W3DEP1             0.513      0.094      5.478      0.000
+    W4DEP1             0.406      0.093      4.368      0.000
+    W5DEP1             0.305      0.097      3.144      0.002
+    W6DEP1             0.331      0.094      3.515      0.000
+    W8DEP1             0.273      0.108      2.525      0.012
+    W9DEP1             0.414      0.093      4.451      0.000
+
+ W3DEP1   WITH
+    W4DEP1             0.220      0.108      2.049      0.041
+    W5DEP1             0.127      0.111      1.150      0.250
+    W6DEP1             0.408      0.091      4.502      0.000
+    W8DEP1             0.259      0.113      2.299      0.022
+    W9DEP1             0.297      0.102      2.912      0.004
+
+ W4DEP1   WITH
+    W5DEP1             0.226      0.099      2.277      0.023
+    W6DEP1             0.274      0.091      3.013      0.003
+    W8DEP1             0.097      0.109      0.886      0.376
+    W9DEP1             0.394      0.088      4.492      0.000
+
+ W5DEP1   WITH
+    W6DEP1             0.271      0.091      2.980      0.003
+    W8DEP1             0.160      0.109      1.463      0.143
+    W9DEP1             0.526      0.083      6.319      0.000
+
+ W6DEP1   WITH
+    W8DEP1             0.328      0.096      3.413      0.001
+    W9DEP1             0.511      0.077      6.668      0.000
+
+ W8DEP1   WITH
+    W9DEP1             0.376      0.093      4.038      0.000
+
+ W1DEP2   WITH
+    W2DEP2             0.311      0.093      3.339      0.001
+    W3DEP2             0.253      0.096      2.630      0.009
+    W4DEP2             0.115      0.097      1.181      0.237
+    W5DEP2             0.012      0.110      0.106      0.915
+    W6DEP2             0.103      0.116      0.893      0.372
+    W8DEP2             0.017      0.121      0.142      0.887
+    W9DEP2             0.153      0.111      1.377      0.168
+
+ W2DEP2   WITH
+    W3DEP2             0.065      0.105      0.623      0.533
+    W4DEP2             0.016      0.102      0.161      0.872
+    W5DEP2             0.118      0.112      1.061      0.289
+    W6DEP2             0.116      0.117      0.990      0.322
+    W8DEP2            -0.016      0.128     -0.124      0.901
+    W9DEP2             0.010      0.121      0.082      0.935
+
+ W3DEP2   WITH
+    W4DEP2             0.265      0.096      2.757      0.006
+    W5DEP2             0.158      0.108      1.455      0.146
+    W6DEP2             0.431      0.098      4.409      0.000
+    W8DEP2             0.186      0.117      1.598      0.110
+    W9DEP2             0.066      0.113      0.586      0.558
+
+ W4DEP2   WITH
+    W5DEP2             0.202      0.109      1.850      0.064
+    W6DEP2             0.114      0.112      1.013      0.311
+    W8DEP2            -0.008      0.123     -0.068      0.946
+    W9DEP2             0.159      0.109      1.451      0.147
+
+ W5DEP2   WITH
+    W6DEP2             0.304      0.114      2.661      0.008
+    W8DEP2            -0.066      0.136     -0.486      0.627
+    W9DEP2             0.004      0.130      0.034      0.973
+
+ W6DEP2   WITH
+    W8DEP2             0.223      0.131      1.703      0.089
+    W9DEP2             0.024      0.135      0.178      0.859
+
+ W8DEP2   WITH
+    W9DEP2             0.311      0.117      2.661      0.008
+
+ W1DEP3   WITH
+    W2DEP3             0.177      0.085      2.076      0.038
+    W3DEP3             0.411      0.084      4.917      0.000
+    W4DEP3             0.260      0.087      2.980      0.003
+    W5DEP3             0.137      0.085      1.610      0.107
+    W6DEP3             0.077      0.090      0.853      0.394
+    W8DEP3             0.159      0.093      1.715      0.086
+    W9DEP3             0.128      0.090      1.416      0.157
+
+ W2DEP3   WITH
+    W3DEP3             0.260      0.083      3.142      0.002
+    W4DEP3             0.154      0.088      1.749      0.080
+    W5DEP3             0.152      0.083      1.826      0.068
+    W6DEP3             0.024      0.087      0.282      0.778
+    W8DEP3             0.313      0.083      3.755      0.000
+    W9DEP3             0.202      0.087      2.319      0.020
+
+ W3DEP3   WITH
+    W4DEP3             0.325      0.087      3.756      0.000
+    W5DEP3             0.212      0.087      2.432      0.015
+    W6DEP3             0.067      0.088      0.764      0.445
+    W8DEP3             0.094      0.101      0.932      0.351
+    W9DEP3             0.063      0.091      0.689      0.491
+
+ W4DEP3   WITH
+    W5DEP3             0.186      0.088      2.114      0.035
+    W6DEP3             0.227      0.086      2.622      0.009
+    W8DEP3             0.265      0.090      2.949      0.003
+    W9DEP3             0.145      0.093      1.559      0.119
+
+ W5DEP3   WITH
+    W6DEP3             0.340      0.075      4.504      0.000
+    W8DEP3             0.179      0.087      2.058      0.040
+    W9DEP3             0.189      0.086      2.196      0.028
+
+ W6DEP3   WITH
+    W8DEP3             0.264      0.084      3.133      0.002
+    W9DEP3             0.507      0.070      7.238      0.000
+
+ W8DEP3   WITH
+    W9DEP3             0.294      0.083      3.555      0.000
+
+ Intercepts
+    W1DEP1             2.937      0.116     25.209      0.000
+    W1DEP2             3.127      0.121     25.789      0.000
+    W1DEP3             2.535      0.106     23.799      0.000
+    W2DEP1             3.095      0.125     24.753      0.000
+    W2DEP2             3.197      0.124     25.880      0.000
+    W2DEP3             2.613      0.107     24.466      0.000
+    W3DEP1             3.199      0.126     25.338      0.000
+    W3DEP2             3.177      0.124     25.547      0.000
+    W3DEP3             2.683      0.110     24.354      0.000
+    W4DEP1             3.078      0.122     25.302      0.000
+    W4DEP2             3.095      0.118     26.181      0.000
+    W4DEP3             2.719      0.112     24.284      0.000
+    W5DEP1             3.007      0.120     25.143      0.000
+    W5DEP2             3.164      0.124     25.532      0.000
+    W5DEP3             2.564      0.106     24.129      0.000
+    W6DEP1             3.050      0.120     25.518      0.000
+    W6DEP2             3.263      0.128     25.441      0.000
+    W6DEP3             2.679      0.109     24.509      0.000
+    W8DEP1             2.757      0.115     24.033      0.000
+    W8DEP2             2.973      0.120     24.678      0.000
+    W8DEP3             2.410      0.105     22.950      0.000
+    W9DEP1             2.918      0.118     24.751      0.000
+    W9DEP2             3.181      0.124     25.635      0.000
+    W9DEP3             2.638      0.110     23.923      0.000
+
+ Variances
+    TRAIT              1.000      0.000    999.000    999.000
+    S1                 1.000      0.000    999.000    999.000
+    S2                 1.000      0.000    999.000    999.000
+    S3                 1.000      0.000    999.000    999.000
+    S4                 1.000      0.000    999.000    999.000
+    S5                 1.000      0.000    999.000    999.000
+    S6                 1.000      0.000    999.000    999.000
+    S8                 1.000      0.000    999.000    999.000
+    S9                 1.000      0.000    999.000    999.000
+
+ Residual Variances
+    W1DEP1             0.226      0.030      7.599      0.000
+    W1DEP2             0.241      0.029      8.197      0.000
+    W1DEP3             0.302      0.031      9.733      0.000
+    W2DEP1             0.209      0.029      7.247      0.000
+    W2DEP2             0.241      0.031      7.823      0.000
+    W2DEP3             0.312      0.032      9.678      0.000
+    W3DEP1             0.145      0.024      6.042      0.000
+    W3DEP2             0.181      0.024      7.463      0.000
+    W3DEP3             0.228      0.027      8.396      0.000
+    W4DEP1             0.206      0.027      7.505      0.000
+    W4DEP2             0.233      0.029      8.051      0.000
+    W4DEP3             0.225      0.028      7.939      0.000
+    W5DEP1             0.234      0.030      7.810      0.000
+    W5DEP2             0.180      0.029      6.224      0.000
+    W5DEP3             0.313      0.032      9.904      0.000
+    W6DEP1             0.218      0.027      8.070      0.000
+    W6DEP2             0.137      0.025      5.470      0.000
+    W6DEP3             0.275      0.030      9.315      0.000
+    W8DEP1             0.179      0.027      6.700      0.000
+    W8DEP2             0.136      0.025      5.461      0.000
+    W8DEP3             0.278      0.029      9.443      0.000
+    W9DEP1             0.199      0.026      7.693      0.000
+    W9DEP2             0.146      0.025      5.744      0.000
+    W9DEP3             0.225      0.027      8.202      0.000
+    F1DEP            999.000    999.000    999.000    999.000
+    F2DEP            999.000    999.000    999.000    999.000
+    F3DEP            999.000    999.000    999.000    999.000
+    F4DEP            999.000    999.000    999.000    999.000
+    F5DEP            999.000    999.000    999.000    999.000
+    F6DEP            999.000    999.000    999.000    999.000
+    F8DEP            999.000    999.000    999.000    999.000
+    F9DEP            999.000    999.000    999.000    999.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ F1DEP    BY
+    W1DEP1             0.810      0.031     26.316      0.000
+    W1DEP2             0.725      0.027     26.929      0.000
+    W1DEP3             0.683      0.027     25.753      0.000
+
+ F2DEP    BY
+    W2DEP1             0.810      0.031     26.316      0.000
+    W2DEP2             0.725      0.027     26.929      0.000
+    W2DEP3             0.683      0.027     25.753      0.000
+
+ F3DEP    BY
+    W3DEP1             0.810      0.031     26.316      0.000
+    W3DEP2             0.725      0.027     26.929      0.000
+    W3DEP3             0.683      0.027     25.753      0.000
+
+ F4DEP    BY
+    W4DEP1             0.810      0.031     26.316      0.000
+    W4DEP2             0.725      0.027     26.929      0.000
+    W4DEP3             0.683      0.027     25.753      0.000
+
+ F5DEP    BY
+    W5DEP1             0.810      0.031     26.316      0.000
+    W5DEP2             0.725      0.027     26.929      0.000
+    W5DEP3             0.683      0.027     25.753      0.000
+
+ F6DEP    BY
+    W6DEP1             0.810      0.031     26.316      0.000
+    W6DEP2             0.725      0.027     26.929      0.000
+    W6DEP3             0.683      0.027     25.753      0.000
+
+ F8DEP    BY
+    W8DEP1             0.810      0.031     26.316      0.000
+    W8DEP2             0.725      0.027     26.929      0.000
+    W8DEP3             0.683      0.027     25.753      0.000
+
+ F9DEP    BY
+    W9DEP1             0.810      0.031     26.316      0.000
+    W9DEP2             0.725      0.027     26.929      0.000
+    W9DEP3             0.683      0.027     25.753      0.000
+
+ TRAIT    BY
+    F1DEP              0.804      0.017     48.583      0.000
+    F2DEP              0.804      0.017     48.583      0.000
+    F3DEP              0.804      0.017     48.583      0.000
+    F4DEP              0.804      0.017     48.583      0.000
+    F5DEP              0.804      0.017     48.583      0.000
+    F6DEP              0.804      0.017     48.583      0.000
+    F8DEP              0.804      0.017     48.583      0.000
+    F9DEP              0.804      0.017     48.583      0.000
+
+ S1       BY
+    F1DEP              0.595      0.022     26.617      0.000
+
+ S2       BY
+    F2DEP              0.595      0.022     26.617      0.000
+
+ S3       BY
+    F3DEP              0.595      0.022     26.617      0.000
+
+ S4       BY
+    F4DEP              0.595      0.022     26.617      0.000
+
+ S5       BY
+    F5DEP              0.595      0.022     26.617      0.000
+
+ S6       BY
+    F6DEP              0.595      0.022     26.617      0.000
+
+ S8       BY
+    F8DEP              0.595      0.022     26.617      0.000
+
+ S9       BY
+    F9DEP              0.595      0.022     26.617      0.000
+
+ W1DEP1   WITH
+    W2DEP1             0.075      0.020      3.665      0.000
+    W3DEP1             0.038      0.017      2.195      0.028
+    W4DEP1             0.027      0.019      1.415      0.157
+    W5DEP1             0.026      0.021      1.245      0.213
+    W6DEP1             0.072      0.020      3.680      0.000
+    W8DEP1             0.034      0.019      1.809      0.070
+    W9DEP1             0.056      0.019      2.925      0.003
+
+ W2DEP1   WITH
+    W3DEP1             0.071      0.017      4.145      0.000
+    W4DEP1             0.070      0.019      3.641      0.000
+    W5DEP1             0.057      0.020      2.792      0.005
+    W6DEP1             0.059      0.019      3.078      0.002
+    W8DEP1             0.043      0.019      2.262      0.024
+    W9DEP1             0.069      0.019      3.664      0.000
+
+ W3DEP1   WITH
+    W4DEP1             0.030      0.016      1.873      0.061
+    W5DEP1             0.019      0.017      1.111      0.267
+    W6DEP1             0.058      0.016      3.589      0.000
+    W8DEP1             0.033      0.016      2.094      0.036
+    W9DEP1             0.040      0.015      2.620      0.009
+
+ W4DEP1   WITH
+    W5DEP1             0.042      0.020      2.111      0.035
+    W6DEP1             0.048      0.018      2.696      0.007
+    W8DEP1             0.015      0.017      0.866      0.386
+    W9DEP1             0.066      0.018      3.707      0.000
+
+ W5DEP1   WITH
+    W6DEP1             0.052      0.020      2.642      0.008
+    W8DEP1             0.027      0.019      1.411      0.158
+    W9DEP1             0.095      0.020      4.731      0.000
+
+ W6DEP1   WITH
+    W8DEP1             0.053      0.018      2.934      0.003
+    W9DEP1             0.088      0.018      4.797      0.000
+
+ W8DEP1   WITH
+    W9DEP1             0.057      0.017      3.344      0.001
+
+ W1DEP2   WITH
+    W2DEP2             0.052      0.018      2.892      0.004
+    W3DEP2             0.035      0.015      2.362      0.018
+    W4DEP2             0.019      0.016      1.146      0.252
+    W5DEP2             0.002      0.015      0.106      0.916
+    W6DEP2             0.012      0.014      0.863      0.388
+    W8DEP2             0.002      0.014      0.141      0.888
+    W9DEP2             0.019      0.014      1.302      0.193
+
+ W2DEP2   WITH
+    W3DEP2             0.009      0.015      0.609      0.542
+    W4DEP2             0.003      0.017      0.161      0.872
+    W5DEP2             0.016      0.016      1.019      0.308
+    W6DEP2             0.014      0.014      0.954      0.340
+    W8DEP2            -0.002      0.015     -0.125      0.901
+    W9DEP2             0.001      0.015      0.081      0.935
+
+ W3DEP2   WITH
+    W4DEP2             0.036      0.015      2.479      0.013
+    W5DEP2             0.018      0.013      1.387      0.166
+    W6DEP2             0.042      0.012      3.442      0.001
+    W8DEP2             0.018      0.012      1.510      0.131
+    W9DEP2             0.007      0.012      0.575      0.565
+
+ W4DEP2   WITH
+    W5DEP2             0.027      0.016      1.731      0.083
+    W6DEP2             0.013      0.013      0.972      0.331
+    W8DEP2            -0.001      0.014     -0.068      0.946
+    W9DEP2             0.019      0.014      1.363      0.173
+
+ W5DEP2   WITH
+    W6DEP2             0.030      0.013      2.269      0.023
+    W8DEP2            -0.006      0.013     -0.492      0.623
+    W9DEP2             0.000      0.013      0.034      0.973
+
+ W6DEP2   WITH
+    W8DEP2             0.019      0.012      1.546      0.122
+    W9DEP2             0.002      0.012      0.176      0.861
+
+ W8DEP2   WITH
+    W9DEP2             0.027      0.012      2.254      0.024
+
+ W1DEP3   WITH
+    W2DEP3             0.036      0.019      1.953      0.051
+    W3DEP3             0.069      0.017      3.991      0.000
+    W4DEP3             0.043      0.016      2.734      0.006
+    W5DEP3             0.028      0.018      1.563      0.118
+    W6DEP3             0.014      0.017      0.840      0.401
+    W8DEP3             0.030      0.018      1.659      0.097
+    W9DEP3             0.021      0.015      1.371      0.170
+
+ W2DEP3   WITH
+    W3DEP3             0.044      0.016      2.810      0.005
+    W4DEP3             0.026      0.016      1.668      0.095
+    W5DEP3             0.032      0.018      1.749      0.080
+    W6DEP3             0.005      0.017      0.280      0.779
+    W8DEP3             0.061      0.018      3.314      0.001
+    W9DEP3             0.034      0.016      2.157      0.031
+
+ W3DEP3   WITH
+    W4DEP3             0.044      0.014      3.267      0.001
+    W5DEP3             0.036      0.016      2.292      0.022
+    W6DEP3             0.011      0.014      0.751      0.453
+    W8DEP3             0.015      0.016      0.916      0.360
+    W9DEP3             0.009      0.013      0.680      0.497
+
+ W4DEP3   WITH
+    W5DEP3             0.031      0.016      1.997      0.046
+    W6DEP3             0.035      0.014      2.420      0.016
+    W8DEP3             0.041      0.015      2.719      0.007
+    W9DEP3             0.020      0.013      1.491      0.136
+
+ W5DEP3   WITH
+    W6DEP3             0.066      0.017      3.792      0.000
+    W8DEP3             0.035      0.018      1.971      0.049
+    W9DEP3             0.032      0.016      2.060      0.039
+
+ W6DEP3   WITH
+    W8DEP3             0.047      0.017      2.819      0.005
+    W9DEP3             0.079      0.015      5.071      0.000
+
+ W8DEP3   WITH
+    W9DEP3             0.046      0.015      3.096      0.002
+
+ Intercepts
+    W1DEP1             2.704      0.062     43.915      0.000
+    W1DEP2             2.602      0.056     46.788      0.000
+    W1DEP3             2.071      0.055     37.914      0.000
+    W2DEP1             2.818      0.061     45.927      0.000
+    W2DEP2             2.660      0.056     47.369      0.000
+    W2DEP3             2.150      0.055     38.786      0.000
+    W3DEP1             2.801      0.059     47.415      0.000
+    W3DEP2             2.545      0.054     47.125      0.000
+    W3DEP3             2.084      0.052     39.796      0.000
+    W4DEP1             2.797      0.061     45.882      0.000
+    W4DEP2             2.561      0.056     46.124      0.000
+    W4DEP3             2.108      0.052     40.536      0.000
+    W5DEP1             2.784      0.063     44.427      0.000
+    W5DEP2             2.533      0.054     46.686      0.000
+    W5DEP3             2.112      0.056     37.807      0.000
+    W6DEP1             2.795      0.062     45.318      0.000
+    W6DEP2             2.546      0.052     48.513      0.000
+    W6DEP3             2.148      0.054     39.770      0.000
+    W8DEP1             2.464      0.062     39.958      0.000
+    W8DEP2             2.319      0.054     43.124      0.000
+    W8DEP3             1.936      0.055     34.942      0.000
+    W9DEP1             2.641      0.061     42.992      0.000
+    W9DEP2             2.496      0.053     46.837      0.000
+    W9DEP3             2.045      0.053     38.844      0.000
+
+ Variances
+    TRAIT              1.000      0.000    999.000    999.000
+    S1                 1.000      0.000    999.000    999.000
+    S2                 1.000      0.000    999.000    999.000
+    S3                 1.000      0.000    999.000    999.000
+    S4                 1.000      0.000    999.000    999.000
+    S5                 1.000      0.000    999.000    999.000
+    S6                 1.000      0.000    999.000    999.000
+    S8                 1.000      0.000    999.000    999.000
+    S9                 1.000      0.000    999.000    999.000
+
+ Residual Variances
+    W1DEP1             0.192      0.028      6.858      0.000
+    W1DEP2             0.167      0.023      7.146      0.000
+    W1DEP3             0.202      0.025      8.051      0.000
+    W2DEP1             0.173      0.027      6.408      0.000
+    W2DEP2             0.167      0.024      6.812      0.000
+    W2DEP3             0.211      0.026      8.145      0.000
+    W3DEP1             0.111      0.019      5.901      0.000
+    W3DEP2             0.116      0.017      6.937      0.000
+    W3DEP3             0.138      0.018      7.765      0.000
+    W4DEP1             0.170      0.025      6.861      0.000
+    W4DEP2             0.159      0.022      7.267      0.000
+    W4DEP3             0.135      0.019      7.245      0.000
+    W5DEP1             0.201      0.029      6.926      0.000
+    W5DEP2             0.116      0.020      5.748      0.000
+    W5DEP3             0.212      0.026      8.265      0.000
+    W6DEP1             0.183      0.025      7.412      0.000
+    W6DEP2             0.083      0.016      5.229      0.000
+    W6DEP3             0.177      0.022      8.168      0.000
+    W8DEP1             0.143      0.023      6.286      0.000
+    W8DEP2             0.083      0.016      5.242      0.000
+    W8DEP3             0.180      0.022      8.084      0.000
+    W9DEP1             0.163      0.023      7.118      0.000
+    W9DEP2             0.090      0.016      5.559      0.000
+    W9DEP3             0.135      0.018      7.506      0.000
+    F1DEP            999.000    999.000    999.000    999.000
+    F2DEP            999.000    999.000    999.000    999.000
+    F3DEP            999.000    999.000    999.000    999.000
+    F4DEP            999.000    999.000    999.000    999.000
+    F5DEP            999.000    999.000    999.000    999.000
+    F6DEP            999.000    999.000    999.000    999.000
+    F8DEP            999.000    999.000    999.000    999.000
+    F9DEP            999.000    999.000    999.000    999.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    W1DEP1             0.774      0.030     25.987      0.000
+    W1DEP2             0.759      0.029     25.796      0.000
+    W1DEP3             0.698      0.031     22.457      0.000
+    W2DEP1             0.791      0.029     27.475      0.000
+    W2DEP2             0.759      0.031     24.687      0.000
+    W2DEP3             0.688      0.032     21.381      0.000
+    W3DEP1             0.855      0.024     35.712      0.000
+    W3DEP2             0.819      0.024     33.777      0.000
+    W3DEP3             0.772      0.027     28.448      0.000
+    W4DEP1             0.794      0.027     28.981      0.000
+    W4DEP2             0.767      0.029     26.556      0.000
+    W4DEP3             0.775      0.028     27.334      0.000
+    W5DEP1             0.766      0.030     25.514      0.000
+    W5DEP2             0.820      0.029     28.311      0.000
+    W5DEP3             0.687      0.032     21.742      0.000
+    W6DEP1             0.782      0.027     28.871      0.000
+    W6DEP2             0.863      0.025     34.546      0.000
+    W6DEP3             0.725      0.030     24.523      0.000
+    W8DEP1             0.821      0.027     30.786      0.000
+    W8DEP2             0.864      0.025     34.590      0.000
+    W8DEP3             0.722      0.029     24.499      0.000
+    W9DEP1             0.801      0.026     30.956      0.000
+    W9DEP2             0.854      0.025     33.525      0.000
+    W9DEP3             0.775      0.027     28.241      0.000
+
+     Latent                                         Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    F1DEP              1.000    999.000    999.000    999.000
+    F2DEP              1.000    999.000    999.000    999.000
+    F3DEP              1.000    999.000    999.000    999.000
+    F4DEP              1.000    999.000    999.000    999.000
+    F5DEP              1.000    999.000    999.000    999.000
+    F6DEP              1.000    999.000    999.000    999.000
+    F8DEP              1.000    999.000    999.000    999.000
+    F9DEP              1.000    999.000    999.000    999.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.119E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+CONFIDENCE INTERVALS OF MODEL RESULTS
+
+                   Lower .5%  Lower 2.5%   Estimate  Upper 2.5%  Upper .5%
+
+ F1DEP    BY
+    W1DEP1            1.000       1.000      1.000       1.000      1.000
+    W1DEP2            0.837       0.851      0.895       0.939      0.953
+    W1DEP3            0.784       0.798      0.843       0.887      0.901
+
+ F2DEP    BY
+    W2DEP1            1.000       1.000      1.000       1.000      1.000
+    W2DEP2            0.837       0.851      0.895       0.939      0.953
+    W2DEP3            0.784       0.798      0.843       0.887      0.901
+
+ F3DEP    BY
+    W3DEP1            1.000       1.000      1.000       1.000      1.000
+    W3DEP2            0.837       0.851      0.895       0.939      0.953
+    W3DEP3            0.784       0.798      0.843       0.887      0.901
+
+ F4DEP    BY
+    W4DEP1            1.000       1.000      1.000       1.000      1.000
+    W4DEP2            0.837       0.851      0.895       0.939      0.953
+    W4DEP3            0.784       0.798      0.843       0.887      0.901
+
+ F5DEP    BY
+    W5DEP1            1.000       1.000      1.000       1.000      1.000
+    W5DEP2            0.837       0.851      0.895       0.939      0.953
+    W5DEP3            0.784       0.798      0.843       0.887      0.901
+
+ F6DEP    BY
+    W6DEP1            1.000       1.000      1.000       1.000      1.000
+    W6DEP2            0.837       0.851      0.895       0.939      0.953
+    W6DEP3            0.784       0.798      0.843       0.887      0.901
+
+ F8DEP    BY
+    W8DEP1            1.000       1.000      1.000       1.000      1.000
+    W8DEP2            0.837       0.851      0.895       0.939      0.953
+    W8DEP3            0.784       0.798      0.843       0.887      0.901
+
+ F9DEP    BY
+    W9DEP1            1.000       1.000      1.000       1.000      1.000
+    W9DEP2            0.837       0.851      0.895       0.939      0.953
+    W9DEP3            0.784       0.798      0.843       0.887      0.901
+
+ TRAIT    BY
+    F1DEP             1.000       1.000      1.000       1.000      1.000
+    F2DEP             1.000       1.000      1.000       1.000      1.000
+    F3DEP             1.000       1.000      1.000       1.000      1.000
+    F4DEP             1.000       1.000      1.000       1.000      1.000
+    F5DEP             1.000       1.000      1.000       1.000      1.000
+    F6DEP             1.000       1.000      1.000       1.000      1.000
+    F8DEP             1.000       1.000      1.000       1.000      1.000
+    F9DEP             1.000       1.000      1.000       1.000      1.000
+
+ S1       BY
+    F1DEP             1.000       1.000      1.000       1.000      1.000
+
+ S2       BY
+    F2DEP             1.000       1.000      1.000       1.000      1.000
+
+ S3       BY
+    F3DEP             1.000       1.000      1.000       1.000      1.000
+
+ S4       BY
+    F4DEP             1.000       1.000      1.000       1.000      1.000
+
+ S5       BY
+    F5DEP             1.000       1.000      1.000       1.000      1.000
+
+ S6       BY
+    F6DEP             1.000       1.000      1.000       1.000      1.000
+
+ S8       BY
+    F8DEP             1.000       1.000      1.000       1.000      1.000
+
+ S9       BY
+    F9DEP             1.000       1.000      1.000       1.000      1.000
+
+ W1DEP1   WITH
+    W2DEP1            0.022       0.035      0.075       0.115      0.128
+    W3DEP1           -0.007       0.004      0.038       0.071      0.082
+    W4DEP1           -0.022      -0.010      0.027       0.064      0.076
+    W5DEP1           -0.027      -0.015      0.026       0.066      0.078
+    W6DEP1            0.022       0.034      0.072       0.111      0.123
+    W8DEP1           -0.014      -0.003      0.034       0.071      0.083
+    W9DEP1            0.007       0.019      0.056       0.094      0.106
+
+ W2DEP1   WITH
+    W3DEP1            0.027       0.037      0.071       0.105      0.115
+    W4DEP1            0.020       0.032      0.070       0.107      0.119
+    W5DEP1            0.004       0.017      0.057       0.097      0.109
+    W6DEP1            0.010       0.021      0.059       0.096      0.108
+    W8DEP1           -0.006       0.006      0.043       0.080      0.092
+    W9DEP1            0.021       0.032      0.069       0.107      0.118
+
+ W3DEP1   WITH
+    W4DEP1           -0.011      -0.001      0.030       0.062      0.072
+    W5DEP1           -0.025      -0.015      0.019       0.053      0.063
+    W6DEP1            0.016       0.026      0.058       0.090      0.100
+    W8DEP1           -0.008       0.002      0.033       0.063      0.073
+    W9DEP1            0.001       0.010      0.040       0.070      0.079
+
+ W4DEP1   WITH
+    W5DEP1           -0.009       0.003      0.042       0.081      0.093
+    W6DEP1            0.002       0.013      0.048       0.083      0.094
+    W8DEP1           -0.030      -0.019      0.015       0.049      0.060
+    W9DEP1            0.020       0.031      0.066       0.100      0.111
+
+ W5DEP1   WITH
+    W6DEP1            0.001       0.013      0.052       0.090      0.103
+    W8DEP1           -0.022      -0.010      0.027       0.065      0.076
+    W9DEP1            0.043       0.056      0.095       0.135      0.147
+
+ W6DEP1   WITH
+    W8DEP1            0.006       0.018      0.053       0.089      0.100
+    W9DEP1            0.041       0.052      0.088       0.125      0.136
+
+ W8DEP1   WITH
+    W9DEP1            0.013       0.024      0.057       0.091      0.102
+
+ W1DEP2   WITH
+    W2DEP2            0.006       0.017      0.052       0.087      0.098
+    W3DEP2           -0.003       0.006      0.035       0.064      0.074
+    W4DEP2           -0.023      -0.013      0.019       0.051      0.061
+    W5DEP2           -0.038      -0.028      0.002       0.032      0.041
+    W6DEP2           -0.024      -0.015      0.012       0.040      0.049
+    W8DEP2           -0.035      -0.026      0.002       0.030      0.039
+    W9DEP2           -0.018      -0.009      0.019       0.047      0.056
+
+ W2DEP2   WITH
+    W3DEP2           -0.029      -0.020      0.009       0.038      0.047
+    W4DEP2           -0.040      -0.030      0.003       0.035      0.046
+    W5DEP2           -0.025      -0.015      0.016       0.048      0.058
+    W6DEP2           -0.023      -0.014      0.014       0.042      0.051
+    W8DEP2           -0.041      -0.031     -0.002       0.028      0.037
+    W9DEP2           -0.037      -0.028      0.001       0.030      0.040
+
+ W3DEP2   WITH
+    W4DEP2           -0.001       0.008      0.036       0.065      0.074
+    W5DEP2           -0.016      -0.008      0.018       0.044      0.052
+    W6DEP2            0.011       0.018      0.042       0.066      0.074
+    W8DEP2           -0.013      -0.005      0.018       0.042      0.050
+    W9DEP2           -0.024      -0.016      0.007       0.030      0.037
+
+ W4DEP2   WITH
+    W5DEP2           -0.013      -0.004      0.027       0.059      0.068
+    W6DEP2           -0.022      -0.013      0.013       0.039      0.048
+    W8DEP2           -0.037      -0.029     -0.001       0.027      0.035
+    W9DEP2           -0.017      -0.008      0.019       0.046      0.055
+
+ W5DEP2   WITH
+    W6DEP2           -0.004       0.004      0.030       0.056      0.064
+    W8DEP2           -0.041      -0.032     -0.006       0.019      0.028
+    W9DEP2           -0.034      -0.026      0.000       0.027      0.035
+
+ W6DEP2   WITH
+    W8DEP2           -0.012      -0.005      0.019       0.042      0.049
+    W9DEP2           -0.028      -0.021      0.002       0.025      0.032
+
+ W8DEP2   WITH
+    W9DEP2           -0.004       0.004      0.027       0.050      0.058
+
+ W1DEP3   WITH
+    W2DEP3           -0.012       0.000      0.036       0.073      0.085
+    W3DEP3            0.024       0.035      0.069       0.102      0.113
+    W4DEP3            0.002       0.012      0.043       0.074      0.083
+    W5DEP3           -0.018      -0.007      0.028       0.064      0.075
+    W6DEP3           -0.030      -0.019      0.014       0.048      0.059
+    W8DEP3           -0.017      -0.005      0.030       0.066      0.078
+    W9DEP3           -0.019      -0.009      0.021       0.051      0.061
+
+ W2DEP3   WITH
+    W3DEP3            0.004       0.013      0.044       0.075      0.085
+    W4DEP3           -0.014      -0.005      0.026       0.057      0.066
+    W5DEP3           -0.015      -0.004      0.032       0.068      0.080
+    W6DEP3           -0.039      -0.028      0.005       0.038      0.048
+    W8DEP3            0.014       0.025      0.061       0.097      0.108
+    W9DEP3           -0.007       0.003      0.034       0.065      0.075
+
+ W3DEP3   WITH
+    W4DEP3            0.009       0.018      0.044       0.071      0.079
+    W5DEP3           -0.004       0.005      0.036       0.067      0.077
+    W6DEP3           -0.026      -0.017      0.011       0.038      0.047
+    W8DEP3           -0.027      -0.017      0.015       0.046      0.056
+    W9DEP3           -0.024      -0.016      0.009       0.033      0.041
+
+ W4DEP3   WITH
+    W5DEP3           -0.009       0.001      0.031       0.062      0.072
+    W6DEP3           -0.002       0.007      0.035       0.063      0.072
+    W8DEP3            0.002       0.012      0.041       0.071      0.081
+    W9DEP3           -0.014      -0.006      0.020       0.045      0.054
+
+ W5DEP3   WITH
+    W6DEP3            0.021       0.032      0.066       0.100      0.111
+    W8DEP3           -0.011       0.000      0.035       0.070      0.081
+    W9DEP3           -0.008       0.002      0.032       0.062      0.072
+
+ W6DEP3   WITH
+    W8DEP3            0.004       0.014      0.047       0.080      0.090
+    W9DEP3            0.039       0.048      0.079       0.109      0.118
+
+ W8DEP3   WITH
+    W9DEP3            0.008       0.017      0.046       0.075      0.084
+
+ Intercepts
+    W1DEP1            2.545       2.583      2.704       2.824      2.862
+    W1DEP2            2.459       2.493      2.602       2.711      2.746
+    W1DEP3            1.931       1.964      2.071       2.179      2.212
+    W2DEP1            2.660       2.698      2.818       2.938      2.976
+    W2DEP2            2.515       2.550      2.660       2.770      2.804
+    W2DEP3            2.007       2.041      2.150       2.258      2.293
+    W3DEP1            2.649       2.685      2.801       2.917      2.953
+    W3DEP2            2.406       2.439      2.545       2.651      2.684
+    W3DEP3            1.949       1.981      2.084       2.187      2.219
+    W4DEP1            2.640       2.678      2.797       2.917      2.954
+    W4DEP2            2.418       2.452      2.561       2.670      2.704
+    W4DEP3            1.974       2.006      2.108       2.210      2.242
+    W5DEP1            2.622       2.661      2.784       2.906      2.945
+    W5DEP2            2.393       2.427      2.533       2.640      2.673
+    W5DEP3            1.968       2.002      2.112       2.221      2.256
+    W6DEP1            2.636       2.674      2.795       2.916      2.953
+    W6DEP2            2.411       2.444      2.546       2.649      2.682
+    W6DEP3            2.009       2.042      2.148       2.254      2.287
+    W8DEP1            2.305       2.343      2.464       2.585      2.623
+    W8DEP2            2.181       2.214      2.319       2.425      2.458
+    W8DEP3            1.793       1.828      1.936       2.045      2.079
+    W9DEP1            2.482       2.520      2.641       2.761      2.799
+    W9DEP2            2.359       2.392      2.496       2.601      2.634
+    W9DEP3            1.910       1.942      2.045       2.149      2.181
+
+ Variances
+    TRAIT             0.303       0.332      0.424       0.515      0.544
+    S1                0.200       0.208      0.232       0.256      0.264
+    S2                0.200       0.208      0.232       0.256      0.264
+    S3                0.200       0.208      0.232       0.256      0.264
+    S4                0.200       0.208      0.232       0.256      0.264
+    S5                0.200       0.208      0.232       0.256      0.264
+    S6                0.200       0.208      0.232       0.256      0.264
+    S8                0.200       0.208      0.232       0.256      0.264
+    S9                0.200       0.208      0.232       0.256      0.264
+
+ Residual Variances
+    W1DEP1            0.120       0.137      0.192       0.247      0.264
+    W1DEP2            0.107       0.121      0.167       0.213      0.227
+    W1DEP3            0.137       0.153      0.202       0.251      0.267
+    W2DEP1            0.103       0.120      0.173       0.226      0.243
+    W2DEP2            0.104       0.119      0.167       0.214      0.230
+    W2DEP3            0.144       0.160      0.211       0.262      0.278
+    W3DEP1            0.063       0.074      0.111       0.148      0.159
+    W3DEP2            0.073       0.083      0.116       0.149      0.159
+    W3DEP3            0.092       0.103      0.138       0.172      0.183
+    W4DEP1            0.106       0.121      0.170       0.218      0.234
+    W4DEP2            0.103       0.116      0.159       0.202      0.216
+    W4DEP3            0.087       0.099      0.135       0.172      0.183
+    W5DEP1            0.126       0.144      0.201       0.258      0.275
+    W5DEP2            0.064       0.076      0.116       0.155      0.167
+    W5DEP3            0.146       0.162      0.212       0.263      0.278
+    W6DEP1            0.120       0.135      0.183       0.232      0.247
+    W6DEP2            0.042       0.052      0.083       0.114      0.124
+    W6DEP3            0.121       0.135      0.177       0.219      0.233
+    W8DEP1            0.084       0.098      0.143       0.187      0.201
+    W8DEP2            0.042       0.052      0.083       0.114      0.124
+    W8DEP3            0.122       0.136      0.180       0.223      0.237
+    W9DEP1            0.104       0.118      0.163       0.208      0.222
+    W9DEP2            0.048       0.058      0.090       0.122      0.132
+    W9DEP3            0.089       0.100      0.135       0.171      0.182
+    F1DEP             0.000       0.000      0.000       0.000      0.000
+    F2DEP             0.000       0.000      0.000       0.000      0.000
+    F3DEP             0.000       0.000      0.000       0.000      0.000
+    F4DEP             0.000       0.000      0.000       0.000      0.000
+    F5DEP             0.000       0.000      0.000       0.000      0.000
+    F6DEP             0.000       0.000      0.000       0.000      0.000
+    F8DEP             0.000       0.000      0.000       0.000      0.000
+    F9DEP             0.000       0.000      0.000       0.000      0.000
+
+
+CONFIDENCE INTERVALS OF STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                   Lower .5%  Lower 2.5%   Estimate  Upper 2.5%  Upper .5%
+
+ F1DEP    BY
+    W1DEP1            0.836       0.846      0.880       0.913      0.923
+    W1DEP2            0.828       0.838      0.871       0.904      0.915
+    W1DEP3            0.787       0.799      0.835       0.872      0.883
+
+ F2DEP    BY
+    W2DEP1            0.848       0.858      0.890       0.921      0.931
+    W2DEP2            0.826       0.837      0.871       0.906      0.917
+    W2DEP3            0.780       0.792      0.830       0.868      0.880
+
+ F3DEP    BY
+    W3DEP1            0.891       0.899      0.925       0.950      0.958
+    W3DEP2            0.870       0.879      0.905       0.931      0.940
+    W3DEP3            0.839       0.848      0.879       0.909      0.918
+
+ F4DEP    BY
+    W4DEP1            0.852       0.861      0.891       0.921      0.931
+    W4DEP2            0.834       0.844      0.876       0.908      0.918
+    W4DEP3            0.839       0.849      0.880       0.912      0.922
+
+ F5DEP    BY
+    W5DEP1            0.831       0.841      0.875       0.909      0.919
+    W5DEP2            0.864       0.874      0.905       0.937      0.947
+    W5DEP3            0.780       0.792      0.829       0.866      0.878
+
+ F6DEP    BY
+    W6DEP1            0.845       0.854      0.884       0.914      0.923
+    W6DEP2            0.895       0.903      0.929       0.955      0.964
+    W6DEP3            0.807       0.817      0.851       0.885      0.896
+
+ F8DEP    BY
+    W8DEP1            0.868       0.877      0.906       0.935      0.944
+    W8DEP2            0.895       0.903      0.929       0.956      0.964
+    W8DEP3            0.805       0.816      0.850       0.884      0.894
+
+ F9DEP    BY
+    W9DEP1            0.858       0.867      0.895       0.923      0.932
+    W9DEP2            0.888       0.897      0.924       0.951      0.959
+    W9DEP3            0.840       0.850      0.880       0.911      0.920
+
+ TRAIT    BY
+    F1DEP             0.761       0.771      0.804       0.836      0.846
+    F2DEP             0.761       0.771      0.804       0.836      0.846
+    F3DEP             0.761       0.771      0.804       0.836      0.846
+    F4DEP             0.761       0.771      0.804       0.836      0.846
+    F5DEP             0.761       0.771      0.804       0.836      0.846
+    F6DEP             0.761       0.771      0.804       0.836      0.846
+    F8DEP             0.761       0.771      0.804       0.836      0.846
+    F9DEP             0.761       0.771      0.804       0.836      0.846
+
+ S1       BY
+    F1DEP             0.537       0.551      0.595       0.639      0.653
+
+ S2       BY
+    F2DEP             0.537       0.551      0.595       0.639      0.653
+
+ S3       BY
+    F3DEP             0.537       0.551      0.595       0.639      0.653
+
+ S4       BY
+    F4DEP             0.537       0.551      0.595       0.639      0.653
+
+ S5       BY
+    F5DEP             0.537       0.551      0.595       0.639      0.653
+
+ S6       BY
+    F6DEP             0.537       0.551      0.595       0.639      0.653
+
+ S8       BY
+    F8DEP             0.537       0.551      0.595       0.639      0.653
+
+ S9       BY
+    F9DEP             0.537       0.551      0.595       0.639      0.653
+
+ W1DEP1   WITH
+    W2DEP1            0.177       0.233      0.412       0.590      0.646
+    W3DEP1           -0.012       0.053      0.258       0.464      0.528
+    W4DEP1           -0.110      -0.048      0.149       0.345      0.407
+    W5DEP1           -0.131      -0.068      0.130       0.329      0.391
+    W6DEP1            0.160       0.214      0.386       0.558      0.612
+    W8DEP1           -0.069      -0.003      0.207       0.416      0.482
+    W9DEP1            0.074       0.132      0.318       0.504      0.563
+
+ W2DEP1   WITH
+    W3DEP1            0.272       0.330      0.513       0.697      0.755
+    W4DEP1            0.167       0.224      0.406       0.588      0.645
+    W5DEP1            0.055       0.115      0.305       0.495      0.555
+    W6DEP1            0.088       0.146      0.331       0.515      0.573
+    W8DEP1           -0.006       0.061      0.273       0.485      0.552
+    W9DEP1            0.174       0.231      0.414       0.596      0.653
+
+ W3DEP1   WITH
+    W4DEP1           -0.057       0.010      0.220       0.431      0.497
+    W5DEP1           -0.158      -0.090      0.127       0.345      0.413
+    W6DEP1            0.175       0.230      0.408       0.586      0.642
+    W8DEP1           -0.031       0.038      0.259       0.480      0.550
+    W9DEP1            0.034       0.097      0.297       0.497      0.560
+
+ W4DEP1   WITH
+    W5DEP1           -0.030       0.032      0.226       0.421      0.482
+    W6DEP1            0.040       0.096      0.274       0.452      0.507
+    W8DEP1           -0.185      -0.117      0.097       0.311      0.378
+    W9DEP1            0.168       0.222      0.394       0.565      0.619
+
+ W5DEP1   WITH
+    W6DEP1            0.037       0.093      0.271       0.449      0.505
+    W8DEP1           -0.121      -0.054      0.160       0.373      0.440
+    W9DEP1            0.312       0.363      0.526       0.689      0.741
+
+ W6DEP1   WITH
+    W8DEP1            0.081       0.140      0.328       0.517      0.576
+    W9DEP1            0.314       0.361      0.511       0.662      0.709
+
+ W8DEP1   WITH
+    W9DEP1            0.136       0.194      0.376       0.559      0.616
+
+ W1DEP2   WITH
+    W2DEP2            0.071       0.128      0.311       0.494      0.551
+    W3DEP2            0.005       0.064      0.253       0.441      0.500
+    W4DEP2           -0.135      -0.076      0.115       0.305      0.365
+    W5DEP2           -0.271      -0.203      0.012       0.226      0.294
+    W6DEP2           -0.195      -0.124      0.103       0.330      0.402
+    W8DEP2           -0.296      -0.221      0.017       0.255      0.330
+    W9DEP2           -0.133      -0.065      0.153       0.370      0.439
+
+ W2DEP2   WITH
+    W3DEP2           -0.204      -0.140      0.065       0.270      0.334
+    W4DEP2           -0.246      -0.183      0.016       0.216      0.279
+    W5DEP2           -0.169      -0.100      0.118       0.337      0.406
+    W6DEP2           -0.186      -0.114      0.116       0.346      0.418
+    W8DEP2           -0.346      -0.267     -0.016       0.235      0.315
+    W9DEP2           -0.303      -0.228      0.010       0.248      0.322
+
+ W3DEP2   WITH
+    W4DEP2            0.017       0.077      0.265       0.454      0.513
+    W5DEP2           -0.121      -0.055      0.158       0.370      0.436
+    W6DEP2            0.179       0.239      0.431       0.622      0.682
+    W8DEP2           -0.114      -0.042      0.186       0.415      0.487
+    W9DEP2           -0.225      -0.155      0.066       0.288      0.358
+
+ W4DEP2   WITH
+    W5DEP2           -0.079      -0.012      0.202       0.417      0.484
+    W6DEP2           -0.175      -0.106      0.114       0.334      0.403
+    W8DEP2           -0.326      -0.250     -0.008       0.233      0.309
+    W9DEP2           -0.123      -0.056      0.159       0.373      0.440
+
+ W5DEP2   WITH
+    W6DEP2            0.010       0.080      0.304       0.528      0.598
+    W8DEP2           -0.418      -0.334     -0.066       0.201      0.285
+    W9DEP2           -0.331      -0.251      0.004       0.260      0.340
+
+ W6DEP2   WITH
+    W8DEP2           -0.114      -0.034      0.223       0.479      0.560
+    W9DEP2           -0.323      -0.240      0.024       0.288      0.370
+
+ W8DEP2   WITH
+    W9DEP2            0.010       0.082      0.311       0.541      0.613
+
+ W1DEP3   WITH
+    W2DEP3           -0.043       0.010      0.177       0.343      0.396
+    W3DEP3            0.196       0.247      0.411       0.575      0.627
+    W4DEP3            0.035       0.089      0.260       0.430      0.484
+    W5DEP3           -0.082      -0.030      0.137       0.304      0.356
+    W6DEP3           -0.155      -0.099      0.077       0.252      0.308
+    W8DEP3           -0.080      -0.023      0.159       0.342      0.399
+    W9DEP3           -0.105      -0.049      0.128       0.305      0.361
+
+ W2DEP3   WITH
+    W3DEP3            0.047       0.098      0.260       0.422      0.473
+    W4DEP3           -0.073      -0.019      0.154       0.327      0.382
+    W5DEP3           -0.063      -0.011      0.152       0.316      0.367
+    W6DEP3           -0.199      -0.146      0.024       0.194      0.248
+    W8DEP3            0.098       0.150      0.313       0.477      0.528
+    W9DEP3           -0.022       0.031      0.202       0.372      0.425
+
+ W3DEP3   WITH
+    W4DEP3            0.102       0.155      0.325       0.495      0.548
+    W5DEP3           -0.013       0.041      0.212       0.383      0.437
+    W6DEP3           -0.160      -0.105      0.067       0.240      0.294
+    W8DEP3           -0.166      -0.104      0.094       0.292      0.354
+    W9DEP3           -0.172      -0.116      0.063       0.242      0.298
+
+ W4DEP3   WITH
+    W5DEP3           -0.041       0.014      0.186       0.358      0.412
+    W6DEP3            0.004       0.057      0.227       0.396      0.449
+    W8DEP3            0.034       0.089      0.265       0.442      0.497
+    W9DEP3           -0.095      -0.037      0.145       0.327      0.385
+
+ W5DEP3   WITH
+    W6DEP3            0.145       0.192      0.340       0.487      0.534
+    W8DEP3           -0.045       0.009      0.179       0.349      0.402
+    W9DEP3           -0.033       0.020      0.189       0.357      0.410
+
+ W6DEP3   WITH
+    W8DEP3            0.047       0.099      0.264       0.429      0.481
+    W9DEP3            0.327       0.370      0.507       0.645      0.688
+
+ W8DEP3   WITH
+    W9DEP3            0.081       0.132      0.294       0.456      0.507
+
+ Intercepts
+    W1DEP1            2.636       2.708      2.937       3.165      3.237
+    W1DEP2            2.815       2.889      3.127       3.365      3.439
+    W1DEP3            2.260       2.326      2.535       2.743      2.809
+    W2DEP1            2.773       2.850      3.095       3.340      3.417
+    W2DEP2            2.879       2.955      3.197       3.439      3.515
+    W2DEP3            2.338       2.404      2.613       2.822      2.888
+    W3DEP1            2.873       2.951      3.199       3.446      3.524
+    W3DEP2            2.857       2.933      3.177       3.421      3.497
+    W3DEP3            2.399       2.467      2.683       2.899      2.966
+    W4DEP1            2.765       2.840      3.078       3.317      3.392
+    W4DEP2            2.790       2.863      3.095       3.326      3.399
+    W4DEP3            2.430       2.499      2.719       2.938      3.007
+    W5DEP1            2.699       2.773      3.007       3.242      3.316
+    W5DEP2            2.844       2.921      3.164       3.406      3.483
+    W5DEP3            2.290       2.356      2.564       2.772      2.838
+    W6DEP1            2.743       2.816      3.050       3.285      3.358
+    W6DEP2            2.933       3.012      3.263       3.515      3.594
+    W6DEP3            2.397       2.464      2.679       2.893      2.960
+    W8DEP1            2.462       2.532      2.757       2.982      3.053
+    W8DEP2            2.663       2.737      2.973       3.209      3.283
+    W8DEP3            2.139       2.204      2.410       2.615      2.680
+    W9DEP1            2.614       2.687      2.918       3.149      3.222
+    W9DEP2            2.862       2.938      3.181       3.425      3.501
+    W9DEP3            2.354       2.422      2.638       2.854      2.922
+
+ Variances
+    TRAIT             1.000       1.000      1.000       1.000      1.000
+    S1                1.000       1.000      1.000       1.000      1.000
+    S2                1.000       1.000      1.000       1.000      1.000
+    S3                1.000       1.000      1.000       1.000      1.000
+    S4                1.000       1.000      1.000       1.000      1.000
+    S5                1.000       1.000      1.000       1.000      1.000
+    S6                1.000       1.000      1.000       1.000      1.000
+    S8                1.000       1.000      1.000       1.000      1.000
+    S9                1.000       1.000      1.000       1.000      1.000
+
+ Residual Variances
+    W1DEP1            0.150       0.168      0.226       0.285      0.303
+    W1DEP2            0.165       0.183      0.241       0.299      0.317
+    W1DEP3            0.222       0.241      0.302       0.363      0.382
+    W2DEP1            0.135       0.152      0.209       0.265      0.283
+    W2DEP2            0.161       0.180      0.241       0.301      0.320
+    W2DEP3            0.229       0.248      0.312       0.375      0.395
+    W3DEP1            0.083       0.098      0.145       0.192      0.206
+    W3DEP2            0.119       0.133      0.181       0.228      0.243
+    W3DEP3            0.158       0.175      0.228       0.281      0.298
+    W4DEP1            0.135       0.152      0.206       0.259      0.276
+    W4DEP2            0.158       0.176      0.233       0.289      0.307
+    W4DEP3            0.152       0.170      0.225       0.281      0.298
+    W5DEP1            0.157       0.176      0.234       0.293      0.312
+    W5DEP2            0.106       0.123      0.180       0.237      0.255
+    W5DEP3            0.232       0.251      0.313       0.375      0.394
+    W6DEP1            0.149       0.165      0.218       0.272      0.288
+    W6DEP2            0.072       0.088      0.137       0.186      0.201
+    W6DEP3            0.199       0.217      0.275       0.333      0.351
+    W8DEP1            0.110       0.126      0.179       0.231      0.247
+    W8DEP2            0.072       0.087      0.136       0.185      0.201
+    W8DEP3            0.202       0.220      0.278       0.336      0.354
+    W9DEP1            0.132       0.148      0.199       0.250      0.266
+    W9DEP2            0.081       0.096      0.146       0.196      0.212
+    W9DEP3            0.154       0.171      0.225       0.279      0.296
+    F1DEP           999.000     999.000      0.000     999.000    999.000
+    F2DEP           999.000     999.000      0.000     999.000    999.000
+    F3DEP           999.000     999.000      0.000     999.000    999.000
+    F4DEP           999.000     999.000      0.000     999.000    999.000
+    F5DEP           999.000     999.000      0.000     999.000    999.000
+    F6DEP           999.000     999.000      0.000     999.000    999.000
+    F8DEP           999.000     999.000      0.000     999.000    999.000
+    F9DEP           999.000     999.000      0.000     999.000    999.000
+
+
+STDY Standardization
+
+                   Lower .5%  Lower 2.5%   Estimate  Upper 2.5%  Upper .5%
+
+ F1DEP    BY
+    W1DEP1            0.836       0.846      0.880       0.913      0.923
+    W1DEP2            0.828       0.838      0.871       0.904      0.915
+    W1DEP3            0.787       0.799      0.835       0.872      0.883
+
+ F2DEP    BY
+    W2DEP1            0.848       0.858      0.890       0.921      0.931
+    W2DEP2            0.826       0.837      0.871       0.906      0.917
+    W2DEP3            0.780       0.792      0.830       0.868      0.880
+
+ F3DEP    BY
+    W3DEP1            0.891       0.899      0.925       0.950      0.958
+    W3DEP2            0.870       0.879      0.905       0.931      0.940
+    W3DEP3            0.839       0.848      0.879       0.909      0.918
+
+ F4DEP    BY
+    W4DEP1            0.852       0.861      0.891       0.921      0.931
+    W4DEP2            0.834       0.844      0.876       0.908      0.918
+    W4DEP3            0.839       0.849      0.880       0.912      0.922
+
+ F5DEP    BY
+    W5DEP1            0.831       0.841      0.875       0.909      0.919
+    W5DEP2            0.864       0.874      0.905       0.937      0.947
+    W5DEP3            0.780       0.792      0.829       0.866      0.878
+
+ F6DEP    BY
+    W6DEP1            0.845       0.854      0.884       0.914      0.923
+    W6DEP2            0.895       0.903      0.929       0.955      0.964
+    W6DEP3            0.807       0.817      0.851       0.885      0.896
+
+ F8DEP    BY
+    W8DEP1            0.868       0.877      0.906       0.935      0.944
+    W8DEP2            0.895       0.903      0.929       0.956      0.964
+    W8DEP3            0.805       0.816      0.850       0.884      0.894
+
+ F9DEP    BY
+    W9DEP1            0.858       0.867      0.895       0.923      0.932
+    W9DEP2            0.888       0.897      0.924       0.951      0.959
+    W9DEP3            0.840       0.850      0.880       0.911      0.920
+
+ TRAIT    BY
+    F1DEP             0.761       0.771      0.804       0.836      0.846
+    F2DEP             0.761       0.771      0.804       0.836      0.846
+    F3DEP             0.761       0.771      0.804       0.836      0.846
+    F4DEP             0.761       0.771      0.804       0.836      0.846
+    F5DEP             0.761       0.771      0.804       0.836      0.846
+    F6DEP             0.761       0.771      0.804       0.836      0.846
+    F8DEP             0.761       0.771      0.804       0.836      0.846
+    F9DEP             0.761       0.771      0.804       0.836      0.846
+
+ S1       BY
+    F1DEP             0.537       0.551      0.595       0.639      0.653
+
+ S2       BY
+    F2DEP             0.537       0.551      0.595       0.639      0.653
+
+ S3       BY
+    F3DEP             0.537       0.551      0.595       0.639      0.653
+
+ S4       BY
+    F4DEP             0.537       0.551      0.595       0.639      0.653
+
+ S5       BY
+    F5DEP             0.537       0.551      0.595       0.639      0.653
+
+ S6       BY
+    F6DEP             0.537       0.551      0.595       0.639      0.653
+
+ S8       BY
+    F8DEP             0.537       0.551      0.595       0.639      0.653
+
+ S9       BY
+    F9DEP             0.537       0.551      0.595       0.639      0.653
+
+ W1DEP1   WITH
+    W2DEP1            0.177       0.233      0.412       0.590      0.646
+    W3DEP1           -0.012       0.053      0.258       0.464      0.528
+    W4DEP1           -0.110      -0.048      0.149       0.345      0.407
+    W5DEP1           -0.131      -0.068      0.130       0.329      0.391
+    W6DEP1            0.160       0.214      0.386       0.558      0.612
+    W8DEP1           -0.069      -0.003      0.207       0.416      0.482
+    W9DEP1            0.074       0.132      0.318       0.504      0.563
+
+ W2DEP1   WITH
+    W3DEP1            0.272       0.330      0.513       0.697      0.755
+    W4DEP1            0.167       0.224      0.406       0.588      0.645
+    W5DEP1            0.055       0.115      0.305       0.495      0.555
+    W6DEP1            0.088       0.146      0.331       0.515      0.573
+    W8DEP1           -0.006       0.061      0.273       0.485      0.552
+    W9DEP1            0.174       0.231      0.414       0.596      0.653
+
+ W3DEP1   WITH
+    W4DEP1           -0.057       0.010      0.220       0.431      0.497
+    W5DEP1           -0.158      -0.090      0.127       0.345      0.413
+    W6DEP1            0.175       0.230      0.408       0.586      0.642
+    W8DEP1           -0.031       0.038      0.259       0.480      0.550
+    W9DEP1            0.034       0.097      0.297       0.497      0.560
+
+ W4DEP1   WITH
+    W5DEP1           -0.030       0.032      0.226       0.421      0.482
+    W6DEP1            0.040       0.096      0.274       0.452      0.507
+    W8DEP1           -0.185      -0.117      0.097       0.311      0.378
+    W9DEP1            0.168       0.222      0.394       0.565      0.619
+
+ W5DEP1   WITH
+    W6DEP1            0.037       0.093      0.271       0.449      0.505
+    W8DEP1           -0.121      -0.054      0.160       0.373      0.440
+    W9DEP1            0.312       0.363      0.526       0.689      0.741
+
+ W6DEP1   WITH
+    W8DEP1            0.081       0.140      0.328       0.517      0.576
+    W9DEP1            0.314       0.361      0.511       0.662      0.709
+
+ W8DEP1   WITH
+    W9DEP1            0.136       0.194      0.376       0.559      0.616
+
+ W1DEP2   WITH
+    W2DEP2            0.071       0.128      0.311       0.494      0.551
+    W3DEP2            0.005       0.064      0.253       0.441      0.500
+    W4DEP2           -0.135      -0.076      0.115       0.305      0.365
+    W5DEP2           -0.271      -0.203      0.012       0.226      0.294
+    W6DEP2           -0.195      -0.124      0.103       0.330      0.402
+    W8DEP2           -0.296      -0.221      0.017       0.255      0.330
+    W9DEP2           -0.133      -0.065      0.153       0.370      0.439
+
+ W2DEP2   WITH
+    W3DEP2           -0.204      -0.140      0.065       0.270      0.334
+    W4DEP2           -0.246      -0.183      0.016       0.216      0.279
+    W5DEP2           -0.169      -0.100      0.118       0.337      0.406
+    W6DEP2           -0.186      -0.114      0.116       0.346      0.418
+    W8DEP2           -0.346      -0.267     -0.016       0.235      0.315
+    W9DEP2           -0.303      -0.228      0.010       0.248      0.322
+
+ W3DEP2   WITH
+    W4DEP2            0.017       0.077      0.265       0.454      0.513
+    W5DEP2           -0.121      -0.055      0.158       0.370      0.436
+    W6DEP2            0.179       0.239      0.431       0.622      0.682
+    W8DEP2           -0.114      -0.042      0.186       0.415      0.487
+    W9DEP2           -0.225      -0.155      0.066       0.288      0.358
+
+ W4DEP2   WITH
+    W5DEP2           -0.079      -0.012      0.202       0.417      0.484
+    W6DEP2           -0.175      -0.106      0.114       0.334      0.403
+    W8DEP2           -0.326      -0.250     -0.008       0.233      0.309
+    W9DEP2           -0.123      -0.056      0.159       0.373      0.440
+
+ W5DEP2   WITH
+    W6DEP2            0.010       0.080      0.304       0.528      0.598
+    W8DEP2           -0.418      -0.334     -0.066       0.201      0.285
+    W9DEP2           -0.331      -0.251      0.004       0.260      0.340
+
+ W6DEP2   WITH
+    W8DEP2           -0.114      -0.034      0.223       0.479      0.560
+    W9DEP2           -0.323      -0.240      0.024       0.288      0.370
+
+ W8DEP2   WITH
+    W9DEP2            0.010       0.082      0.311       0.541      0.613
+
+ W1DEP3   WITH
+    W2DEP3           -0.043       0.010      0.177       0.343      0.396
+    W3DEP3            0.196       0.247      0.411       0.575      0.627
+    W4DEP3            0.035       0.089      0.260       0.430      0.484
+    W5DEP3           -0.082      -0.030      0.137       0.304      0.356
+    W6DEP3           -0.155      -0.099      0.077       0.252      0.308
+    W8DEP3           -0.080      -0.023      0.159       0.342      0.399
+    W9DEP3           -0.105      -0.049      0.128       0.305      0.361
+
+ W2DEP3   WITH
+    W3DEP3            0.047       0.098      0.260       0.422      0.473
+    W4DEP3           -0.073      -0.019      0.154       0.327      0.382
+    W5DEP3           -0.063      -0.011      0.152       0.316      0.367
+    W6DEP3           -0.199      -0.146      0.024       0.194      0.248
+    W8DEP3            0.098       0.150      0.313       0.477      0.528
+    W9DEP3           -0.022       0.031      0.202       0.372      0.425
+
+ W3DEP3   WITH
+    W4DEP3            0.102       0.155      0.325       0.495      0.548
+    W5DEP3           -0.013       0.041      0.212       0.383      0.437
+    W6DEP3           -0.160      -0.105      0.067       0.240      0.294
+    W8DEP3           -0.166      -0.104      0.094       0.292      0.354
+    W9DEP3           -0.172      -0.116      0.063       0.242      0.298
+
+ W4DEP3   WITH
+    W5DEP3           -0.041       0.014      0.186       0.358      0.412
+    W6DEP3            0.004       0.057      0.227       0.396      0.449
+    W8DEP3            0.034       0.089      0.265       0.442      0.497
+    W9DEP3           -0.095      -0.037      0.145       0.327      0.385
+
+ W5DEP3   WITH
+    W6DEP3            0.145       0.192      0.340       0.487      0.534
+    W8DEP3           -0.045       0.009      0.179       0.349      0.402
+    W9DEP3           -0.033       0.020      0.189       0.357      0.410
+
+ W6DEP3   WITH
+    W8DEP3            0.047       0.099      0.264       0.429      0.481
+    W9DEP3            0.327       0.370      0.507       0.645      0.688
+
+ W8DEP3   WITH
+    W9DEP3            0.081       0.132      0.294       0.456      0.507
+
+ Intercepts
+    W1DEP1            2.636       2.708      2.937       3.165      3.237
+    W1DEP2            2.815       2.889      3.127       3.365      3.439
+    W1DEP3            2.260       2.326      2.535       2.743      2.809
+    W2DEP1            2.773       2.850      3.095       3.340      3.417
+    W2DEP2            2.879       2.955      3.197       3.439      3.515
+    W2DEP3            2.338       2.404      2.613       2.822      2.888
+    W3DEP1            2.873       2.951      3.199       3.446      3.524
+    W3DEP2            2.857       2.933      3.177       3.421      3.497
+    W3DEP3            2.399       2.467      2.683       2.899      2.966
+    W4DEP1            2.765       2.840      3.078       3.317      3.392
+    W4DEP2            2.790       2.863      3.095       3.326      3.399
+    W4DEP3            2.430       2.499      2.719       2.938      3.007
+    W5DEP1            2.699       2.773      3.007       3.242      3.316
+    W5DEP2            2.844       2.921      3.164       3.406      3.483
+    W5DEP3            2.290       2.356      2.564       2.772      2.838
+    W6DEP1            2.743       2.816      3.050       3.285      3.358
+    W6DEP2            2.933       3.012      3.263       3.515      3.594
+    W6DEP3            2.397       2.464      2.679       2.893      2.960
+    W8DEP1            2.462       2.532      2.757       2.982      3.053
+    W8DEP2            2.663       2.737      2.973       3.209      3.283
+    W8DEP3            2.139       2.204      2.410       2.615      2.680
+    W9DEP1            2.614       2.687      2.918       3.149      3.222
+    W9DEP2            2.862       2.938      3.181       3.425      3.501
+    W9DEP3            2.354       2.422      2.638       2.854      2.922
+
+ Variances
+    TRAIT             1.000       1.000      1.000       1.000      1.000
+    S1                1.000       1.000      1.000       1.000      1.000
+    S2                1.000       1.000      1.000       1.000      1.000
+    S3                1.000       1.000      1.000       1.000      1.000
+    S4                1.000       1.000      1.000       1.000      1.000
+    S5                1.000       1.000      1.000       1.000      1.000
+    S6                1.000       1.000      1.000       1.000      1.000
+    S8                1.000       1.000      1.000       1.000      1.000
+    S9                1.000       1.000      1.000       1.000      1.000
+
+ Residual Variances
+    W1DEP1            0.150       0.168      0.226       0.285      0.303
+    W1DEP2            0.165       0.183      0.241       0.299      0.317
+    W1DEP3            0.222       0.241      0.302       0.363      0.382
+    W2DEP1            0.135       0.152      0.209       0.265      0.283
+    W2DEP2            0.161       0.180      0.241       0.301      0.320
+    W2DEP3            0.229       0.248      0.312       0.375      0.395
+    W3DEP1            0.083       0.098      0.145       0.192      0.206
+    W3DEP2            0.119       0.133      0.181       0.228      0.243
+    W3DEP3            0.158       0.175      0.228       0.281      0.298
+    W4DEP1            0.135       0.152      0.206       0.259      0.276
+    W4DEP2            0.158       0.176      0.233       0.289      0.307
+    W4DEP3            0.152       0.170      0.225       0.281      0.298
+    W5DEP1            0.157       0.176      0.234       0.293      0.312
+    W5DEP2            0.106       0.123      0.180       0.237      0.255
+    W5DEP3            0.232       0.251      0.313       0.375      0.394
+    W6DEP1            0.149       0.165      0.218       0.272      0.288
+    W6DEP2            0.072       0.088      0.137       0.186      0.201
+    W6DEP3            0.199       0.217      0.275       0.333      0.351
+    W8DEP1            0.110       0.126      0.179       0.231      0.247
+    W8DEP2            0.072       0.087      0.136       0.185      0.201
+    W8DEP3            0.202       0.220      0.278       0.336      0.354
+    W9DEP1            0.132       0.148      0.199       0.250      0.266
+    W9DEP2            0.081       0.096      0.146       0.196      0.212
+    W9DEP3            0.154       0.171      0.225       0.279      0.296
+    F1DEP           999.000     999.000    999.000     999.000    999.000
+    F2DEP           999.000     999.000    999.000     999.000    999.000
+    F3DEP           999.000     999.000    999.000     999.000    999.000
+    F4DEP           999.000     999.000    999.000     999.000    999.000
+    F5DEP           999.000     999.000    999.000     999.000    999.000
+    F6DEP           999.000     999.000    999.000     999.000    999.000
+    F8DEP           999.000     999.000    999.000     999.000    999.000
+    F9DEP           999.000     999.000    999.000     999.000    999.000
+
+
+STD Standardization
+
+                   Lower .5%  Lower 2.5%   Estimate  Upper 2.5%  Upper .5%
+
+ F1DEP    BY
+    W1DEP1            0.731       0.750      0.810       0.870      0.889
+    W1DEP2            0.656       0.672      0.725       0.778      0.794
+    W1DEP3            0.614       0.631      0.683       0.735      0.751
+
+ F2DEP    BY
+    W2DEP1            0.731       0.750      0.810       0.870      0.889
+    W2DEP2            0.656       0.672      0.725       0.778      0.794
+    W2DEP3            0.614       0.631      0.683       0.735      0.751
+
+ F3DEP    BY
+    W3DEP1            0.731       0.750      0.810       0.870      0.889
+    W3DEP2            0.656       0.672      0.725       0.778      0.794
+    W3DEP3            0.614       0.631      0.683       0.735      0.751
+
+ F4DEP    BY
+    W4DEP1            0.731       0.750      0.810       0.870      0.889
+    W4DEP2            0.656       0.672      0.725       0.778      0.794
+    W4DEP3            0.614       0.631      0.683       0.735      0.751
+
+ F5DEP    BY
+    W5DEP1            0.731       0.750      0.810       0.870      0.889
+    W5DEP2            0.656       0.672      0.725       0.778      0.794
+    W5DEP3            0.614       0.631      0.683       0.735      0.751
+
+ F6DEP    BY
+    W6DEP1            0.731       0.750      0.810       0.870      0.889
+    W6DEP2            0.656       0.672      0.725       0.778      0.794
+    W6DEP3            0.614       0.631      0.683       0.735      0.751
+
+ F8DEP    BY
+    W8DEP1            0.731       0.750      0.810       0.870      0.889
+    W8DEP2            0.656       0.672      0.725       0.778      0.794
+    W8DEP3            0.614       0.631      0.683       0.735      0.751
+
+ F9DEP    BY
+    W9DEP1            0.731       0.750      0.810       0.870      0.889
+    W9DEP2            0.656       0.672      0.725       0.778      0.794
+    W9DEP3            0.614       0.631      0.683       0.735      0.751
+
+ TRAIT    BY
+    F1DEP             0.761       0.771      0.804       0.836      0.846
+    F2DEP             0.761       0.771      0.804       0.836      0.846
+    F3DEP             0.761       0.771      0.804       0.836      0.846
+    F4DEP             0.761       0.771      0.804       0.836      0.846
+    F5DEP             0.761       0.771      0.804       0.836      0.846
+    F6DEP             0.761       0.771      0.804       0.836      0.846
+    F8DEP             0.761       0.771      0.804       0.836      0.846
+    F9DEP             0.761       0.771      0.804       0.836      0.846
+
+ S1       BY
+    F1DEP             0.537       0.551      0.595       0.639      0.653
+
+ S2       BY
+    F2DEP             0.537       0.551      0.595       0.639      0.653
+
+ S3       BY
+    F3DEP             0.537       0.551      0.595       0.639      0.653
+
+ S4       BY
+    F4DEP             0.537       0.551      0.595       0.639      0.653
+
+ S5       BY
+    F5DEP             0.537       0.551      0.595       0.639      0.653
+
+ S6       BY
+    F6DEP             0.537       0.551      0.595       0.639      0.653
+
+ S8       BY
+    F8DEP             0.537       0.551      0.595       0.639      0.653
+
+ S9       BY
+    F9DEP             0.537       0.551      0.595       0.639      0.653
+
+ W1DEP1   WITH
+    W2DEP1            0.022       0.035      0.075       0.115      0.128
+    W3DEP1           -0.007       0.004      0.038       0.071      0.082
+    W4DEP1           -0.022      -0.010      0.027       0.064      0.076
+    W5DEP1           -0.027      -0.015      0.026       0.066      0.078
+    W6DEP1            0.022       0.034      0.072       0.111      0.123
+    W8DEP1           -0.014      -0.003      0.034       0.071      0.083
+    W9DEP1            0.007       0.019      0.056       0.094      0.106
+
+ W2DEP1   WITH
+    W3DEP1            0.027       0.037      0.071       0.105      0.115
+    W4DEP1            0.020       0.032      0.070       0.107      0.119
+    W5DEP1            0.004       0.017      0.057       0.097      0.109
+    W6DEP1            0.010       0.021      0.059       0.096      0.108
+    W8DEP1           -0.006       0.006      0.043       0.080      0.092
+    W9DEP1            0.021       0.032      0.069       0.107      0.118
+
+ W3DEP1   WITH
+    W4DEP1           -0.011      -0.001      0.030       0.062      0.072
+    W5DEP1           -0.025      -0.015      0.019       0.053      0.063
+    W6DEP1            0.016       0.026      0.058       0.090      0.100
+    W8DEP1           -0.008       0.002      0.033       0.063      0.073
+    W9DEP1            0.001       0.010      0.040       0.070      0.079
+
+ W4DEP1   WITH
+    W5DEP1           -0.009       0.003      0.042       0.081      0.093
+    W6DEP1            0.002       0.013      0.048       0.083      0.094
+    W8DEP1           -0.030      -0.019      0.015       0.049      0.060
+    W9DEP1            0.020       0.031      0.066       0.100      0.111
+
+ W5DEP1   WITH
+    W6DEP1            0.001       0.013      0.052       0.090      0.103
+    W8DEP1           -0.022      -0.010      0.027       0.065      0.076
+    W9DEP1            0.043       0.056      0.095       0.135      0.147
+
+ W6DEP1   WITH
+    W8DEP1            0.006       0.018      0.053       0.089      0.100
+    W9DEP1            0.041       0.052      0.088       0.125      0.136
+
+ W8DEP1   WITH
+    W9DEP1            0.013       0.024      0.057       0.091      0.102
+
+ W1DEP2   WITH
+    W2DEP2            0.006       0.017      0.052       0.087      0.098
+    W3DEP2           -0.003       0.006      0.035       0.064      0.074
+    W4DEP2           -0.023      -0.013      0.019       0.051      0.061
+    W5DEP2           -0.038      -0.028      0.002       0.032      0.041
+    W6DEP2           -0.024      -0.015      0.012       0.040      0.049
+    W8DEP2           -0.035      -0.026      0.002       0.030      0.039
+    W9DEP2           -0.018      -0.009      0.019       0.047      0.056
+
+ W2DEP2   WITH
+    W3DEP2           -0.029      -0.020      0.009       0.038      0.047
+    W4DEP2           -0.040      -0.030      0.003       0.035      0.046
+    W5DEP2           -0.025      -0.015      0.016       0.048      0.058
+    W6DEP2           -0.023      -0.014      0.014       0.042      0.051
+    W8DEP2           -0.041      -0.031     -0.002       0.028      0.037
+    W9DEP2           -0.037      -0.028      0.001       0.030      0.040
+
+ W3DEP2   WITH
+    W4DEP2           -0.001       0.008      0.036       0.065      0.074
+    W5DEP2           -0.016      -0.008      0.018       0.044      0.052
+    W6DEP2            0.011       0.018      0.042       0.066      0.074
+    W8DEP2           -0.013      -0.005      0.018       0.042      0.050
+    W9DEP2           -0.024      -0.016      0.007       0.030      0.037
+
+ W4DEP2   WITH
+    W5DEP2           -0.013      -0.004      0.027       0.059      0.068
+    W6DEP2           -0.022      -0.013      0.013       0.039      0.048
+    W8DEP2           -0.037      -0.029     -0.001       0.027      0.035
+    W9DEP2           -0.017      -0.008      0.019       0.046      0.055
+
+ W5DEP2   WITH
+    W6DEP2           -0.004       0.004      0.030       0.056      0.064
+    W8DEP2           -0.041      -0.032     -0.006       0.019      0.028
+    W9DEP2           -0.034      -0.026      0.000       0.027      0.035
+
+ W6DEP2   WITH
+    W8DEP2           -0.012      -0.005      0.019       0.042      0.049
+    W9DEP2           -0.028      -0.021      0.002       0.025      0.032
+
+ W8DEP2   WITH
+    W9DEP2           -0.004       0.004      0.027       0.050      0.058
+
+ W1DEP3   WITH
+    W2DEP3           -0.012       0.000      0.036       0.073      0.085
+    W3DEP3            0.024       0.035      0.069       0.102      0.113
+    W4DEP3            0.002       0.012      0.043       0.074      0.083
+    W5DEP3           -0.018      -0.007      0.028       0.064      0.075
+    W6DEP3           -0.030      -0.019      0.014       0.048      0.059
+    W8DEP3           -0.017      -0.005      0.030       0.066      0.078
+    W9DEP3           -0.019      -0.009      0.021       0.051      0.061
+
+ W2DEP3   WITH
+    W3DEP3            0.004       0.013      0.044       0.075      0.085
+    W4DEP3           -0.014      -0.005      0.026       0.057      0.066
+    W5DEP3           -0.015      -0.004      0.032       0.068      0.080
+    W6DEP3           -0.039      -0.028      0.005       0.038      0.048
+    W8DEP3            0.014       0.025      0.061       0.097      0.108
+    W9DEP3           -0.007       0.003      0.034       0.065      0.075
+
+ W3DEP3   WITH
+    W4DEP3            0.009       0.018      0.044       0.071      0.079
+    W5DEP3           -0.004       0.005      0.036       0.067      0.077
+    W6DEP3           -0.026      -0.017      0.011       0.038      0.047
+    W8DEP3           -0.027      -0.017      0.015       0.046      0.056
+    W9DEP3           -0.024      -0.016      0.009       0.033      0.041
+
+ W4DEP3   WITH
+    W5DEP3           -0.009       0.001      0.031       0.062      0.072
+    W6DEP3           -0.002       0.007      0.035       0.063      0.072
+    W8DEP3            0.002       0.012      0.041       0.071      0.081
+    W9DEP3           -0.014      -0.006      0.020       0.045      0.054
+
+ W5DEP3   WITH
+    W6DEP3            0.021       0.032      0.066       0.100      0.111
+    W8DEP3           -0.011       0.000      0.035       0.070      0.081
+    W9DEP3           -0.008       0.002      0.032       0.062      0.072
+
+ W6DEP3   WITH
+    W8DEP3            0.004       0.014      0.047       0.080      0.090
+    W9DEP3            0.039       0.048      0.079       0.109      0.118
+
+ W8DEP3   WITH
+    W9DEP3            0.008       0.017      0.046       0.075      0.084
+
+ Intercepts
+    W1DEP1            2.545       2.583      2.704       2.824      2.862
+    W1DEP2            2.459       2.493      2.602       2.711      2.746
+    W1DEP3            1.931       1.964      2.071       2.179      2.212
+    W2DEP1            2.660       2.698      2.818       2.938      2.976
+    W2DEP2            2.515       2.550      2.660       2.770      2.804
+    W2DEP3            2.007       2.041      2.150       2.258      2.293
+    W3DEP1            2.649       2.685      2.801       2.917      2.953
+    W3DEP2            2.406       2.439      2.545       2.651      2.684
+    W3DEP3            1.949       1.981      2.084       2.187      2.219
+    W4DEP1            2.640       2.678      2.797       2.917      2.954
+    W4DEP2            2.418       2.452      2.561       2.670      2.704
+    W4DEP3            1.974       2.006      2.108       2.210      2.242
+    W5DEP1            2.622       2.661      2.784       2.906      2.945
+    W5DEP2            2.393       2.427      2.533       2.640      2.673
+    W5DEP3            1.968       2.002      2.112       2.221      2.256
+    W6DEP1            2.636       2.674      2.795       2.916      2.953
+    W6DEP2            2.411       2.444      2.546       2.649      2.682
+    W6DEP3            2.009       2.042      2.148       2.254      2.287
+    W8DEP1            2.305       2.343      2.464       2.585      2.623
+    W8DEP2            2.181       2.214      2.319       2.425      2.458
+    W8DEP3            1.793       1.828      1.936       2.045      2.079
+    W9DEP1            2.482       2.520      2.641       2.761      2.799
+    W9DEP2            2.359       2.392      2.496       2.601      2.634
+    W9DEP3            1.910       1.942      2.045       2.149      2.181
+
+ Variances
+    TRAIT             1.000       1.000      1.000       1.000      1.000
+    S1                1.000       1.000      1.000       1.000      1.000
+    S2                1.000       1.000      1.000       1.000      1.000
+    S3                1.000       1.000      1.000       1.000      1.000
+    S4                1.000       1.000      1.000       1.000      1.000
+    S5                1.000       1.000      1.000       1.000      1.000
+    S6                1.000       1.000      1.000       1.000      1.000
+    S8                1.000       1.000      1.000       1.000      1.000
+    S9                1.000       1.000      1.000       1.000      1.000
+
+ Residual Variances
+    W1DEP1            0.120       0.137      0.192       0.247      0.264
+    W1DEP2            0.107       0.121      0.167       0.213      0.227
+    W1DEP3            0.137       0.153      0.202       0.251      0.267
+    W2DEP1            0.103       0.120      0.173       0.226      0.243
+    W2DEP2            0.104       0.119      0.167       0.214      0.230
+    W2DEP3            0.144       0.160      0.211       0.262      0.278
+    W3DEP1            0.063       0.074      0.111       0.148      0.159
+    W3DEP2            0.073       0.083      0.116       0.149      0.159
+    W3DEP3            0.092       0.103      0.138       0.172      0.183
+    W4DEP1            0.106       0.121      0.170       0.218      0.234
+    W4DEP2            0.103       0.116      0.159       0.202      0.216
+    W4DEP3            0.087       0.099      0.135       0.172      0.183
+    W5DEP1            0.126       0.144      0.201       0.258      0.275
+    W5DEP2            0.064       0.076      0.116       0.155      0.167
+    W5DEP3            0.146       0.162      0.212       0.263      0.278
+    W6DEP1            0.120       0.135      0.183       0.232      0.247
+    W6DEP2            0.042       0.052      0.083       0.114      0.124
+    W6DEP3            0.121       0.135      0.177       0.219      0.233
+    W8DEP1            0.084       0.098      0.143       0.187      0.201
+    W8DEP2            0.042       0.052      0.083       0.114      0.124
+    W8DEP3            0.122       0.136      0.180       0.223      0.237
+    W9DEP1            0.104       0.118      0.163       0.208      0.222
+    W9DEP2            0.048       0.058      0.090       0.122      0.132
+    W9DEP3            0.089       0.100      0.135       0.171      0.182
+    F1DEP           999.000     999.000    999.000     999.000    999.000
+    F2DEP           999.000     999.000    999.000     999.000    999.000
+    F3DEP           999.000     999.000    999.000     999.000    999.000
+    F4DEP           999.000     999.000    999.000     999.000    999.000
+    F5DEP           999.000     999.000    999.000     999.000    999.000
+    F6DEP           999.000     999.000    999.000     999.000    999.000
+    F8DEP           999.000     999.000    999.000     999.000    999.000
+    F9DEP           999.000     999.000    999.000     999.000    999.000
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              F1DEP         F2DEP         F3DEP         F4DEP         F5DEP
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              F6DEP         F8DEP         F9DEP         TRAIT         S1
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              S2            S3            S4            S5            S6
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              S8            S9
+              ________      ________
+      1         0.000         0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              F1DEP         F2DEP         F3DEP         F4DEP         F5DEP
+              ________      ________      ________      ________      ________
+ F1DEP          0.656
+ F2DEP          0.424         0.656
+ F3DEP          0.424         0.424         0.656
+ F4DEP          0.424         0.424         0.424         0.656
+ F5DEP          0.424         0.424         0.424         0.424         0.656
+ F6DEP          0.424         0.424         0.424         0.424         0.424
+ F8DEP          0.424         0.424         0.424         0.424         0.424
+ F9DEP          0.424         0.424         0.424         0.424         0.424
+ TRAIT          0.424         0.424         0.424         0.424         0.424
+ S1             0.232         0.000         0.000         0.000         0.000
+ S2             0.000         0.232         0.000         0.000         0.000
+ S3             0.000         0.000         0.232         0.000         0.000
+ S4             0.000         0.000         0.000         0.232         0.000
+ S5             0.000         0.000         0.000         0.000         0.232
+ S6             0.000         0.000         0.000         0.000         0.000
+ S8             0.000         0.000         0.000         0.000         0.000
+ S9             0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              F6DEP         F8DEP         F9DEP         TRAIT         S1
+              ________      ________      ________      ________      ________
+ F6DEP          0.656
+ F8DEP          0.424         0.656
+ F9DEP          0.424         0.424         0.656
+ TRAIT          0.424         0.424         0.424         0.424
+ S1             0.000         0.000         0.000         0.000         0.232
+ S2             0.000         0.000         0.000         0.000         0.000
+ S3             0.000         0.000         0.000         0.000         0.000
+ S4             0.000         0.000         0.000         0.000         0.000
+ S5             0.000         0.000         0.000         0.000         0.000
+ S6             0.232         0.000         0.000         0.000         0.000
+ S8             0.000         0.232         0.000         0.000         0.000
+ S9             0.000         0.000         0.232         0.000         0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              S2            S3            S4            S5            S6
+              ________      ________      ________      ________      ________
+ S2             0.232
+ S3             0.000         0.232
+ S4             0.000         0.000         0.232
+ S5             0.000         0.000         0.000         0.232
+ S6             0.000         0.000         0.000         0.000         0.232
+ S8             0.000         0.000         0.000         0.000         0.000
+ S9             0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              S8            S9
+              ________      ________
+ S8             0.232
+ S9             0.000         0.232
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              F1DEP         F2DEP         F3DEP         F4DEP         F5DEP
+              ________      ________      ________      ________      ________
+ F1DEP          1.000
+ F2DEP          0.646         1.000
+ F3DEP          0.646         0.646         1.000
+ F4DEP          0.646         0.646         0.646         1.000
+ F5DEP          0.646         0.646         0.646         0.646         1.000
+ F6DEP          0.646         0.646         0.646         0.646         0.646
+ F8DEP          0.646         0.646         0.646         0.646         0.646
+ F9DEP          0.646         0.646         0.646         0.646         0.646
+ TRAIT          0.804         0.804         0.804         0.804         0.804
+ S1             0.595         0.000         0.000         0.000         0.000
+ S2             0.000         0.595         0.000         0.000         0.000
+ S3             0.000         0.000         0.595         0.000         0.000
+ S4             0.000         0.000         0.000         0.595         0.000
+ S5             0.000         0.000         0.000         0.000         0.595
+ S6             0.000         0.000         0.000         0.000         0.000
+ S8             0.000         0.000         0.000         0.000         0.000
+ S9             0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              F6DEP         F8DEP         F9DEP         TRAIT         S1
+              ________      ________      ________      ________      ________
+ F6DEP          1.000
+ F8DEP          0.646         1.000
+ F9DEP          0.646         0.646         1.000
+ TRAIT          0.804         0.804         0.804         1.000
+ S1             0.000         0.000         0.000         0.000         1.000
+ S2             0.000         0.000         0.000         0.000         0.000
+ S3             0.000         0.000         0.000         0.000         0.000
+ S4             0.000         0.000         0.000         0.000         0.000
+ S5             0.000         0.000         0.000         0.000         0.000
+ S6             0.595         0.000         0.000         0.000         0.000
+ S8             0.000         0.595         0.000         0.000         0.000
+ S9             0.000         0.000         0.595         0.000         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              S2            S3            S4            S5            S6
+              ________      ________      ________      ________      ________
+ S2             1.000
+ S3             0.000         1.000
+ S4             0.000         0.000         1.000
+ S5             0.000         0.000         0.000         1.000
+ S6             0.000         0.000         0.000         0.000         1.000
+ S8             0.000         0.000         0.000         0.000         0.000
+ S9             0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              S8            S9
+              ________      ________
+ S8             1.000
+ S9             0.000         1.000
+
+
+     Beginning Time:  13:52:37
+        Ending Time:  13:52:38
+       Elapsed Time:  00:00:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2009 Muthen & Muthen

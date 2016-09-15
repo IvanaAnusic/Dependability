@@ -1,0 +1,128 @@
+TITLE: START model for POT study
+
+DATA: file is 'potorganized.dat';
+
+VARIABLE:
+    NAMES ARE id
+    w1a1-w1a4 w1anx1-w1anx10 w1c1-w1c4 w1dep1-w1dep8 
+    w1dist1-w1dist8 w1e1-w1e4 w1ls1-w1ls3 w1n1-w1n4 w1o1-w1o4
+    w2a1-w2a4 w2anx1-w2anx10 w2c1-w2c4 w2dep1-w2dep8 
+    w2dist1-w2dist8 w2e1-w2e4 w2ls1-w2ls3 w2n1-w2n4 w2o1-w2o4
+    w3a1-w3a4 w3anx1-w3anx10 w3c1-w3c4 w3dep1-w3dep8 
+    w3dist1-w3dist8 w3e1-w3e4 w3ls1-w3ls3 w3n1-w3n4 w3o1-w3o4
+    w4a1-w4a4 w4anx1-w4anx10 w4c1-w4c4 w4dep1-w4dep8 
+    w4dist1-w4dist8 w4e1-w4e4 w4ls1-w4ls3 w4n1-w4n4 w4o1-w4o4
+    w5a1-w5a4 w5anx1-w5anx10 w5c1-w5c4 w5dep1-w5dep8 
+    w5dist1-w5dist8 w5e1-w5e4 w5ls1-w5ls3 w5n1-w5n4 w5o1-w5o4
+    w6a1-w6a4 w6anx1-w6anx10 w6c1-w6c4 w6dep1-w6dep8 
+    w6dist1-w6dist8 w6e1-w6e4 w6ls1-w6ls3 w6n1-w6n4 w6o1-w6o4
+    w8a1-w8a4 w8anx1-w8anx10 w8c1-w8c4 w8dep1-w8dep8 
+    w8dist1-w8dist8 w8e1-w8e4 w8ls1-w8ls3 w8n1-w8n4 w8o1-w8o4
+    w9a1-w9a4 w9anx1-w9anx10 w9c1-w9c4 w9dep1-w9dep8 
+    w9dist1-w9dist8 w9e1-w9e4 w9ls1-w9ls3 w9n1-w9n4 w9o1-w9o4;
+
+    USEVAR =
+    w1o1-w1o4 w2o1-w2o4 w3o1-w3o4 w4o1-w4o4 w5o1-w5o4 
+    w6o1-w6o4 w8o1-w8o4 w9o1-w9o4;
+
+    MISSING IS all (999);
+
+
+ANALYSIS: 
+    TYPE = MISSING H1;
+!    BOOTSTRAP = 500;
+    ESTIMATOR = ml;
+    MODEL = NOCOVARIANCES;
+
+MODEL: 
+
+    f1O by w1o1@1 (l1);
+    f1O by w1o2*-1 (l2);
+    f1O by w1o3*-1 (l3);
+    f1O by w1o4*-1 (l4);
+
+    f2O by w2o1@1 (l1);
+    f2O by w2o2*-1 (l2);
+    f2O by w2o3*-1 (l3);
+    f2O by w2o4*-1 (l4);
+
+    f3O by w3o1@1 (l1);
+    f3O by w3o2*-1 (l2);
+    f3O by w3o3*-1 (l3);
+    f3O by w3o4*-1 (l4);
+
+    f4O by w4o1@1 (l1);
+    f4O by w4o2*-1 (l2);
+    f4O by w4o3*-1 (l3);
+    f4O by w4o4*-1 (l4);
+
+    f5O by w5o1@1 (l1);
+    f5O by w5o2*-1 (l2);
+    f5O by w5o3*-1 (l3);
+    f5O by w5o4*-1 (l4);
+
+    f6O by w6o1@1 (l1);
+    f6O by w6o2*-1 (l2);
+    f6O by w6o3*-1 (l3);
+    f6O by w6o4*-1 (l4);
+
+    f8O by w8o1@1 (l1);
+    f8O by w8o2*-1 (l2);
+    f8O by w8o3*-1 (l3);
+    f8O by w8o4*-1 (l4);
+
+    f9O by w9o1@1 (l1);
+    f9O by w9o2*-1 (l2);
+    f9O by w9o3*-1 (l3);
+    f9O by w9o4*-1 (l4);
+
+    
+    trait by f1O-f9O@1;
+
+    s1 by f1O@1;
+    s2 by f2O@1;
+    s3 by f3O@1;
+    s4 by f4O@1;
+    s5 by f5O@1;
+    s6 by f6O@1;
+    s8 by f8O@1;
+    s9 by f9O@1;
+
+    s1-s9 (S);
+    f1O-f9O@0;
+
+    w1o1 with w2o1 w3o1 w4o1 w5o1 w6o1 w8o1 w9o1*;
+    w2o1 with w3o1 w4o1 w5o1 w6o1 w8o1 w9o1*;
+    w3o1 with w4o1 w5o1 w6o1 w8o1 w9o1*;
+    w4o1 with w5o1 w6o1 w8o1 w9o1*;
+    w5o1 with w6o1 w8o1 w9o1*;
+    w6o1 with w8o1 w9o1*;
+    w8o1 with w9o1*;
+
+    w1o2 with w2o2 w3o2 w4o2 w5o2 w6o2 w8o2 w9o2*;
+    w2o2 with w3o2 w4o2 w5o2 w6o2 w8o2 w9o2*;
+    w3o2 with w4o2 w5o2 w6o2 w8o2 w9o2*;
+    w4o2 with w5o2 w6o2 w8o2 w9o2*;
+    w5o2 with w6o2 w8o2 w9o2*;
+    w6o2 with w8o2 w9o2*;
+    w8o2 with w9o2*;
+
+    w1o3 with w2o3 w3o3 w4o3 w5o3 w6o3 w8o3 w9o3*;
+    w2o3 with w3o3 w4o3 w5o3 w6o3 w8o3 w9o3*;
+    w3o3 with w4o3 w5o3 w6o3 w8o3 w9o3*;
+    w4o3 with w5o3 w6o3 w8o3 w9o3*;
+    w5o3 with w6o3 w8o3 w9o3*;
+    w6o3 with w8o3 w9o3*;
+    w8o3 with w9o3*;
+
+    w1o4 with w2o4 w3o4 w4o4 w5o4 w6o4 w8o4 w9o4*;
+    w2o4 with w3o4 w4o4 w5o4 w6o4 w8o4 w9o4*;
+    w3o4 with w4o4 w5o4 w6o4 w8o4 w9o4*;
+    w4o4 with w5o4 w6o4 w8o4 w9o4*;
+    w5o4 with w6o4 w8o4 w9o4*;
+    w6o4 with w8o4 w9o4*;
+    w8o4 with w9o4*;
+
+OUTPUT: samp stand tech4 cinterval modindices;
+
+

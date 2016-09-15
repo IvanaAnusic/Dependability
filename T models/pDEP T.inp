@@ -1,0 +1,101 @@
+TITLE: START model for POT study
+
+DATA: file is 'Titemparcels.dat';
+
+VARIABLE:
+    NAMES ARE id
+    w1dist1-w1dist3 w2dist1-w2dist3 w3dist1-w3dist3 w4dist1-w4dist3
+    w5dist1-w5dist3 w6dist1-w6dist3 w8dist1-w8dist3 w9dist1-w9dist3
+    w1dep1-w1dep3 w2dep1-w2dep3 w3dep1-w3dep3 w4dep1-w4dep3
+    w5dep1-w5dep3 w6dep1-w6dep3 w8dep1-w8dep3 w9dep1-w9dep3
+    w1anx1-w1anx3 w2anx1-w2anx3 w3anx1-w3anx3 w4anx1-w4anx3
+    w5anx1-w5anx3 w6anx1-w6anx3 w8anx1-w8anx3 w9anx1-w9anx3;
+
+    USEVAR =
+    w1dep1-w9dep3;
+
+    MISSING IS all (999);
+
+
+ANALYSIS: 
+    TYPE = MISSING H1;
+!    BOOTSTRAP = 500;
+    ESTIMATOR = ml;
+    MODEL = NOCOVARIANCES;
+
+MODEL: 
+    f1DEP by w1dep1@1 (l1);
+    f1DEP by w1dep2*1 (l2);
+    f1DEP by w1dep3*1 (l3);
+
+    f2DEP by w2dep1@1 (l1);
+    f2DEP by w2dep2*1 (l2);
+    f2DEP by w2dep3*1 (l3);
+
+    f3DEP by w3dep1@1 (l1);
+    f3DEP by w3dep2*1 (l2);
+    f3DEP by w3dep3*1 (l3);
+
+    f4DEP by w4dep1@1 (l1);
+    f4DEP by w4dep2*1 (l2);
+    f4DEP by w4dep3*1 (l3);
+
+    f5DEP by w5dep1@1 (l1);
+    f5DEP by w5dep2*1 (l2);
+    f5DEP by w5dep3*1 (l3);
+
+    f6DEP by w6dep1@1 (l1);
+    f6DEP by w6dep2*1 (l2);
+    f6DEP by w6dep3*1 (l3);
+
+    f8DEP by w8dep1@1 (l1);
+    f8DEP by w8dep2*1 (l2);
+    f8DEP by w8dep3*1 (l3);
+
+    f9DEP by w9dep1@1 (l1);
+    f9DEP by w9dep2*1 (l2);
+    f9DEP by w9dep3*1 (l3);
+
+    
+    trait by f1DEP-f9DEP@1;
+    
+    s1 by f1DEP@1;
+    s2 by f2DEP@1;
+    s3 by f3DEP@1;
+    s4 by f4DEP@1;
+    s5 by f5DEP@1;
+    s6 by f6DEP@1;
+    s8 by f8DEP@1;
+    s9 by f9DEP@1;
+
+    s1-s9 (S);
+    f1DEP-f9DEP@0;
+
+    w1dep1 with w2dep1 w3dep1 w4dep1 w5dep1 w6dep1 w8dep1 w9dep1*;
+    w2dep1 with w3dep1 w4dep1 w5dep1 w6dep1 w8dep1 w9dep1*;
+    w3dep1 with w4dep1 w5dep1 w6dep1 w8dep1 w9dep1*;
+    w4dep1 with w5dep1 w6dep1 w8dep1 w9dep1*;
+    w5dep1 with w6dep1 w8dep1 w9dep1*;
+    w6dep1 with w8dep1 w9dep1*;
+    w8dep1 with w9dep1*;
+
+    w1dep2 with w2dep2 w3dep2 w4dep2 w5dep2 w6dep2 w8dep2 w9dep2*;
+    w2dep2 with w3dep2 w4dep2 w5dep2 w6dep2 w8dep2 w9dep2*;
+    w3dep2 with w4dep2 w5dep2 w6dep2 w8dep2 w9dep2*;
+    w4dep2 with w5dep2 w6dep2 w8dep2 w9dep2*;
+    w5dep2 with w6dep2 w8dep2 w9dep2*;
+    w6dep2 with w8dep2 w9dep2*;
+    w8dep2 with w9dep2*;
+
+    w1dep3 with w2dep3 w3dep3 w4dep3 w5dep3 w6dep3 w8dep3 w9dep3*;
+    w2dep3 with w3dep3 w4dep3 w5dep3 w6dep3 w8dep3 w9dep3*;
+    w3dep3 with w4dep3 w5dep3 w6dep3 w8dep3 w9dep3*;
+    w4dep3 with w5dep3 w6dep3 w8dep3 w9dep3*;
+    w5dep3 with w6dep3 w8dep3 w9dep3*;
+    w6dep3 with w8dep3 w9dep3*;
+    w8dep3 with w9dep3*;
+
+
+OUTPUT: samp stand tech4 cinterval;
+
+

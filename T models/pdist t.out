@@ -1,0 +1,2972 @@
+Mplus VERSION 5.21
+MUTHEN & MUTHEN
+11/24/2011   1:53 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: START model for POT study
+
+  DATA: file is 'Titemparcels.dat';
+
+  VARIABLE:
+      NAMES ARE id
+      w1dist1-w1dist3 w2dist1-w2dist3 w3dist1-w3dist3 w4dist1-w4dist3
+      w5dist1-w5dist3 w6dist1-w6dist3 w8dist1-w8dist3 w9dist1-w9dist3
+      w1dep1-w1dep3 w2dep1-w2dep3 w3dep1-w3dep3 w4dep1-w4dep3
+      w5dep1-w5dep3 w6dep1-w6dep3 w8dep1-w8dep3 w9dep1-w9dep3
+      w1anx1-w1anx3 w2anx1-w2anx3 w3anx1-w3anx3 w4anx1-w4anx3
+      w5anx1-w5anx3 w6anx1-w6anx3 w8anx1-w8anx3 w9anx1-w9anx3;
+
+      USEVAR =
+      w1dist1-w9dist3;
+
+      MISSING IS all (999);
+
+
+  ANALYSIS:
+      TYPE = MISSING H1;
+  !    BOOTSTRAP = 500;
+      ESTIMATOR = ml;
+      MODEL = NOCOVARIANCES;
+
+  MODEL:
+      f1DIST by w1dist1@1 (l1);
+      f1DIST by w1dist2*1 (l2);
+      f1DIST by w1dist3*1 (l3);
+
+      f2DIST by w2dist1@1 (l1);
+      f2DIST by w2dist2*1 (l2);
+      f2DIST by w2dist3*1 (l3);
+
+      f3DIST by w3dist1@1 (l1);
+      f3DIST by w3dist2*1 (l2);
+      f3DIST by w3dist3*1 (l3);
+
+      f4DIST by w4dist1@1 (l1);
+      f4DIST by w4dist2*1 (l2);
+      f4DIST by w4dist3*1 (l3);
+
+      f5DIST by w5dist1@1 (l1);
+      f5DIST by w5dist2*1 (l2);
+      f5DIST by w5dist3*1 (l3);
+
+      f6DIST by w6dist1@1 (l1);
+      f6DIST by w6dist2*1 (l2);
+      f6DIST by w6dist3*1 (l3);
+
+      f8DIST by w8dist1@1 (l1);
+      f8DIST by w8dist2*1 (l2);
+      f8DIST by w8dist3*1 (l3);
+
+      f9DIST by w9dist1@1 (l1);
+      f9DIST by w9dist2*1 (l2);
+      f9DIST by w9dist3*1 (l3);
+
+
+      trait by f1DIST-f9DIST@1;
+      s1 by f1DIST@1;
+      s2 by f2DIST@1;
+      s3 by f3DIST@1;
+      s4 by f4DIST@1;
+      s5 by f5DIST@1;
+      s6 by f6DIST@1;
+      s8 by f8DIST@1;
+      s9 by f9DIST@1;
+
+      s1-s9 (S);
+      f1DIST-f9DIST@0;
+
+      w1dist1 with w2dist1 w3dist1 w4dist1 w5dist1 w6dist1 w8dist1 w9dist1*;
+      w2dist1 with w3dist1 w4dist1 w5dist1 w6dist1 w8dist1 w9dist1*;
+      w3dist1 with w4dist1 w5dist1 w6dist1 w8dist1 w9dist1*;
+      w4dist1 with w5dist1 w6dist1 w8dist1 w9dist1*;
+      w5dist1 with w6dist1 w8dist1 w9dist1*;
+      w6dist1 with w8dist1 w9dist1*;
+      w8dist1 with w9dist1*;
+
+      w1dist2 with w2dist2 w3dist2 w4dist2 w5dist2 w6dist2 w8dist2 w9dist2*;
+      w2dist2 with w3dist2 w4dist2 w5dist2 w6dist2 w8dist2 w9dist2*;
+      w3dist2 with w4dist2 w5dist2 w6dist2 w8dist2 w9dist2*;
+      w4dist2 with w5dist2 w6dist2 w8dist2 w9dist2*;
+      w5dist2 with w6dist2 w8dist2 w9dist2*;
+      w6dist2 with w8dist2 w9dist2*;
+      w8dist2 with w9dist2*;
+
+      w1dist3 with w2dist3 w3dist3 w4dist3 w5dist3 w6dist3 w8dist3 w9dist3*;
+      w2dist3 with w3dist3 w4dist3 w5dist3 w6dist3 w8dist3 w9dist3*;
+      w3dist3 with w4dist3 w5dist3 w6dist3 w8dist3 w9dist3*;
+      w4dist3 with w5dist3 w6dist3 w8dist3 w9dist3*;
+      w5dist3 with w6dist3 w8dist3 w9dist3*;
+      w6dist3 with w8dist3 w9dist3*;
+      w8dist3 with w9dist3*;
+
+  OUTPUT: samp stand tech4 cinterval;
+
+
+
+
+
+*** WARNING in ANALYSIS command
+  Starting with Version 5, TYPE=MISSING is the default for all analyses.
+  To obtain listwise deletion, use LISTWISE=ON in the DATA command.
+*** WARNING in ANALYSIS command
+  Starting with Version 5, TYPE=H1 is the default for all analyses with
+  missing data.  To turn off the estimation of the H1 model and the
+  computation of chi-square, use NOCHISQUARE in the OUTPUT command.
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+START model for POT study
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         226
+
+Number of dependent variables                                   24
+Number of independent variables                                  0
+Number of continuous latent variables                           17
+
+Observed dependent variables
+
+  Continuous
+   W1DIST1     W1DIST2     W1DIST3     W2DIST1     W2DIST2     W2DIST3
+   W3DIST1     W3DIST2     W3DIST3     W4DIST1     W4DIST2     W4DIST3
+   W5DIST1     W5DIST2     W5DIST3     W6DIST1     W6DIST2     W6DIST3
+   W8DIST1     W8DIST2     W8DIST3     W9DIST1     W9DIST2     W9DIST3
+
+Continuous latent variables
+   F1DIST      F2DIST      F3DIST      F4DIST      F5DIST      F6DIST
+   F8DIST      F9DIST      TRAIT       S1          S2          S3
+   S4          S5          S6          S8          S9
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  Titemparcels.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns            57
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              W1DIST1       W1DIST2       W1DIST3       W2DIST1       W2DIST2
+              ________      ________      ________      ________      ________
+ W1DIST1        0.982
+ W1DIST2        0.982         0.982
+ W1DIST3        0.982         0.982         0.982
+ W2DIST1        0.929         0.929         0.929         0.947
+ W2DIST2        0.942         0.942         0.942         0.947         0.960
+ W2DIST3        0.934         0.934         0.934         0.938         0.951
+ W3DIST1        0.920         0.920         0.920         0.898         0.907
+ W3DIST2        0.925         0.925         0.925         0.903         0.912
+ W3DIST3        0.920         0.920         0.920         0.898         0.907
+ W4DIST1        0.938         0.938         0.938         0.912         0.925
+ W4DIST2        0.934         0.934         0.934         0.903         0.916
+ W4DIST3        0.942         0.942         0.942         0.916         0.929
+ W5DIST1        0.898         0.898         0.898         0.863         0.872
+ W5DIST2        0.916         0.916         0.916         0.876         0.885
+ W5DIST3        0.916         0.916         0.916         0.881         0.889
+ W6DIST1        0.938         0.938         0.938         0.907         0.916
+ W6DIST2        0.929         0.929         0.929         0.898         0.907
+ W6DIST3        0.938         0.938         0.938         0.907         0.916
+ W8DIST1        0.845         0.845         0.845         0.814         0.827
+ W8DIST2        0.850         0.850         0.850         0.819         0.832
+ W8DIST3        0.836         0.836         0.836         0.805         0.819
+ W9DIST1        0.903         0.903         0.903         0.867         0.876
+ W9DIST2        0.907         0.907         0.907         0.867         0.881
+ W9DIST3        0.907         0.907         0.907         0.863         0.876
+
+
+           Covariance Coverage
+              W2DIST3       W3DIST1       W3DIST2       W3DIST3       W4DIST1
+              ________      ________      ________      ________      ________
+ W2DIST3        0.951
+ W3DIST1        0.898         0.938
+ W3DIST2        0.903         0.929         0.942
+ W3DIST3        0.898         0.929         0.929         0.938
+ W4DIST1        0.916         0.903         0.907         0.907         0.956
+ W4DIST2        0.907         0.894         0.898         0.894         0.929
+ W4DIST3        0.920         0.907         0.912         0.907         0.947
+ W5DIST1        0.863         0.863         0.872         0.867         0.863
+ W5DIST2        0.876         0.867         0.876         0.867         0.881
+ W5DIST3        0.881         0.872         0.881         0.872         0.881
+ W6DIST1        0.907         0.907         0.916         0.907         0.912
+ W6DIST2        0.898         0.898         0.907         0.898         0.903
+ W6DIST3        0.907         0.907         0.916         0.907         0.912
+ W8DIST1        0.819         0.801         0.810         0.801         0.819
+ W8DIST2        0.823         0.805         0.814         0.805         0.823
+ W8DIST3        0.810         0.792         0.801         0.792         0.810
+ W9DIST1        0.867         0.858         0.867         0.858         0.876
+ W9DIST2        0.872         0.863         0.872         0.863         0.881
+ W9DIST3        0.867         0.858         0.867         0.858         0.876
+
+
+           Covariance Coverage
+              W4DIST2       W4DIST3       W5DIST1       W5DIST2       W5DIST3
+              ________      ________      ________      ________      ________
+ W4DIST2        0.947
+ W4DIST3        0.938         0.960
+ W5DIST1        0.858         0.867         0.907
+ W5DIST2        0.876         0.885         0.894         0.925
+ W5DIST3        0.876         0.885         0.903         0.912         0.925
+ W6DIST1        0.903         0.916         0.894         0.907         0.903
+ W6DIST2        0.894         0.907         0.885         0.898         0.894
+ W6DIST3        0.903         0.916         0.898         0.907         0.907
+ W8DIST1        0.814         0.823         0.792         0.805         0.801
+ W8DIST2        0.814         0.827         0.796         0.810         0.810
+ W8DIST3        0.801         0.814         0.783         0.796         0.792
+ W9DIST1        0.876         0.881         0.845         0.863         0.858
+ W9DIST2        0.881         0.885         0.854         0.872         0.867
+ W9DIST3        0.876         0.881         0.845         0.863         0.858
+
+
+           Covariance Coverage
+              W6DIST1       W6DIST2       W6DIST3       W8DIST1       W8DIST2
+              ________      ________      ________      ________      ________
+ W6DIST1        0.956
+ W6DIST2        0.938         0.947
+ W6DIST3        0.947         0.938         0.956
+ W8DIST1        0.832         0.823         0.832         0.858
+ W8DIST2        0.836         0.827         0.836         0.845         0.863
+ W8DIST3        0.823         0.814         0.823         0.832         0.836
+ W9DIST1        0.894         0.889         0.894         0.814         0.814
+ W9DIST2        0.898         0.889         0.898         0.819         0.819
+ W9DIST3        0.894         0.885         0.894         0.819         0.814
+
+
+           Covariance Coverage
+              W8DIST3       W9DIST1       W9DIST2       W9DIST3
+              ________      ________      ________      ________
+ W8DIST3        0.850
+ W9DIST1        0.810         0.916
+ W9DIST2        0.814         0.912         0.920
+ W9DIST3        0.810         0.907         0.912         0.916
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              W1DIST1       W1DIST2       W1DIST3       W2DIST1       W2DIST2
+              ________      ________      ________      ________      ________
+      1         0.541         0.637         0.524         0.523         0.600
+
+
+           Means
+              W2DIST3       W3DIST1       W3DIST2       W3DIST3       W4DIST1
+              ________      ________      ________      ________      ________
+      1         0.531         0.469         0.520         0.437         0.459
+
+
+           Means
+              W4DIST2       W4DIST3       W5DIST1       W5DIST2       W5DIST3
+              ________      ________      ________      ________      ________
+      1         0.494         0.424         0.444         0.465         0.432
+
+
+           Means
+              W6DIST1       W6DIST2       W6DIST3       W8DIST1       W8DIST2
+              ________      ________      ________      ________      ________
+      1         0.438         0.490         0.457         0.383         0.415
+
+
+           Means
+              W8DIST3       W9DIST1       W9DIST2       W9DIST3
+              ________      ________      ________      ________
+      1         0.354         0.399         0.460         0.403
+
+
+           Covariances
+              W1DIST1       W1DIST2       W1DIST3       W2DIST1       W2DIST2
+              ________      ________      ________      ________      ________
+ W1DIST1        0.151
+ W1DIST2        0.081         0.092
+ W1DIST3        0.103         0.087         0.146
+ W2DIST1        0.086         0.066         0.076         0.146
+ W2DIST2        0.070         0.057         0.061         0.103         0.113
+ W2DIST3        0.075         0.064         0.081         0.112         0.099
+ W3DIST1        0.072         0.056         0.065         0.096         0.076
+ W3DIST2        0.053         0.058         0.061         0.086         0.075
+ W3DIST3        0.079         0.063         0.084         0.093         0.078
+ W4DIST1        0.076         0.056         0.062         0.090         0.066
+ W4DIST2        0.065         0.061         0.066         0.081         0.069
+ W4DIST3        0.064         0.059         0.078         0.081         0.060
+ W5DIST1        0.074         0.046         0.067         0.074         0.054
+ W5DIST2        0.065         0.050         0.066         0.072         0.055
+ W5DIST3        0.068         0.053         0.079         0.076         0.056
+ W6DIST1        0.074         0.054         0.070         0.083         0.063
+ W6DIST2        0.071         0.060         0.074         0.078         0.069
+ W6DIST3        0.069         0.059         0.080         0.073         0.061
+ W8DIST1        0.071         0.045         0.060         0.066         0.055
+ W8DIST2        0.075         0.052         0.064         0.080         0.064
+ W8DIST3        0.070         0.047         0.062         0.066         0.052
+ W9DIST1        0.065         0.047         0.060         0.075         0.058
+ W9DIST2        0.064         0.051         0.060         0.072         0.062
+ W9DIST3        0.077         0.057         0.078         0.088         0.069
+
+
+           Covariances
+              W2DIST3       W3DIST1       W3DIST2       W3DIST3       W4DIST1
+              ________      ________      ________      ________      ________
+ W2DIST3        0.162
+ W3DIST1        0.076         0.149
+ W3DIST2        0.071         0.105         0.122
+ W3DIST3        0.092         0.121         0.102         0.155
+ W4DIST1        0.073         0.096         0.073         0.091         0.173
+ W4DIST2        0.069         0.084         0.076         0.081         0.119
+ W4DIST3        0.068         0.084         0.073         0.096         0.119
+ W5DIST1        0.063         0.091         0.072         0.088         0.091
+ W5DIST2        0.060         0.085         0.071         0.082         0.090
+ W5DIST3        0.078         0.083         0.071         0.094         0.087
+ W6DIST1        0.070         0.093         0.079         0.087         0.089
+ W6DIST2        0.075         0.084         0.081         0.089         0.075
+ W6DIST3        0.075         0.085         0.079         0.097         0.077
+ W8DIST1        0.062         0.086         0.062         0.073         0.079
+ W8DIST2        0.072         0.084         0.068         0.080         0.081
+ W8DIST3        0.067         0.081         0.064         0.082         0.076
+ W9DIST1        0.054         0.088         0.067         0.089         0.096
+ W9DIST2        0.056         0.083         0.068         0.081         0.086
+ W9DIST3        0.078         0.093         0.074         0.095         0.097
+
+
+           Covariances
+              W4DIST2       W4DIST3       W5DIST1       W5DIST2       W5DIST3
+              ________      ________      ________      ________      ________
+ W4DIST2        0.134
+ W4DIST3        0.110         0.161
+ W5DIST1        0.071         0.084         0.164
+ W5DIST2        0.085         0.083         0.126         0.141
+ W5DIST3        0.078         0.095         0.126         0.123         0.167
+ W6DIST1        0.075         0.074         0.097         0.088         0.095
+ W6DIST2        0.079         0.071         0.085         0.088         0.089
+ W6DIST3        0.083         0.087         0.090         0.090         0.101
+ W8DIST1        0.066         0.064         0.095         0.091         0.091
+ W8DIST2        0.076         0.072         0.091         0.094         0.092
+ W8DIST3        0.066         0.078         0.089         0.088         0.100
+ W9DIST1        0.077         0.074         0.105         0.098         0.097
+ W9DIST2        0.086         0.069         0.089         0.092         0.087
+ W9DIST3        0.091         0.092         0.102         0.099         0.104
+
+
+           Covariances
+              W6DIST1       W6DIST2       W6DIST3       W8DIST1       W8DIST2
+              ________      ________      ________      ________      ________
+ W6DIST1        0.163
+ W6DIST2        0.127         0.144
+ W6DIST3        0.124         0.125         0.161
+ W8DIST1        0.096         0.088         0.091         0.159
+ W8DIST2        0.100         0.102         0.101         0.135         0.154
+ W8DIST3        0.091         0.089         0.099         0.129         0.127
+ W9DIST1        0.102         0.093         0.093         0.109         0.106
+ W9DIST2        0.093         0.096         0.091         0.102         0.107
+ W9DIST3        0.098         0.096         0.109         0.112         0.115
+
+
+           Covariances
+              W8DIST3       W9DIST1       W9DIST2       W9DIST3
+              ________      ________      ________      ________
+ W8DIST3        0.161
+ W9DIST1        0.105         0.169
+ W9DIST2        0.102         0.134         0.150
+ W9DIST3        0.123         0.144         0.139         0.183
+
+
+           Correlations
+              W1DIST1       W1DIST2       W1DIST3       W2DIST1       W2DIST2
+              ________      ________      ________      ________      ________
+ W1DIST1        1.000
+ W1DIST2        0.686         1.000
+ W1DIST3        0.693         0.752         1.000
+ W2DIST1        0.581         0.570         0.523         1.000
+ W2DIST2        0.533         0.563         0.476         0.806         1.000
+ W2DIST3        0.480         0.523         0.528         0.728         0.731
+ W3DIST1        0.481         0.482         0.444         0.654         0.583
+ W3DIST2        0.389         0.547         0.455         0.646         0.636
+ W3DIST3        0.516         0.525         0.559         0.617         0.589
+ W4DIST1        0.467         0.443         0.391         0.565         0.471
+ W4DIST2        0.456         0.556         0.473         0.577         0.563
+ W4DIST3        0.408         0.482         0.505         0.526         0.446
+ W5DIST1        0.469         0.379         0.434         0.482         0.401
+ W5DIST2        0.446         0.437         0.462         0.504         0.433
+ W5DIST3        0.429         0.428         0.509         0.486         0.410
+ W6DIST1        0.470         0.443         0.453         0.542         0.466
+ W6DIST2        0.478         0.527         0.508         0.539         0.541
+ W6DIST3        0.441         0.490         0.525         0.477         0.454
+ W8DIST1        0.456         0.372         0.394         0.435         0.414
+ W8DIST2        0.494         0.441         0.428         0.533         0.483
+ W8DIST3        0.446         0.387         0.402         0.430         0.388
+ W9DIST1        0.403         0.378         0.380         0.477         0.416
+ W9DIST2        0.422         0.437         0.407         0.489         0.476
+ W9DIST3        0.464         0.439         0.478         0.540         0.482
+
+
+           Correlations
+              W2DIST3       W3DIST1       W3DIST2       W3DIST3       W4DIST1
+              ________      ________      ________      ________      ________
+ W2DIST3        1.000
+ W3DIST1        0.487         1.000
+ W3DIST2        0.508         0.783         1.000
+ W3DIST3        0.578         0.794         0.738         1.000
+ W4DIST1        0.436         0.597         0.504         0.557         1.000
+ W4DIST2        0.469         0.595         0.593         0.564         0.782
+ W4DIST3        0.420         0.539         0.519         0.607         0.712
+ W5DIST1        0.387         0.584         0.510         0.554         0.540
+ W5DIST2        0.393         0.588         0.538         0.556         0.574
+ W5DIST3        0.475         0.524         0.499         0.583         0.509
+ W6DIST1        0.430         0.599         0.560         0.547         0.528
+ W6DIST2        0.492         0.572         0.615         0.593         0.474
+ W6DIST3        0.467         0.552         0.566         0.612         0.464
+ W8DIST1        0.387         0.559         0.443         0.467         0.478
+ W8DIST2        0.452         0.557         0.499         0.516         0.496
+ W8DIST3        0.415         0.525         0.453         0.518         0.457
+ W9DIST1        0.325         0.556         0.464         0.549         0.559
+ W9DIST2        0.359         0.555         0.500         0.532         0.530
+ W9DIST3        0.453         0.567         0.493         0.562         0.544
+
+
+           Correlations
+              W4DIST2       W4DIST3       W5DIST1       W5DIST2       W5DIST3
+              ________      ________      ________      ________      ________
+ W4DIST2        1.000
+ W4DIST3        0.748         1.000
+ W5DIST1        0.482         0.519         1.000
+ W5DIST2        0.616         0.550         0.831         1.000
+ W5DIST3        0.524         0.577         0.765         0.803         1.000
+ W6DIST1        0.511         0.458         0.593         0.584         0.576
+ W6DIST2        0.567         0.466         0.554         0.616         0.575
+ W6DIST3        0.564         0.543         0.555         0.598         0.615
+ W8DIST1        0.452         0.398         0.590         0.606         0.558
+ W8DIST2        0.534         0.455         0.576         0.638         0.571
+ W8DIST3        0.449         0.481         0.551         0.584         0.608
+ W9DIST1        0.513         0.448         0.629         0.636         0.575
+ W9DIST2        0.608         0.443         0.569         0.630         0.547
+ W9DIST3        0.580         0.537         0.592         0.619         0.597
+
+
+           Correlations
+              W6DIST1       W6DIST2       W6DIST3       W8DIST1       W8DIST2
+              ________      ________      ________      ________      ________
+ W6DIST1        1.000
+ W6DIST2        0.829         1.000
+ W6DIST3        0.770         0.823         1.000
+ W8DIST1        0.598         0.584         0.568         1.000
+ W8DIST2        0.632         0.684         0.641         0.861         1.000
+ W8DIST3        0.560         0.587         0.615         0.809         0.809
+ W9DIST1        0.615         0.596         0.564         0.666         0.653
+ W9DIST2        0.595         0.654         0.583         0.660         0.705
+ W9DIST3        0.571         0.591         0.638         0.656         0.689
+
+
+           Correlations
+              W8DIST3       W9DIST1       W9DIST2       W9DIST3
+              ________      ________      ________      ________
+ W8DIST3        1.000
+ W9DIST1        0.637         1.000
+ W9DIST2        0.653         0.842         1.000
+ W9DIST3        0.716         0.816         0.840         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS     253.862
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+TESTS OF MODEL FIT
+
+Chi-Square Test of Model Fit
+
+          Value                            286.253
+          Degrees of Freedom                   188
+          P-Value                           0.0000
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           5262.652
+          Degrees of Freedom                   276
+          P-Value                           0.0000
+
+CFI/TLI
+
+          CFI                                0.980
+          TLI                                0.971
+
+Loglikelihood
+
+          H0 Value                         110.736
+          H1 Value                         253.862
+
+Information Criteria
+
+          Number of Free Parameters            136
+          Akaike (AIC)                      50.529
+          Bayesian (BIC)                   515.721
+          Sample-Size Adjusted BIC          84.704
+            (n* = (n + 2) / 24)
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.048
+          90 Percent C.I.                    0.036  0.059
+          Probability RMSEA <= .05           0.600
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.071
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ F1DIST   BY
+    W1DIST1            1.000      0.000    999.000    999.000
+    W1DIST2            0.918      0.022     41.849      0.000
+    W1DIST3            0.971      0.025     38.320      0.000
+
+ F2DIST   BY
+    W2DIST1            1.000      0.000    999.000    999.000
+    W2DIST2            0.918      0.022     41.849      0.000
+    W2DIST3            0.971      0.025     38.320      0.000
+
+ F3DIST   BY
+    W3DIST1            1.000      0.000    999.000    999.000
+    W3DIST2            0.918      0.022     41.849      0.000
+    W3DIST3            0.971      0.025     38.320      0.000
+
+ F4DIST   BY
+    W4DIST1            1.000      0.000    999.000    999.000
+    W4DIST2            0.918      0.022     41.849      0.000
+    W4DIST3            0.971      0.025     38.320      0.000
+
+ F5DIST   BY
+    W5DIST1            1.000      0.000    999.000    999.000
+    W5DIST2            0.918      0.022     41.849      0.000
+    W5DIST3            0.971      0.025     38.320      0.000
+
+ F6DIST   BY
+    W6DIST1            1.000      0.000    999.000    999.000
+    W6DIST2            0.918      0.022     41.849      0.000
+    W6DIST3            0.971      0.025     38.320      0.000
+
+ F8DIST   BY
+    W8DIST1            1.000      0.000    999.000    999.000
+    W8DIST2            0.918      0.022     41.849      0.000
+    W8DIST3            0.971      0.025     38.320      0.000
+
+ F9DIST   BY
+    W9DIST1            1.000      0.000    999.000    999.000
+    W9DIST2            0.918      0.022     41.849      0.000
+    W9DIST3            0.971      0.025     38.320      0.000
+
+ TRAIT    BY
+    F1DIST             1.000      0.000    999.000    999.000
+    F2DIST             1.000      0.000    999.000    999.000
+    F3DIST             1.000      0.000    999.000    999.000
+    F4DIST             1.000      0.000    999.000    999.000
+    F5DIST             1.000      0.000    999.000    999.000
+    F6DIST             1.000      0.000    999.000    999.000
+    F8DIST             1.000      0.000    999.000    999.000
+    F9DIST             1.000      0.000    999.000    999.000
+
+ S1       BY
+    F1DIST             1.000      0.000    999.000    999.000
+
+ S2       BY
+    F2DIST             1.000      0.000    999.000    999.000
+
+ S3       BY
+    F3DIST             1.000      0.000    999.000    999.000
+
+ S4       BY
+    F4DIST             1.000      0.000    999.000    999.000
+
+ S5       BY
+    F5DIST             1.000      0.000    999.000    999.000
+
+ S6       BY
+    F6DIST             1.000      0.000    999.000    999.000
+
+ S8       BY
+    F8DIST             1.000      0.000    999.000    999.000
+
+ S9       BY
+    F9DIST             1.000      0.000    999.000    999.000
+
+ W1DIST1  WITH
+    W2DIST1            0.005      0.004      1.355      0.175
+    W3DIST1            0.004      0.004      0.991      0.322
+    W4DIST1            0.010      0.005      2.204      0.027
+    W5DIST1            0.010      0.004      2.424      0.015
+    W6DIST1            0.007      0.004      1.766      0.077
+    W8DIST1            0.003      0.004      0.835      0.404
+    W9DIST1           -0.001      0.004     -0.290      0.772
+
+ W2DIST1  WITH
+    W3DIST1            0.004      0.003      1.461      0.144
+    W4DIST1            0.004      0.004      1.141      0.254
+    W5DIST1            0.000      0.003     -0.045      0.964
+    W6DIST1            0.007      0.003      2.154      0.031
+    W8DIST1           -0.006      0.003     -1.914      0.056
+    W9DIST1            0.000      0.003     -0.024      0.981
+
+ W3DIST1  WITH
+    W4DIST1            0.006      0.004      1.634      0.102
+    W5DIST1            0.004      0.003      1.132      0.258
+    W6DIST1            0.008      0.003      2.267      0.023
+    W8DIST1            0.007      0.003      2.283      0.022
+    W9DIST1            0.001      0.003      0.271      0.786
+
+ W4DIST1  WITH
+    W5DIST1            0.006      0.004      1.550      0.121
+    W6DIST1            0.013      0.004      3.103      0.002
+    W8DIST1            0.006      0.004      1.696      0.090
+    W9DIST1            0.009      0.004      2.417      0.016
+
+ W5DIST1  WITH
+    W6DIST1            0.007      0.004      2.119      0.034
+    W8DIST1            0.004      0.003      1.159      0.247
+    W9DIST1            0.006      0.003      1.672      0.094
+
+ W6DIST1  WITH
+    W8DIST1            0.006      0.003      1.738      0.082
+    W9DIST1            0.007      0.003      2.037      0.042
+
+ W8DIST1  WITH
+    W9DIST1            0.006      0.003      2.033      0.042
+
+ W1DIST2  WITH
+    W2DIST2            0.004      0.003      1.411      0.158
+    W3DIST2            0.010      0.003      3.212      0.001
+    W4DIST2            0.005      0.003      1.602      0.109
+    W5DIST2           -0.002      0.003     -0.727      0.467
+    W6DIST2            0.001      0.003      0.415      0.678
+    W8DIST2            0.000      0.003     -0.126      0.900
+    W9DIST2            0.002      0.003      0.789      0.430
+
+ W2DIST2  WITH
+    W3DIST2            0.005      0.003      1.800      0.072
+    W4DIST2            0.008      0.003      2.721      0.007
+    W5DIST2           -0.001      0.003     -0.231      0.817
+    W6DIST2            0.004      0.002      1.534      0.125
+    W8DIST2            0.001      0.003      0.195      0.845
+    W9DIST2            0.004      0.003      1.593      0.111
+
+ W3DIST2  WITH
+    W4DIST2            0.006      0.003      1.944      0.052
+    W5DIST2           -0.001      0.003     -0.329      0.742
+    W6DIST2            0.004      0.003      1.445      0.149
+    W8DIST2            0.000      0.003     -0.139      0.890
+    W9DIST2            0.002      0.003      0.766      0.444
+
+ W4DIST2  WITH
+    W5DIST2            0.008      0.003      2.820      0.005
+    W6DIST2            0.004      0.003      1.344      0.179
+    W8DIST2            0.005      0.003      1.619      0.106
+    W9DIST2            0.011      0.003      3.625      0.000
+
+ W5DIST2  WITH
+    W6DIST2            0.003      0.002      1.369      0.171
+    W8DIST2            0.004      0.003      1.498      0.134
+    W9DIST2            0.004      0.003      1.562      0.118
+
+ W6DIST2  WITH
+    W8DIST2            0.006      0.003      2.529      0.011
+    W9DIST2            0.007      0.003      2.826      0.005
+
+ W8DIST2  WITH
+    W9DIST2            0.005      0.003      2.045      0.041
+
+ W1DIST3  WITH
+    W2DIST3            0.012      0.004      2.724      0.006
+    W3DIST3            0.010      0.004      2.508      0.012
+    W4DIST3            0.013      0.004      2.965      0.003
+    W5DIST3            0.010      0.004      2.634      0.008
+    W6DIST3            0.007      0.004      1.837      0.066
+    W8DIST3            0.000      0.004     -0.062      0.951
+    W9DIST3            0.008      0.004      2.153      0.031
+
+ W2DIST3  WITH
+    W3DIST3            0.014      0.004      3.230      0.001
+    W4DIST3            0.000      0.004     -0.094      0.925
+    W5DIST3            0.014      0.005      3.179      0.001
+    W6DIST3            0.006      0.004      1.308      0.191
+    W8DIST3            0.005      0.004      1.161      0.246
+    W9DIST3            0.010      0.004      2.406      0.016
+
+ W3DIST3  WITH
+    W4DIST3            0.012      0.004      2.831      0.005
+    W5DIST3            0.011      0.004      2.808      0.005
+    W6DIST3            0.007      0.003      2.088      0.037
+    W8DIST3            0.006      0.004      1.620      0.105
+    W9DIST3            0.001      0.003      0.380      0.704
+
+ W4DIST3  WITH
+    W5DIST3            0.010      0.004      2.424      0.015
+    W6DIST3            0.010      0.004      2.439      0.015
+    W8DIST3            0.010      0.004      2.310      0.021
+    W9DIST3            0.007      0.004      1.702      0.089
+
+ W5DIST3  WITH
+    W6DIST3            0.007      0.004      1.989      0.047
+    W8DIST3            0.011      0.004      2.806      0.005
+    W9DIST3            0.005      0.004      1.479      0.139
+
+ W6DIST3  WITH
+    W8DIST3            0.007      0.004      1.877      0.060
+    W9DIST3            0.013      0.003      3.626      0.000
+
+ W8DIST3  WITH
+    W9DIST3            0.011      0.004      2.984      0.003
+
+ Intercepts
+    W1DIST1            0.541      0.028     19.181      0.000
+    W1DIST2            0.637      0.024     26.576      0.000
+    W1DIST3            0.523      0.027     19.406      0.000
+    W2DIST1            0.523      0.026     19.851      0.000
+    W2DIST2            0.599      0.024     24.711      0.000
+    W2DIST3            0.530      0.028     18.769      0.000
+    W3DIST1            0.470      0.026     17.908      0.000
+    W3DIST2            0.520      0.025     20.659      0.000
+    W3DIST3            0.440      0.027     16.469      0.000
+    W4DIST1            0.460      0.028     16.498      0.000
+    W4DIST2            0.496      0.024     20.373      0.000
+    W4DIST3            0.426      0.028     15.476      0.000
+    W5DIST1            0.443      0.027     16.291      0.000
+    W5DIST2            0.464      0.024     19.315      0.000
+    W5DIST3            0.431      0.027     15.797      0.000
+    W6DIST1            0.437      0.027     16.183      0.000
+    W6DIST2            0.491      0.024     20.532      0.000
+    W6DIST3            0.458      0.026     17.325      0.000
+    W8DIST1            0.383      0.027     14.355      0.000
+    W8DIST2            0.412      0.025     16.633      0.000
+    W8DIST3            0.354      0.028     12.865      0.000
+    W9DIST1            0.403      0.027     15.045      0.000
+    W9DIST2            0.463      0.024     18.965      0.000
+    W9DIST3            0.405      0.027     15.228      0.000
+
+ Variances
+    TRAIT              0.083      0.009      9.292      0.000
+    S1                 0.044      0.002     18.611      0.000
+    S2                 0.044      0.002     18.611      0.000
+    S3                 0.044      0.002     18.611      0.000
+    S4                 0.044      0.002     18.611      0.000
+    S5                 0.044      0.002     18.611      0.000
+    S6                 0.044      0.002     18.611      0.000
+    S8                 0.044      0.002     18.611      0.000
+    S9                 0.044      0.002     18.611      0.000
+
+ Residual Variances
+    W1DIST1            0.052      0.006      8.016      0.000
+    W1DIST2            0.022      0.004      5.897      0.000
+    W1DIST3            0.044      0.006      7.891      0.000
+    W2DIST1            0.027      0.004      6.201      0.000
+    W2DIST2            0.024      0.004      6.553      0.000
+    W2DIST3            0.057      0.007      8.665      0.000
+    W3DIST1            0.025      0.004      6.003      0.000
+    W3DIST2            0.033      0.005      7.268      0.000
+    W3DIST3            0.037      0.005      7.471      0.000
+    W4DIST1            0.046      0.006      7.579      0.000
+    W4DIST2            0.025      0.004      5.979      0.000
+    W4DIST3            0.049      0.006      7.920      0.000
+    W5DIST1            0.034      0.005      7.049      0.000
+    W5DIST2            0.020      0.003      5.754      0.000
+    W5DIST3            0.043      0.005      7.895      0.000
+    W6DIST1            0.035      0.005      7.395      0.000
+    W6DIST2            0.020      0.003      5.938      0.000
+    W6DIST3            0.036      0.005      7.605      0.000
+    W8DIST1            0.024      0.004      6.017      0.000
+    W8DIST2            0.023      0.004      6.410      0.000
+    W8DIST3            0.039      0.005      7.638      0.000
+    W9DIST1            0.029      0.004      6.800      0.000
+    W9DIST2            0.023      0.003      6.614      0.000
+    W9DIST3            0.034      0.005      7.358      0.000
+    F1DIST             0.000      0.000    999.000    999.000
+    F2DIST             0.000      0.000    999.000    999.000
+    F3DIST             0.000      0.000    999.000    999.000
+    F4DIST             0.000      0.000    999.000    999.000
+    F5DIST             0.000      0.000    999.000    999.000
+    F6DIST             0.000      0.000    999.000    999.000
+    F8DIST             0.000      0.000    999.000    999.000
+    F9DIST             0.000      0.000    999.000    999.000
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ F1DIST   BY
+    W1DIST1            0.842      0.018     46.507      0.000
+    W1DIST2            0.909      0.015     62.428      0.000
+    W1DIST3            0.855      0.018     48.341      0.000
+
+ F2DIST   BY
+    W2DIST1            0.908      0.015     61.915      0.000
+    W2DIST2            0.903      0.014     63.140      0.000
+    W2DIST3            0.823      0.019     43.750      0.000
+
+ F3DIST   BY
+    W3DIST1            0.914      0.014     65.177      0.000
+    W3DIST2            0.874      0.016     54.149      0.000
+    W3DIST3            0.873      0.017     52.378      0.000
+
+ F4DIST   BY
+    W4DIST1            0.857      0.018     48.632      0.000
+    W4DIST2            0.901      0.016     55.934      0.000
+    W4DIST3            0.843      0.018     45.793      0.000
+
+ F5DIST   BY
+    W5DIST1            0.889      0.015     58.284      0.000
+    W5DIST2            0.919      0.014     64.915      0.000
+    W5DIST3            0.857      0.017     49.514      0.000
+
+ F6DIST   BY
+    W6DIST1            0.884      0.015     58.746      0.000
+    W6DIST2            0.918      0.014     65.433      0.000
+    W6DIST3            0.878      0.016     55.384      0.000
+
+ F8DIST   BY
+    W8DIST1            0.918      0.013     68.433      0.000
+    W8DIST2            0.908      0.014     62.675      0.000
+    W8DIST3            0.868      0.017     52.421      0.000
+
+ F9DIST   BY
+    W9DIST1            0.902      0.014     63.693      0.000
+    W9DIST2            0.907      0.014     64.458      0.000
+    W9DIST3            0.882      0.016     54.766      0.000
+
+ TRAIT    BY
+    F1DIST             0.809      0.016     49.981      0.000
+    F2DIST             0.809      0.016     49.981      0.000
+    F3DIST             0.809      0.016     49.981      0.000
+    F4DIST             0.809      0.016     49.981      0.000
+    F5DIST             0.809      0.016     49.981      0.000
+    F6DIST             0.809      0.016     49.981      0.000
+    F8DIST             0.809      0.016     49.981      0.000
+    F9DIST             0.809      0.016     49.981      0.000
+
+ S1       BY
+    F1DIST             0.588      0.022     26.401      0.000
+
+ S2       BY
+    F2DIST             0.588      0.022     26.401      0.000
+
+ S3       BY
+    F3DIST             0.588      0.022     26.401      0.000
+
+ S4       BY
+    F4DIST             0.588      0.022     26.401      0.000
+
+ S5       BY
+    F5DIST             0.588      0.022     26.401      0.000
+
+ S6       BY
+    F6DIST             0.588      0.022     26.401      0.000
+
+ S8       BY
+    F8DIST             0.588      0.022     26.401      0.000
+
+ S9       BY
+    F9DIST             0.588      0.022     26.401      0.000
+
+ W1DIST1  WITH
+    W2DIST1            0.140      0.100      1.404      0.160
+    W3DIST1            0.105      0.103      1.020      0.308
+    W4DIST1            0.208      0.087      2.374      0.018
+    W5DIST1            0.237      0.090      2.628      0.009
+    W6DIST1            0.165      0.089      1.849      0.065
+    W8DIST1            0.086      0.102      0.845      0.398
+    W9DIST1           -0.029      0.100     -0.289      0.772
+
+ W2DIST1  WITH
+    W3DIST1            0.173      0.112      1.545      0.122
+    W4DIST1            0.118      0.100      1.175      0.240
+    W5DIST1           -0.005      0.111     -0.045      0.964
+    W6DIST1            0.235      0.101      2.330      0.020
+    W8DIST1           -0.231      0.121     -1.908      0.056
+    W9DIST1           -0.003      0.112     -0.024      0.981
+
+ W3DIST1  WITH
+    W4DIST1            0.182      0.104      1.745      0.081
+    W5DIST1            0.127      0.109      1.164      0.244
+    W6DIST1            0.259      0.104      2.495      0.013
+    W8DIST1            0.287      0.114      2.511      0.012
+    W9DIST1            0.031      0.114      0.272      0.785
+
+ W4DIST1  WITH
+    W5DIST1            0.153      0.094      1.634      0.102
+    W6DIST1            0.315      0.089      3.548      0.000
+    W8DIST1            0.183      0.102      1.798      0.072
+    W9DIST1            0.251      0.093      2.699      0.007
+
+ W5DIST1  WITH
+    W6DIST1            0.217      0.095      2.283      0.022
+    W8DIST1            0.134      0.112      1.204      0.229
+    W9DIST1            0.180      0.103      1.756      0.079
+
+ W6DIST1  WITH
+    W8DIST1            0.193      0.104      1.853      0.064
+    W9DIST1            0.211      0.095      2.216      0.027
+
+ W8DIST1  WITH
+    W9DIST1            0.240      0.108      2.230      0.026
+
+ W1DIST2  WITH
+    W2DIST2            0.166      0.112      1.482      0.138
+    W3DIST2            0.383      0.100      3.816      0.000
+    W4DIST2            0.199      0.115      1.726      0.084
+    W5DIST2           -0.089      0.125     -0.713      0.476
+    W6DIST2            0.050      0.119      0.420      0.674
+    W8DIST2           -0.015      0.117     -0.126      0.900
+    W9DIST2            0.091      0.113      0.807      0.420
+
+ W2DIST2  WITH
+    W3DIST2            0.196      0.103      1.905      0.057
+    W4DIST2            0.311      0.102      3.037      0.002
+    W5DIST2           -0.027      0.116     -0.230      0.818
+    W6DIST2            0.175      0.108      1.622      0.105
+    W8DIST2            0.021      0.110      0.195      0.845
+    W9DIST2            0.175      0.105      1.671      0.095
+
+ W3DIST2  WITH
+    W4DIST2            0.219      0.104      2.107      0.035
+    W5DIST2           -0.036      0.111     -0.327      0.744
+    W6DIST2            0.158      0.104      1.519      0.129
+    W8DIST2           -0.015      0.108     -0.138      0.890
+    W9DIST2            0.081      0.104      0.776      0.437
+
+ W4DIST2  WITH
+    W5DIST2            0.355      0.107      3.323      0.001
+    W6DIST2            0.165      0.115      1.431      0.152
+    W8DIST2            0.193      0.112      1.732      0.083
+    W9DIST2            0.446      0.097      4.606      0.000
+
+ W5DIST2  WITH
+    W6DIST2            0.169      0.116      1.460      0.144
+    W8DIST2            0.187      0.118      1.591      0.112
+    W9DIST2            0.188      0.114      1.658      0.097
+
+ W6DIST2  WITH
+    W8DIST2            0.300      0.104      2.882      0.004
+    W9DIST2            0.330      0.098      3.352      0.001
+
+ W8DIST2  WITH
+    W9DIST2            0.233      0.104      2.243      0.025
+
+ W1DIST3  WITH
+    W2DIST3            0.241      0.082      2.940      0.003
+    W3DIST3            0.240      0.088      2.733      0.006
+    W4DIST3            0.274      0.083      3.298      0.001
+    W5DIST3            0.242      0.085      2.855      0.004
+    W6DIST3            0.172      0.089      1.923      0.054
+    W8DIST3           -0.006      0.092     -0.062      0.951
+    W9DIST3            0.202      0.088      2.282      0.022
+
+ W2DIST3  WITH
+    W3DIST3            0.298      0.082      3.652      0.000
+    W4DIST3           -0.008      0.086     -0.094      0.925
+    W5DIST3            0.290      0.083      3.494      0.000
+    W6DIST3            0.123      0.092      1.341      0.180
+    W8DIST3            0.110      0.094      1.172      0.241
+    W9DIST3            0.220      0.086      2.560      0.010
+
+ W3DIST3  WITH
+    W4DIST3            0.276      0.088      3.153      0.002
+    W5DIST3            0.271      0.088      3.092      0.002
+    W6DIST3            0.200      0.090      2.233      0.026
+    W8DIST3            0.162      0.096      1.689      0.091
+    W9DIST3            0.037      0.096      0.382      0.703
+
+ W4DIST3  WITH
+    W5DIST3            0.223      0.085      2.620      0.009
+    W6DIST3            0.233      0.088      2.647      0.008
+    W8DIST3            0.233      0.094      2.478      0.013
+    W9DIST3            0.169      0.094      1.803      0.071
+
+ W5DIST3  WITH
+    W6DIST3            0.185      0.088      2.107      0.035
+    W8DIST3            0.280      0.091      3.074      0.002
+    W9DIST3            0.140      0.091      1.536      0.125
+
+ W6DIST3  WITH
+    W8DIST3            0.190      0.095      1.991      0.047
+    W9DIST3            0.363      0.082      4.409      0.000
+
+ W8DIST3  WITH
+    W9DIST3            0.305      0.090      3.381      0.001
+
+ Intercepts
+    W1DIST1            1.282      0.078     16.435      0.000
+    W1DIST2            1.776      0.090     19.633      0.000
+    W1DIST3            1.297      0.079     16.457      0.000
+    W2DIST1            1.337      0.080     16.666      0.000
+    W2DIST2            1.661      0.087     19.105      0.000
+    W2DIST3            1.264      0.079     16.093      0.000
+    W3DIST1            1.208      0.078     15.424      0.000
+    W3DIST2            1.394      0.082     17.021      0.000
+    W3DIST3            1.113      0.077     14.538      0.000
+    W4DIST1            1.109      0.076     14.643      0.000
+    W4DIST2            1.369      0.081     16.943      0.000
+    W4DIST3            1.040      0.075     13.806      0.000
+    W5DIST1            1.108      0.077     14.427      0.000
+    W5DIST2            1.308      0.080     16.309      0.000
+    W5DIST3            1.071      0.076     14.036      0.000
+    W6DIST1            1.088      0.076     14.372      0.000
+    W6DIST2            1.381      0.081     17.085      0.000
+    W6DIST3            1.165      0.077     15.088      0.000
+    W8DIST1            0.989      0.076     12.981      0.000
+    W8DIST2            1.147      0.078     14.681      0.000
+    W8DIST3            0.891      0.075     11.891      0.000
+    W9DIST1            1.023      0.076     13.513      0.000
+    W9DIST2            1.287      0.080     16.120      0.000
+    W9DIST3            1.035      0.076     13.678      0.000
+
+ Variances
+    TRAIT              1.000      0.000    999.000    999.000
+    S1                 1.000      0.000    999.000    999.000
+    S2                 1.000      0.000    999.000    999.000
+    S3                 1.000      0.000    999.000    999.000
+    S4                 1.000      0.000    999.000    999.000
+    S5                 1.000      0.000    999.000    999.000
+    S6                 1.000      0.000    999.000    999.000
+    S8                 1.000      0.000    999.000    999.000
+    S9                 1.000      0.000    999.000    999.000
+
+ Residual Variances
+    W1DIST1            0.291      0.030      9.558      0.000
+    W1DIST2            0.173      0.026      6.525      0.000
+    W1DIST3            0.268      0.030      8.869      0.000
+    W2DIST1            0.175      0.027      6.578      0.000
+    W2DIST2            0.184      0.026      7.111      0.000
+    W2DIST3            0.323      0.031     10.451      0.000
+    W3DIST1            0.164      0.026      6.386      0.000
+    W3DIST2            0.236      0.028      8.357      0.000
+    W3DIST3            0.239      0.029      8.206      0.000
+    W4DIST1            0.266      0.030      8.800      0.000
+    W4DIST2            0.189      0.029      6.513      0.000
+    W4DIST3            0.289      0.031      9.325      0.000
+    W5DIST1            0.210      0.027      7.770      0.000
+    W5DIST2            0.156      0.026      6.012      0.000
+    W5DIST3            0.265      0.030      8.931      0.000
+    W6DIST1            0.218      0.027      8.182      0.000
+    W6DIST2            0.158      0.026      6.147      0.000
+    W6DIST3            0.230      0.028      8.258      0.000
+    W8DIST1            0.157      0.025      6.370      0.000
+    W8DIST2            0.176      0.026      6.685      0.000
+    W8DIST3            0.246      0.029      8.549      0.000
+    W9DIST1            0.187      0.026      7.333      0.000
+    W9DIST2            0.178      0.026      6.987      0.000
+    W9DIST3            0.222      0.028      7.814      0.000
+    F1DIST             0.000    999.000    999.000    999.000
+    F2DIST             0.000    999.000    999.000    999.000
+    F3DIST             0.000    999.000    999.000    999.000
+    F4DIST             0.000    999.000    999.000    999.000
+    F5DIST             0.000    999.000    999.000    999.000
+    F6DIST             0.000    999.000    999.000    999.000
+    F8DIST             0.000    999.000    999.000    999.000
+    F9DIST             0.000    999.000    999.000    999.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ F1DIST   BY
+    W1DIST1            0.842      0.018     46.507      0.000
+    W1DIST2            0.909      0.015     62.428      0.000
+    W1DIST3            0.855      0.018     48.341      0.000
+
+ F2DIST   BY
+    W2DIST1            0.908      0.015     61.915      0.000
+    W2DIST2            0.903      0.014     63.140      0.000
+    W2DIST3            0.823      0.019     43.750      0.000
+
+ F3DIST   BY
+    W3DIST1            0.914      0.014     65.177      0.000
+    W3DIST2            0.874      0.016     54.149      0.000
+    W3DIST3            0.873      0.017     52.378      0.000
+
+ F4DIST   BY
+    W4DIST1            0.857      0.018     48.632      0.000
+    W4DIST2            0.901      0.016     55.934      0.000
+    W4DIST3            0.843      0.018     45.793      0.000
+
+ F5DIST   BY
+    W5DIST1            0.889      0.015     58.284      0.000
+    W5DIST2            0.919      0.014     64.915      0.000
+    W5DIST3            0.857      0.017     49.514      0.000
+
+ F6DIST   BY
+    W6DIST1            0.884      0.015     58.746      0.000
+    W6DIST2            0.918      0.014     65.433      0.000
+    W6DIST3            0.878      0.016     55.384      0.000
+
+ F8DIST   BY
+    W8DIST1            0.918      0.013     68.433      0.000
+    W8DIST2            0.908      0.014     62.675      0.000
+    W8DIST3            0.868      0.017     52.421      0.000
+
+ F9DIST   BY
+    W9DIST1            0.902      0.014     63.693      0.000
+    W9DIST2            0.907      0.014     64.458      0.000
+    W9DIST3            0.882      0.016     54.766      0.000
+
+ TRAIT    BY
+    F1DIST             0.809      0.016     49.981      0.000
+    F2DIST             0.809      0.016     49.981      0.000
+    F3DIST             0.809      0.016     49.981      0.000
+    F4DIST             0.809      0.016     49.981      0.000
+    F5DIST             0.809      0.016     49.981      0.000
+    F6DIST             0.809      0.016     49.981      0.000
+    F8DIST             0.809      0.016     49.981      0.000
+    F9DIST             0.809      0.016     49.981      0.000
+
+ S1       BY
+    F1DIST             0.588      0.022     26.401      0.000
+
+ S2       BY
+    F2DIST             0.588      0.022     26.401      0.000
+
+ S3       BY
+    F3DIST             0.588      0.022     26.401      0.000
+
+ S4       BY
+    F4DIST             0.588      0.022     26.401      0.000
+
+ S5       BY
+    F5DIST             0.588      0.022     26.401      0.000
+
+ S6       BY
+    F6DIST             0.588      0.022     26.401      0.000
+
+ S8       BY
+    F8DIST             0.588      0.022     26.401      0.000
+
+ S9       BY
+    F9DIST             0.588      0.022     26.401      0.000
+
+ W1DIST1  WITH
+    W2DIST1            0.140      0.100      1.404      0.160
+    W3DIST1            0.105      0.103      1.020      0.308
+    W4DIST1            0.208      0.087      2.374      0.018
+    W5DIST1            0.237      0.090      2.628      0.009
+    W6DIST1            0.165      0.089      1.849      0.065
+    W8DIST1            0.086      0.102      0.845      0.398
+    W9DIST1           -0.029      0.100     -0.289      0.772
+
+ W2DIST1  WITH
+    W3DIST1            0.173      0.112      1.545      0.122
+    W4DIST1            0.118      0.100      1.175      0.240
+    W5DIST1           -0.005      0.111     -0.045      0.964
+    W6DIST1            0.235      0.101      2.330      0.020
+    W8DIST1           -0.231      0.121     -1.908      0.056
+    W9DIST1           -0.003      0.112     -0.024      0.981
+
+ W3DIST1  WITH
+    W4DIST1            0.182      0.104      1.745      0.081
+    W5DIST1            0.127      0.109      1.164      0.244
+    W6DIST1            0.259      0.104      2.495      0.013
+    W8DIST1            0.287      0.114      2.511      0.012
+    W9DIST1            0.031      0.114      0.272      0.785
+
+ W4DIST1  WITH
+    W5DIST1            0.153      0.094      1.634      0.102
+    W6DIST1            0.315      0.089      3.548      0.000
+    W8DIST1            0.183      0.102      1.798      0.072
+    W9DIST1            0.251      0.093      2.699      0.007
+
+ W5DIST1  WITH
+    W6DIST1            0.217      0.095      2.283      0.022
+    W8DIST1            0.134      0.112      1.204      0.229
+    W9DIST1            0.180      0.103      1.756      0.079
+
+ W6DIST1  WITH
+    W8DIST1            0.193      0.104      1.853      0.064
+    W9DIST1            0.211      0.095      2.216      0.027
+
+ W8DIST1  WITH
+    W9DIST1            0.240      0.108      2.230      0.026
+
+ W1DIST2  WITH
+    W2DIST2            0.166      0.112      1.482      0.138
+    W3DIST2            0.383      0.100      3.816      0.000
+    W4DIST2            0.199      0.115      1.726      0.084
+    W5DIST2           -0.089      0.125     -0.713      0.476
+    W6DIST2            0.050      0.119      0.420      0.674
+    W8DIST2           -0.015      0.117     -0.126      0.900
+    W9DIST2            0.091      0.113      0.807      0.420
+
+ W2DIST2  WITH
+    W3DIST2            0.196      0.103      1.905      0.057
+    W4DIST2            0.311      0.102      3.037      0.002
+    W5DIST2           -0.027      0.116     -0.230      0.818
+    W6DIST2            0.175      0.108      1.622      0.105
+    W8DIST2            0.021      0.110      0.195      0.845
+    W9DIST2            0.175      0.105      1.671      0.095
+
+ W3DIST2  WITH
+    W4DIST2            0.219      0.104      2.107      0.035
+    W5DIST2           -0.036      0.111     -0.327      0.744
+    W6DIST2            0.158      0.104      1.519      0.129
+    W8DIST2           -0.015      0.108     -0.138      0.890
+    W9DIST2            0.081      0.104      0.776      0.437
+
+ W4DIST2  WITH
+    W5DIST2            0.355      0.107      3.323      0.001
+    W6DIST2            0.165      0.115      1.431      0.152
+    W8DIST2            0.193      0.112      1.732      0.083
+    W9DIST2            0.446      0.097      4.606      0.000
+
+ W5DIST2  WITH
+    W6DIST2            0.169      0.116      1.460      0.144
+    W8DIST2            0.187      0.118      1.591      0.112
+    W9DIST2            0.188      0.114      1.658      0.097
+
+ W6DIST2  WITH
+    W8DIST2            0.300      0.104      2.882      0.004
+    W9DIST2            0.330      0.098      3.352      0.001
+
+ W8DIST2  WITH
+    W9DIST2            0.233      0.104      2.243      0.025
+
+ W1DIST3  WITH
+    W2DIST3            0.241      0.082      2.940      0.003
+    W3DIST3            0.240      0.088      2.733      0.006
+    W4DIST3            0.274      0.083      3.298      0.001
+    W5DIST3            0.242      0.085      2.855      0.004
+    W6DIST3            0.172      0.089      1.923      0.054
+    W8DIST3           -0.006      0.092     -0.062      0.951
+    W9DIST3            0.202      0.088      2.282      0.022
+
+ W2DIST3  WITH
+    W3DIST3            0.298      0.082      3.652      0.000
+    W4DIST3           -0.008      0.086     -0.094      0.925
+    W5DIST3            0.290      0.083      3.494      0.000
+    W6DIST3            0.123      0.092      1.341      0.180
+    W8DIST3            0.110      0.094      1.172      0.241
+    W9DIST3            0.220      0.086      2.560      0.010
+
+ W3DIST3  WITH
+    W4DIST3            0.276      0.088      3.153      0.002
+    W5DIST3            0.271      0.088      3.092      0.002
+    W6DIST3            0.200      0.090      2.233      0.026
+    W8DIST3            0.162      0.096      1.689      0.091
+    W9DIST3            0.037      0.096      0.382      0.703
+
+ W4DIST3  WITH
+    W5DIST3            0.223      0.085      2.620      0.009
+    W6DIST3            0.233      0.088      2.647      0.008
+    W8DIST3            0.233      0.094      2.478      0.013
+    W9DIST3            0.169      0.094      1.803      0.071
+
+ W5DIST3  WITH
+    W6DIST3            0.185      0.088      2.107      0.035
+    W8DIST3            0.280      0.091      3.074      0.002
+    W9DIST3            0.140      0.091      1.536      0.125
+
+ W6DIST3  WITH
+    W8DIST3            0.190      0.095      1.991      0.047
+    W9DIST3            0.363      0.082      4.409      0.000
+
+ W8DIST3  WITH
+    W9DIST3            0.305      0.090      3.381      0.001
+
+ Intercepts
+    W1DIST1            1.282      0.078     16.435      0.000
+    W1DIST2            1.776      0.090     19.633      0.000
+    W1DIST3            1.297      0.079     16.457      0.000
+    W2DIST1            1.337      0.080     16.666      0.000
+    W2DIST2            1.661      0.087     19.105      0.000
+    W2DIST3            1.264      0.079     16.093      0.000
+    W3DIST1            1.208      0.078     15.424      0.000
+    W3DIST2            1.394      0.082     17.021      0.000
+    W3DIST3            1.113      0.077     14.538      0.000
+    W4DIST1            1.109      0.076     14.643      0.000
+    W4DIST2            1.369      0.081     16.943      0.000
+    W4DIST3            1.040      0.075     13.806      0.000
+    W5DIST1            1.108      0.077     14.427      0.000
+    W5DIST2            1.308      0.080     16.309      0.000
+    W5DIST3            1.071      0.076     14.036      0.000
+    W6DIST1            1.088      0.076     14.372      0.000
+    W6DIST2            1.381      0.081     17.085      0.000
+    W6DIST3            1.165      0.077     15.088      0.000
+    W8DIST1            0.989      0.076     12.981      0.000
+    W8DIST2            1.147      0.078     14.681      0.000
+    W8DIST3            0.891      0.075     11.891      0.000
+    W9DIST1            1.023      0.076     13.513      0.000
+    W9DIST2            1.287      0.080     16.120      0.000
+    W9DIST3            1.035      0.076     13.678      0.000
+
+ Variances
+    TRAIT              1.000      0.000    999.000    999.000
+    S1                 1.000      0.000    999.000    999.000
+    S2                 1.000      0.000    999.000    999.000
+    S3                 1.000      0.000    999.000    999.000
+    S4                 1.000      0.000    999.000    999.000
+    S5                 1.000      0.000    999.000    999.000
+    S6                 1.000      0.000    999.000    999.000
+    S8                 1.000      0.000    999.000    999.000
+    S9                 1.000      0.000    999.000    999.000
+
+ Residual Variances
+    W1DIST1            0.291      0.030      9.558      0.000
+    W1DIST2            0.173      0.026      6.525      0.000
+    W1DIST3            0.268      0.030      8.869      0.000
+    W2DIST1            0.175      0.027      6.578      0.000
+    W2DIST2            0.184      0.026      7.111      0.000
+    W2DIST3            0.323      0.031     10.451      0.000
+    W3DIST1            0.164      0.026      6.386      0.000
+    W3DIST2            0.236      0.028      8.357      0.000
+    W3DIST3            0.239      0.029      8.206      0.000
+    W4DIST1            0.266      0.030      8.800      0.000
+    W4DIST2            0.189      0.029      6.513      0.000
+    W4DIST3            0.289      0.031      9.325      0.000
+    W5DIST1            0.210      0.027      7.770      0.000
+    W5DIST2            0.156      0.026      6.012      0.000
+    W5DIST3            0.265      0.030      8.931      0.000
+    W6DIST1            0.218      0.027      8.182      0.000
+    W6DIST2            0.158      0.026      6.147      0.000
+    W6DIST3            0.230      0.028      8.258      0.000
+    W8DIST1            0.157      0.025      6.370      0.000
+    W8DIST2            0.176      0.026      6.685      0.000
+    W8DIST3            0.246      0.029      8.549      0.000
+    W9DIST1            0.187      0.026      7.333      0.000
+    W9DIST2            0.178      0.026      6.987      0.000
+    W9DIST3            0.222      0.028      7.814      0.000
+    F1DIST           999.000    999.000    999.000    999.000
+    F2DIST           999.000    999.000    999.000    999.000
+    F3DIST           999.000    999.000    999.000    999.000
+    F4DIST           999.000    999.000    999.000    999.000
+    F5DIST           999.000    999.000    999.000    999.000
+    F6DIST           999.000    999.000    999.000    999.000
+    F8DIST           999.000    999.000    999.000    999.000
+    F9DIST           999.000    999.000    999.000    999.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ F1DIST   BY
+    W1DIST1            0.355      0.013     26.858      0.000
+    W1DIST2            0.326      0.012     26.683      0.000
+    W1DIST3            0.345      0.013     25.567      0.000
+
+ F2DIST   BY
+    W2DIST1            0.355      0.013     26.858      0.000
+    W2DIST2            0.326      0.012     26.683      0.000
+    W2DIST3            0.345      0.013     25.567      0.000
+
+ F3DIST   BY
+    W3DIST1            0.355      0.013     26.858      0.000
+    W3DIST2            0.326      0.012     26.683      0.000
+    W3DIST3            0.345      0.013     25.567      0.000
+
+ F4DIST   BY
+    W4DIST1            0.355      0.013     26.858      0.000
+    W4DIST2            0.326      0.012     26.683      0.000
+    W4DIST3            0.345      0.013     25.567      0.000
+
+ F5DIST   BY
+    W5DIST1            0.355      0.013     26.858      0.000
+    W5DIST2            0.326      0.012     26.683      0.000
+    W5DIST3            0.345      0.013     25.567      0.000
+
+ F6DIST   BY
+    W6DIST1            0.355      0.013     26.858      0.000
+    W6DIST2            0.326      0.012     26.683      0.000
+    W6DIST3            0.345      0.013     25.567      0.000
+
+ F8DIST   BY
+    W8DIST1            0.355      0.013     26.858      0.000
+    W8DIST2            0.326      0.012     26.683      0.000
+    W8DIST3            0.345      0.013     25.567      0.000
+
+ F9DIST   BY
+    W9DIST1            0.355      0.013     26.858      0.000
+    W9DIST2            0.326      0.012     26.683      0.000
+    W9DIST3            0.345      0.013     25.567      0.000
+
+ TRAIT    BY
+    F1DIST             0.809      0.016     49.981      0.000
+    F2DIST             0.809      0.016     49.981      0.000
+    F3DIST             0.809      0.016     49.981      0.000
+    F4DIST             0.809      0.016     49.981      0.000
+    F5DIST             0.809      0.016     49.981      0.000
+    F6DIST             0.809      0.016     49.981      0.000
+    F8DIST             0.809      0.016     49.981      0.000
+    F9DIST             0.809      0.016     49.981      0.000
+
+ S1       BY
+    F1DIST             0.588      0.022     26.401      0.000
+
+ S2       BY
+    F2DIST             0.588      0.022     26.401      0.000
+
+ S3       BY
+    F3DIST             0.588      0.022     26.401      0.000
+
+ S4       BY
+    F4DIST             0.588      0.022     26.401      0.000
+
+ S5       BY
+    F5DIST             0.588      0.022     26.401      0.000
+
+ S6       BY
+    F6DIST             0.588      0.022     26.401      0.000
+
+ S8       BY
+    F8DIST             0.588      0.022     26.401      0.000
+
+ S9       BY
+    F9DIST             0.588      0.022     26.401      0.000
+
+ W1DIST1  WITH
+    W2DIST1            0.005      0.004      1.355      0.175
+    W3DIST1            0.004      0.004      0.991      0.322
+    W4DIST1            0.010      0.005      2.204      0.027
+    W5DIST1            0.010      0.004      2.424      0.015
+    W6DIST1            0.007      0.004      1.766      0.077
+    W8DIST1            0.003      0.004      0.835      0.404
+    W9DIST1           -0.001      0.004     -0.290      0.772
+
+ W2DIST1  WITH
+    W3DIST1            0.004      0.003      1.461      0.144
+    W4DIST1            0.004      0.004      1.141      0.254
+    W5DIST1            0.000      0.003     -0.045      0.964
+    W6DIST1            0.007      0.003      2.154      0.031
+    W8DIST1           -0.006      0.003     -1.914      0.056
+    W9DIST1            0.000      0.003     -0.024      0.981
+
+ W3DIST1  WITH
+    W4DIST1            0.006      0.004      1.634      0.102
+    W5DIST1            0.004      0.003      1.132      0.258
+    W6DIST1            0.008      0.003      2.267      0.023
+    W8DIST1            0.007      0.003      2.283      0.022
+    W9DIST1            0.001      0.003      0.271      0.786
+
+ W4DIST1  WITH
+    W5DIST1            0.006      0.004      1.550      0.121
+    W6DIST1            0.013      0.004      3.103      0.002
+    W8DIST1            0.006      0.004      1.696      0.090
+    W9DIST1            0.009      0.004      2.417      0.016
+
+ W5DIST1  WITH
+    W6DIST1            0.007      0.004      2.119      0.034
+    W8DIST1            0.004      0.003      1.159      0.247
+    W9DIST1            0.006      0.003      1.672      0.094
+
+ W6DIST1  WITH
+    W8DIST1            0.006      0.003      1.738      0.082
+    W9DIST1            0.007      0.003      2.037      0.042
+
+ W8DIST1  WITH
+    W9DIST1            0.006      0.003      2.033      0.042
+
+ W1DIST2  WITH
+    W2DIST2            0.004      0.003      1.411      0.158
+    W3DIST2            0.010      0.003      3.212      0.001
+    W4DIST2            0.005      0.003      1.602      0.109
+    W5DIST2           -0.002      0.003     -0.727      0.467
+    W6DIST2            0.001      0.003      0.415      0.678
+    W8DIST2            0.000      0.003     -0.126      0.900
+    W9DIST2            0.002      0.003      0.789      0.430
+
+ W2DIST2  WITH
+    W3DIST2            0.005      0.003      1.800      0.072
+    W4DIST2            0.008      0.003      2.721      0.007
+    W5DIST2           -0.001      0.003     -0.231      0.817
+    W6DIST2            0.004      0.002      1.534      0.125
+    W8DIST2            0.001      0.003      0.195      0.845
+    W9DIST2            0.004      0.003      1.593      0.111
+
+ W3DIST2  WITH
+    W4DIST2            0.006      0.003      1.944      0.052
+    W5DIST2           -0.001      0.003     -0.329      0.742
+    W6DIST2            0.004      0.003      1.445      0.149
+    W8DIST2            0.000      0.003     -0.139      0.890
+    W9DIST2            0.002      0.003      0.766      0.444
+
+ W4DIST2  WITH
+    W5DIST2            0.008      0.003      2.820      0.005
+    W6DIST2            0.004      0.003      1.344      0.179
+    W8DIST2            0.005      0.003      1.619      0.106
+    W9DIST2            0.011      0.003      3.625      0.000
+
+ W5DIST2  WITH
+    W6DIST2            0.003      0.002      1.369      0.171
+    W8DIST2            0.004      0.003      1.498      0.134
+    W9DIST2            0.004      0.003      1.562      0.118
+
+ W6DIST2  WITH
+    W8DIST2            0.006      0.003      2.529      0.011
+    W9DIST2            0.007      0.003      2.826      0.005
+
+ W8DIST2  WITH
+    W9DIST2            0.005      0.003      2.045      0.041
+
+ W1DIST3  WITH
+    W2DIST3            0.012      0.004      2.724      0.006
+    W3DIST3            0.010      0.004      2.508      0.012
+    W4DIST3            0.013      0.004      2.965      0.003
+    W5DIST3            0.010      0.004      2.634      0.008
+    W6DIST3            0.007      0.004      1.837      0.066
+    W8DIST3            0.000      0.004     -0.062      0.951
+    W9DIST3            0.008      0.004      2.153      0.031
+
+ W2DIST3  WITH
+    W3DIST3            0.014      0.004      3.230      0.001
+    W4DIST3            0.000      0.004     -0.094      0.925
+    W5DIST3            0.014      0.005      3.179      0.001
+    W6DIST3            0.006      0.004      1.308      0.191
+    W8DIST3            0.005      0.004      1.161      0.246
+    W9DIST3            0.010      0.004      2.406      0.016
+
+ W3DIST3  WITH
+    W4DIST3            0.012      0.004      2.831      0.005
+    W5DIST3            0.011      0.004      2.808      0.005
+    W6DIST3            0.007      0.003      2.088      0.037
+    W8DIST3            0.006      0.004      1.620      0.105
+    W9DIST3            0.001      0.003      0.380      0.704
+
+ W4DIST3  WITH
+    W5DIST3            0.010      0.004      2.424      0.015
+    W6DIST3            0.010      0.004      2.439      0.015
+    W8DIST3            0.010      0.004      2.310      0.021
+    W9DIST3            0.007      0.004      1.702      0.089
+
+ W5DIST3  WITH
+    W6DIST3            0.007      0.004      1.989      0.047
+    W8DIST3            0.011      0.004      2.806      0.005
+    W9DIST3            0.005      0.004      1.479      0.139
+
+ W6DIST3  WITH
+    W8DIST3            0.007      0.004      1.877      0.060
+    W9DIST3            0.013      0.003      3.626      0.000
+
+ W8DIST3  WITH
+    W9DIST3            0.011      0.004      2.984      0.003
+
+ Intercepts
+    W1DIST1            0.541      0.028     19.181      0.000
+    W1DIST2            0.637      0.024     26.576      0.000
+    W1DIST3            0.523      0.027     19.406      0.000
+    W2DIST1            0.523      0.026     19.851      0.000
+    W2DIST2            0.599      0.024     24.711      0.000
+    W2DIST3            0.530      0.028     18.769      0.000
+    W3DIST1            0.470      0.026     17.908      0.000
+    W3DIST2            0.520      0.025     20.659      0.000
+    W3DIST3            0.440      0.027     16.469      0.000
+    W4DIST1            0.460      0.028     16.498      0.000
+    W4DIST2            0.496      0.024     20.373      0.000
+    W4DIST3            0.426      0.028     15.476      0.000
+    W5DIST1            0.443      0.027     16.291      0.000
+    W5DIST2            0.464      0.024     19.315      0.000
+    W5DIST3            0.431      0.027     15.797      0.000
+    W6DIST1            0.437      0.027     16.183      0.000
+    W6DIST2            0.491      0.024     20.532      0.000
+    W6DIST3            0.458      0.026     17.325      0.000
+    W8DIST1            0.383      0.027     14.355      0.000
+    W8DIST2            0.412      0.025     16.633      0.000
+    W8DIST3            0.354      0.028     12.865      0.000
+    W9DIST1            0.403      0.027     15.045      0.000
+    W9DIST2            0.463      0.024     18.965      0.000
+    W9DIST3            0.405      0.027     15.228      0.000
+
+ Variances
+    TRAIT              1.000      0.000    999.000    999.000
+    S1                 1.000      0.000    999.000    999.000
+    S2                 1.000      0.000    999.000    999.000
+    S3                 1.000      0.000    999.000    999.000
+    S4                 1.000      0.000    999.000    999.000
+    S5                 1.000      0.000    999.000    999.000
+    S6                 1.000      0.000    999.000    999.000
+    S8                 1.000      0.000    999.000    999.000
+    S9                 1.000      0.000    999.000    999.000
+
+ Residual Variances
+    W1DIST1            0.052      0.006      8.016      0.000
+    W1DIST2            0.022      0.004      5.897      0.000
+    W1DIST3            0.044      0.006      7.891      0.000
+    W2DIST1            0.027      0.004      6.201      0.000
+    W2DIST2            0.024      0.004      6.553      0.000
+    W2DIST3            0.057      0.007      8.665      0.000
+    W3DIST1            0.025      0.004      6.003      0.000
+    W3DIST2            0.033      0.005      7.268      0.000
+    W3DIST3            0.037      0.005      7.471      0.000
+    W4DIST1            0.046      0.006      7.579      0.000
+    W4DIST2            0.025      0.004      5.979      0.000
+    W4DIST3            0.049      0.006      7.920      0.000
+    W5DIST1            0.034      0.005      7.049      0.000
+    W5DIST2            0.020      0.003      5.754      0.000
+    W5DIST3            0.043      0.005      7.895      0.000
+    W6DIST1            0.035      0.005      7.395      0.000
+    W6DIST2            0.020      0.003      5.938      0.000
+    W6DIST3            0.036      0.005      7.605      0.000
+    W8DIST1            0.024      0.004      6.017      0.000
+    W8DIST2            0.023      0.004      6.410      0.000
+    W8DIST3            0.039      0.005      7.638      0.000
+    W9DIST1            0.029      0.004      6.800      0.000
+    W9DIST2            0.023      0.003      6.614      0.000
+    W9DIST3            0.034      0.005      7.358      0.000
+    F1DIST           999.000    999.000    999.000    999.000
+    F2DIST           999.000    999.000    999.000    999.000
+    F3DIST           999.000    999.000    999.000    999.000
+    F4DIST           999.000    999.000    999.000    999.000
+    F5DIST           999.000    999.000    999.000    999.000
+    F6DIST           999.000    999.000    999.000    999.000
+    F8DIST           999.000    999.000    999.000    999.000
+    F9DIST           999.000    999.000    999.000    999.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    W1DIST1            0.709      0.030     23.253      0.000
+    W1DIST2            0.827      0.026     31.214      0.000
+    W1DIST3            0.732      0.030     24.170      0.000
+    W2DIST1            0.825      0.027     30.958      0.000
+    W2DIST2            0.816      0.026     31.570      0.000
+    W2DIST3            0.677      0.031     21.875      0.000
+    W3DIST1            0.836      0.026     32.589      0.000
+    W3DIST2            0.764      0.028     27.074      0.000
+    W3DIST3            0.761      0.029     26.189      0.000
+    W4DIST1            0.734      0.030     24.316      0.000
+    W4DIST2            0.811      0.029     27.967      0.000
+    W4DIST3            0.711      0.031     22.897      0.000
+    W5DIST1            0.790      0.027     29.142      0.000
+    W5DIST2            0.844      0.026     32.458      0.000
+    W5DIST3            0.735      0.030     24.757      0.000
+    W6DIST1            0.782      0.027     29.373      0.000
+    W6DIST2            0.842      0.026     32.717      0.000
+    W6DIST3            0.770      0.028     27.692      0.000
+    W8DIST1            0.843      0.025     34.217      0.000
+    W8DIST2            0.824      0.026     31.337      0.000
+    W8DIST3            0.754      0.029     26.211      0.000
+    W9DIST1            0.813      0.026     31.846      0.000
+    W9DIST2            0.822      0.026     32.229      0.000
+    W9DIST3            0.778      0.028     27.383      0.000
+
+     Latent                                         Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    F1DIST             1.000    999.000    999.000    999.000
+    F2DIST             1.000    999.000    999.000    999.000
+    F3DIST             1.000    999.000    999.000    999.000
+    F4DIST             1.000    999.000    999.000    999.000
+    F5DIST             1.000    999.000    999.000    999.000
+    F6DIST             1.000    999.000    999.000    999.000
+    F8DIST             1.000    999.000    999.000    999.000
+    F9DIST             1.000    999.000    999.000    999.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.202E-03
+       (ratio of smallest to largest eigenvalue)
+
+
+CONFIDENCE INTERVALS OF MODEL RESULTS
+
+                   Lower .5%  Lower 2.5%   Estimate  Upper 2.5%  Upper .5%
+
+ F1DIST   BY
+    W1DIST1           1.000       1.000      1.000       1.000      1.000
+    W1DIST2           0.861       0.875      0.918       0.961      0.974
+    W1DIST3           0.906       0.921      0.971       1.021      1.036
+
+ F2DIST   BY
+    W2DIST1           1.000       1.000      1.000       1.000      1.000
+    W2DIST2           0.861       0.875      0.918       0.961      0.974
+    W2DIST3           0.906       0.921      0.971       1.021      1.036
+
+ F3DIST   BY
+    W3DIST1           1.000       1.000      1.000       1.000      1.000
+    W3DIST2           0.861       0.875      0.918       0.961      0.974
+    W3DIST3           0.906       0.921      0.971       1.021      1.036
+
+ F4DIST   BY
+    W4DIST1           1.000       1.000      1.000       1.000      1.000
+    W4DIST2           0.861       0.875      0.918       0.961      0.974
+    W4DIST3           0.906       0.921      0.971       1.021      1.036
+
+ F5DIST   BY
+    W5DIST1           1.000       1.000      1.000       1.000      1.000
+    W5DIST2           0.861       0.875      0.918       0.961      0.974
+    W5DIST3           0.906       0.921      0.971       1.021      1.036
+
+ F6DIST   BY
+    W6DIST1           1.000       1.000      1.000       1.000      1.000
+    W6DIST2           0.861       0.875      0.918       0.961      0.974
+    W6DIST3           0.906       0.921      0.971       1.021      1.036
+
+ F8DIST   BY
+    W8DIST1           1.000       1.000      1.000       1.000      1.000
+    W8DIST2           0.861       0.875      0.918       0.961      0.974
+    W8DIST3           0.906       0.921      0.971       1.021      1.036
+
+ F9DIST   BY
+    W9DIST1           1.000       1.000      1.000       1.000      1.000
+    W9DIST2           0.861       0.875      0.918       0.961      0.974
+    W9DIST3           0.906       0.921      0.971       1.021      1.036
+
+ TRAIT    BY
+    F1DIST            1.000       1.000      1.000       1.000      1.000
+    F2DIST            1.000       1.000      1.000       1.000      1.000
+    F3DIST            1.000       1.000      1.000       1.000      1.000
+    F4DIST            1.000       1.000      1.000       1.000      1.000
+    F5DIST            1.000       1.000      1.000       1.000      1.000
+    F6DIST            1.000       1.000      1.000       1.000      1.000
+    F8DIST            1.000       1.000      1.000       1.000      1.000
+    F9DIST            1.000       1.000      1.000       1.000      1.000
+
+ S1       BY
+    F1DIST            1.000       1.000      1.000       1.000      1.000
+
+ S2       BY
+    F2DIST            1.000       1.000      1.000       1.000      1.000
+
+ S3       BY
+    F3DIST            1.000       1.000      1.000       1.000      1.000
+
+ S4       BY
+    F4DIST            1.000       1.000      1.000       1.000      1.000
+
+ S5       BY
+    F5DIST            1.000       1.000      1.000       1.000      1.000
+
+ S6       BY
+    F6DIST            1.000       1.000      1.000       1.000      1.000
+
+ S8       BY
+    F8DIST            1.000       1.000      1.000       1.000      1.000
+
+ S9       BY
+    F9DIST            1.000       1.000      1.000       1.000      1.000
+
+ W1DIST1  WITH
+    W2DIST1          -0.005      -0.002      0.005       0.013      0.015
+    W3DIST1          -0.006      -0.004      0.004       0.011      0.014
+    W4DIST1          -0.002       0.001      0.010       0.019      0.022
+    W5DIST1          -0.001       0.002      0.010       0.018      0.020
+    W6DIST1          -0.003      -0.001      0.007       0.015      0.017
+    W8DIST1          -0.006      -0.004      0.003       0.010      0.012
+    W9DIST1          -0.011      -0.009     -0.001       0.006      0.009
+
+ W2DIST1  WITH
+    W3DIST1          -0.003      -0.002      0.004       0.010      0.012
+    W4DIST1          -0.005      -0.003      0.004       0.011      0.013
+    W5DIST1          -0.009      -0.007      0.000       0.006      0.008
+    W6DIST1          -0.001       0.001      0.007       0.014      0.016
+    W8DIST1          -0.014      -0.012     -0.006       0.000      0.002
+    W9DIST1          -0.008      -0.006      0.000       0.006      0.008
+
+ W3DIST1  WITH
+    W4DIST1          -0.004      -0.001      0.006       0.013      0.016
+    W5DIST1          -0.005      -0.003      0.004       0.010      0.012
+    W6DIST1          -0.001       0.001      0.008       0.014      0.016
+    W8DIST1          -0.001       0.001      0.007       0.013      0.015
+    W9DIST1          -0.007      -0.005      0.001       0.007      0.009
+
+ W4DIST1  WITH
+    W5DIST1          -0.004      -0.002      0.006       0.014      0.016
+    W6DIST1           0.002       0.005      0.013       0.021      0.023
+    W8DIST1          -0.003      -0.001      0.006       0.013      0.015
+    W9DIST1          -0.001       0.002      0.009       0.017      0.019
+
+ W5DIST1  WITH
+    W6DIST1          -0.002       0.001      0.007       0.014      0.017
+    W8DIST1          -0.005      -0.003      0.004       0.010      0.012
+    W9DIST1          -0.003      -0.001      0.006       0.012      0.014
+
+ W6DIST1  WITH
+    W8DIST1          -0.003      -0.001      0.006       0.012      0.014
+    W9DIST1          -0.002       0.000      0.007       0.013      0.015
+
+ W8DIST1  WITH
+    W9DIST1          -0.002       0.000      0.006       0.012      0.014
+
+ W1DIST2  WITH
+    W2DIST2          -0.003      -0.001      0.004       0.009      0.011
+    W3DIST2           0.002       0.004      0.010       0.017      0.019
+    W4DIST2          -0.003      -0.001      0.005       0.010      0.012
+    W5DIST2          -0.008      -0.007     -0.002       0.003      0.005
+    W6DIST2          -0.005      -0.004      0.001       0.006      0.008
+    W8DIST2          -0.007      -0.005      0.000       0.005      0.006
+    W9DIST2          -0.005      -0.003      0.002       0.007      0.009
+
+ W2DIST2  WITH
+    W3DIST2          -0.002       0.000      0.005       0.011      0.013
+    W4DIST2           0.000       0.002      0.008       0.013      0.015
+    W5DIST2          -0.007      -0.006     -0.001       0.004      0.006
+    W6DIST2          -0.003      -0.001      0.004       0.009      0.010
+    W8DIST2          -0.006      -0.005      0.001       0.006      0.007
+    W9DIST2          -0.003      -0.001      0.004       0.009      0.011
+
+ W3DIST2  WITH
+    W4DIST2          -0.002       0.000      0.006       0.013      0.015
+    W5DIST2          -0.008      -0.006     -0.001       0.005      0.006
+    W6DIST2          -0.003      -0.001      0.004       0.010      0.011
+    W8DIST2          -0.008      -0.006      0.000       0.005      0.007
+    W9DIST2          -0.005      -0.003      0.002       0.008      0.010
+
+ W4DIST2  WITH
+    W5DIST2           0.001       0.002      0.008       0.013      0.015
+    W6DIST2          -0.003      -0.002      0.004       0.009      0.011
+    W8DIST2          -0.003      -0.001      0.005       0.010      0.012
+    W9DIST2           0.003       0.005      0.011       0.016      0.018
+
+ W5DIST2  WITH
+    W6DIST2          -0.003      -0.001      0.003       0.008      0.010
+    W8DIST2          -0.003      -0.001      0.004       0.009      0.011
+    W9DIST2          -0.003      -0.001      0.004       0.009      0.011
+
+ W6DIST2  WITH
+    W8DIST2           0.000       0.001      0.006       0.011      0.013
+    W9DIST2           0.001       0.002      0.007       0.012      0.014
+
+ W8DIST2  WITH
+    W9DIST2          -0.001       0.000      0.005       0.010      0.012
+
+ W1DIST3  WITH
+    W2DIST3           0.001       0.003      0.012       0.021      0.023
+    W3DIST3           0.000       0.002      0.010       0.017      0.020
+    W4DIST3           0.002       0.004      0.013       0.021      0.024
+    W5DIST3           0.000       0.003      0.010       0.018      0.021
+    W6DIST3          -0.003       0.000      0.007       0.014      0.016
+    W8DIST3          -0.010      -0.008      0.000       0.007      0.010
+    W9DIST3          -0.002       0.001      0.008       0.015      0.017
+
+ W2DIST3  WITH
+    W3DIST3           0.003       0.005      0.014       0.022      0.025
+    W4DIST3          -0.012      -0.009      0.000       0.008      0.011
+    W5DIST3           0.003       0.005      0.014       0.023      0.026
+    W6DIST3          -0.005      -0.003      0.006       0.014      0.016
+    W8DIST3          -0.006      -0.004      0.005       0.014      0.017
+    W9DIST3          -0.001       0.002      0.010       0.018      0.020
+
+ W3DIST3  WITH
+    W4DIST3           0.001       0.004      0.012       0.020      0.022
+    W5DIST3           0.001       0.003      0.011       0.018      0.021
+    W6DIST3          -0.002       0.000      0.007       0.014      0.016
+    W8DIST3          -0.004      -0.001      0.006       0.014      0.016
+    W9DIST3          -0.008      -0.005      0.001       0.008      0.010
+
+ W4DIST3  WITH
+    W5DIST3          -0.001       0.002      0.010       0.018      0.021
+    W6DIST3          -0.001       0.002      0.010       0.017      0.020
+    W8DIST3          -0.001       0.002      0.010       0.019      0.021
+    W9DIST3          -0.004      -0.001      0.007       0.015      0.017
+
+ W5DIST3  WITH
+    W6DIST3          -0.002       0.000      0.007       0.014      0.017
+    W8DIST3           0.001       0.003      0.011       0.019      0.022
+    W9DIST3          -0.004      -0.002      0.005       0.012      0.015
+
+ W6DIST3  WITH
+    W8DIST3          -0.003       0.000      0.007       0.014      0.017
+    W9DIST3           0.004       0.006      0.013       0.019      0.022
+
+ W8DIST3  WITH
+    W9DIST3           0.002       0.004      0.011       0.018      0.021
+
+ Intercepts
+    W1DIST1           0.469       0.486      0.541       0.597      0.614
+    W1DIST2           0.575       0.590      0.637       0.684      0.698
+    W1DIST3           0.454       0.470      0.523       0.576      0.593
+    W2DIST1           0.455       0.471      0.523       0.575      0.591
+    W2DIST2           0.537       0.552      0.599       0.647      0.662
+    W2DIST3           0.458       0.475      0.530       0.586      0.603
+    W3DIST1           0.402       0.418      0.470       0.521      0.537
+    W3DIST2           0.455       0.471      0.520       0.570      0.585
+    W3DIST3           0.371       0.388      0.440       0.492      0.509
+    W4DIST1           0.388       0.405      0.460       0.514      0.532
+    W4DIST2           0.433       0.448      0.496       0.543      0.558
+    W4DIST3           0.355       0.372      0.426       0.480      0.496
+    W5DIST1           0.373       0.390      0.443       0.496      0.513
+    W5DIST2           0.402       0.417      0.464       0.511      0.526
+    W5DIST3           0.361       0.378      0.431       0.485      0.502
+    W6DIST1           0.368       0.384      0.437       0.490      0.507
+    W6DIST2           0.429       0.444      0.491       0.538      0.553
+    W6DIST3           0.390       0.406      0.458       0.510      0.526
+    W8DIST1           0.314       0.330      0.383       0.435      0.451
+    W8DIST2           0.348       0.364      0.412       0.461      0.476
+    W8DIST3           0.283       0.300      0.354       0.408      0.425
+    W9DIST1           0.334       0.351      0.403       0.456      0.472
+    W9DIST2           0.400       0.415      0.463       0.511      0.526
+    W9DIST3           0.336       0.353      0.405       0.457      0.473
+
+ Variances
+    TRAIT             0.060       0.065      0.083       0.100      0.106
+    S1                0.038       0.039      0.044       0.048      0.050
+    S2                0.038       0.039      0.044       0.048      0.050
+    S3                0.038       0.039      0.044       0.048      0.050
+    S4                0.038       0.039      0.044       0.048      0.050
+    S5                0.038       0.039      0.044       0.048      0.050
+    S6                0.038       0.039      0.044       0.048      0.050
+    S8                0.038       0.039      0.044       0.048      0.050
+    S9                0.038       0.039      0.044       0.048      0.050
+
+ Residual Variances
+    W1DIST1           0.035       0.039      0.052       0.065      0.069
+    W1DIST2           0.013       0.015      0.022       0.030      0.032
+    W1DIST3           0.029       0.033      0.044       0.055      0.058
+    W2DIST1           0.016       0.018      0.027       0.035      0.038
+    W2DIST2           0.015       0.017      0.024       0.031      0.033
+    W2DIST3           0.040       0.044      0.057       0.070      0.074
+    W3DIST1           0.014       0.017      0.025       0.033      0.035
+    W3DIST2           0.021       0.024      0.033       0.042      0.044
+    W3DIST3           0.024       0.028      0.037       0.047      0.050
+    W4DIST1           0.030       0.034      0.046       0.058      0.061
+    W4DIST2           0.014       0.017      0.025       0.033      0.035
+    W4DIST3           0.033       0.037      0.049       0.061      0.064
+    W5DIST1           0.021       0.024      0.034       0.043      0.046
+    W5DIST2           0.011       0.013      0.020       0.026      0.029
+    W5DIST3           0.029       0.032      0.043       0.054      0.057
+    W6DIST1           0.023       0.026      0.035       0.045      0.047
+    W6DIST2           0.011       0.013      0.020       0.027      0.029
+    W6DIST3           0.023       0.026      0.036       0.045      0.048
+    W8DIST1           0.013       0.016      0.024       0.031      0.034
+    W8DIST2           0.014       0.016      0.023       0.030      0.032
+    W8DIST3           0.026       0.029      0.039       0.049      0.052
+    W9DIST1           0.018       0.021      0.029       0.037      0.040
+    W9DIST2           0.014       0.016      0.023       0.030      0.032
+    W9DIST3           0.022       0.025      0.034       0.043      0.046
+    F1DIST            0.000       0.000      0.000       0.000      0.000
+    F2DIST            0.000       0.000      0.000       0.000      0.000
+    F3DIST            0.000       0.000      0.000       0.000      0.000
+    F4DIST            0.000       0.000      0.000       0.000      0.000
+    F5DIST            0.000       0.000      0.000       0.000      0.000
+    F6DIST            0.000       0.000      0.000       0.000      0.000
+    F8DIST            0.000       0.000      0.000       0.000      0.000
+    F9DIST            0.000       0.000      0.000       0.000      0.000
+
+
+CONFIDENCE INTERVALS OF STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                   Lower .5%  Lower 2.5%   Estimate  Upper 2.5%  Upper .5%
+
+ F1DIST   BY
+    W1DIST1           0.795       0.806      0.842       0.877      0.888
+    W1DIST2           0.872       0.881      0.909       0.938      0.947
+    W1DIST3           0.810       0.821      0.855       0.890      0.901
+
+ F2DIST   BY
+    W2DIST1           0.870       0.879      0.908       0.937      0.946
+    W2DIST2           0.867       0.875      0.903       0.931      0.940
+    W2DIST3           0.774       0.786      0.823       0.859      0.871
+
+ F3DIST   BY
+    W3DIST1           0.878       0.887      0.914       0.942      0.951
+    W3DIST2           0.833       0.843      0.874       0.906      0.916
+    W3DIST3           0.830       0.840      0.873       0.905      0.916
+
+ F4DIST   BY
+    W4DIST1           0.812       0.822      0.857       0.891      0.902
+    W4DIST2           0.859       0.869      0.901       0.932      0.942
+    W4DIST3           0.796       0.807      0.843       0.879      0.890
+
+ F5DIST   BY
+    W5DIST1           0.849       0.859      0.889       0.918      0.928
+    W5DIST2           0.882       0.891      0.919       0.946      0.955
+    W5DIST3           0.813       0.823      0.857       0.891      0.902
+
+ F6DIST   BY
+    W6DIST1           0.846       0.855      0.884       0.914      0.923
+    W6DIST2           0.881       0.890      0.918       0.945      0.954
+    W6DIST3           0.837       0.847      0.878       0.909      0.918
+
+ F8DIST   BY
+    W8DIST1           0.884       0.892      0.918       0.944      0.953
+    W8DIST2           0.871       0.879      0.908       0.936      0.945
+    W8DIST3           0.826       0.836      0.868       0.901      0.911
+
+ F9DIST   BY
+    W9DIST1           0.865       0.874      0.902       0.929      0.938
+    W9DIST2           0.870       0.879      0.907       0.934      0.943
+    W9DIST3           0.841       0.850      0.882       0.914      0.924
+
+ TRAIT    BY
+    F1DIST            0.767       0.777      0.809       0.841      0.851
+    F2DIST            0.767       0.777      0.809       0.841      0.851
+    F3DIST            0.767       0.777      0.809       0.841      0.851
+    F4DIST            0.767       0.777      0.809       0.841      0.851
+    F5DIST            0.767       0.777      0.809       0.841      0.851
+    F6DIST            0.767       0.777      0.809       0.841      0.851
+    F8DIST            0.767       0.777      0.809       0.841      0.851
+    F9DIST            0.767       0.777      0.809       0.841      0.851
+
+ S1       BY
+    F1DIST            0.531       0.544      0.588       0.632      0.645
+
+ S2       BY
+    F2DIST            0.531       0.544      0.588       0.632      0.645
+
+ S3       BY
+    F3DIST            0.531       0.544      0.588       0.632      0.645
+
+ S4       BY
+    F4DIST            0.531       0.544      0.588       0.632      0.645
+
+ S5       BY
+    F5DIST            0.531       0.544      0.588       0.632      0.645
+
+ S6       BY
+    F6DIST            0.531       0.544      0.588       0.632      0.645
+
+ S8       BY
+    F8DIST            0.531       0.544      0.588       0.632      0.645
+
+ S9       BY
+    F9DIST            0.531       0.544      0.588       0.632      0.645
+
+ W1DIST1  WITH
+    W2DIST1          -0.117      -0.055      0.140       0.336      0.397
+    W3DIST1          -0.161      -0.097      0.105       0.308      0.371
+    W4DIST1          -0.018       0.036      0.208       0.379      0.433
+    W5DIST1           0.005       0.060      0.237       0.413      0.469
+    W6DIST1          -0.065      -0.010      0.165       0.339      0.394
+    W8DIST1          -0.176      -0.113      0.086       0.285      0.348
+    W9DIST1          -0.285      -0.224     -0.029       0.166      0.228
+
+ W2DIST1  WITH
+    W3DIST1          -0.116      -0.047      0.173       0.393      0.462
+    W4DIST1          -0.140      -0.079      0.118       0.314      0.376
+    W5DIST1          -0.290      -0.222     -0.005       0.212      0.280
+    W6DIST1          -0.025       0.037      0.235       0.432      0.494
+    W8DIST1          -0.543      -0.468     -0.231       0.006      0.081
+    W9DIST1          -0.290      -0.222     -0.003       0.216      0.285
+
+ W3DIST1  WITH
+    W4DIST1          -0.087      -0.022      0.182       0.386      0.450
+    W5DIST1          -0.154      -0.087      0.127       0.342      0.409
+    W6DIST1          -0.008       0.055      0.259       0.462      0.526
+    W8DIST1          -0.007       0.063      0.287       0.511      0.581
+    W9DIST1          -0.262      -0.192      0.031       0.254      0.324
+
+ W4DIST1  WITH
+    W5DIST1          -0.088      -0.031      0.153       0.336      0.394
+    W6DIST1           0.086       0.141      0.315       0.489      0.544
+    W8DIST1          -0.079      -0.017      0.183       0.382      0.445
+    W9DIST1           0.012       0.069      0.251       0.434      0.491
+
+ W5DIST1  WITH
+    W6DIST1          -0.028       0.031      0.217       0.403      0.462
+    W8DIST1          -0.153      -0.084      0.134       0.353      0.422
+    W9DIST1          -0.084      -0.021      0.180       0.382      0.445
+
+ W6DIST1  WITH
+    W8DIST1          -0.075      -0.011      0.193       0.397      0.462
+    W9DIST1          -0.034       0.024      0.211       0.397      0.456
+
+ W8DIST1  WITH
+    W9DIST1          -0.037       0.029      0.240       0.452      0.518
+
+ W1DIST2  WITH
+    W2DIST2          -0.123      -0.054      0.166       0.386      0.455
+    W3DIST2           0.124       0.186      0.383       0.580      0.642
+    W4DIST2          -0.098      -0.027      0.199       0.426      0.497
+    W5DIST2          -0.412      -0.334     -0.089       0.156      0.233
+    W6DIST2          -0.256      -0.183      0.050       0.283      0.356
+    W8DIST2          -0.317      -0.244     -0.015       0.215      0.287
+    W9DIST2          -0.199      -0.130      0.091       0.311      0.381
+
+ W2DIST2  WITH
+    W3DIST2          -0.069      -0.006      0.196       0.397      0.460
+    W4DIST2           0.047       0.110      0.311       0.511      0.574
+    W5DIST2          -0.326      -0.254     -0.027       0.201      0.273
+    W6DIST2          -0.103      -0.036      0.175       0.386      0.453
+    W8DIST2          -0.261      -0.194      0.021       0.237      0.304
+    W9DIST2          -0.095      -0.030      0.175       0.381      0.446
+
+ W3DIST2  WITH
+    W4DIST2          -0.049       0.015      0.219       0.424      0.488
+    W5DIST2          -0.321      -0.253     -0.036       0.181      0.249
+    W6DIST2          -0.110      -0.046      0.158       0.362      0.426
+    W8DIST2          -0.292      -0.226     -0.015       0.196      0.262
+    W9DIST2          -0.187      -0.123      0.081       0.284      0.348
+
+ W4DIST2  WITH
+    W5DIST2           0.080       0.145      0.355       0.564      0.630
+    W6DIST2          -0.132      -0.061      0.165       0.391      0.462
+    W8DIST2          -0.094      -0.025      0.193       0.412      0.481
+    W9DIST2           0.196       0.256      0.446       0.635      0.695
+
+ W5DIST2  WITH
+    W6DIST2          -0.129      -0.058      0.169       0.396      0.467
+    W8DIST2          -0.116      -0.043      0.187       0.418      0.490
+    W9DIST2          -0.104      -0.034      0.188       0.411      0.481
+
+ W6DIST2  WITH
+    W8DIST2           0.032       0.096      0.300       0.504      0.568
+    W9DIST2           0.076       0.137      0.330       0.523      0.583
+
+ W8DIST2  WITH
+    W9DIST2          -0.035       0.029      0.233       0.437      0.501
+
+ W1DIST3  WITH
+    W2DIST3           0.030       0.080      0.241       0.402      0.452
+    W3DIST3           0.014       0.068      0.240       0.411      0.465
+    W4DIST3           0.060       0.111      0.274       0.437      0.488
+    W5DIST3           0.024       0.076      0.242       0.408      0.460
+    W6DIST3          -0.058      -0.003      0.172       0.347      0.402
+    W8DIST3          -0.242      -0.186     -0.006       0.174      0.231
+    W9DIST3          -0.026       0.028      0.202       0.375      0.429
+
+ W2DIST3  WITH
+    W3DIST3           0.088       0.138      0.298       0.459      0.509
+    W4DIST3          -0.228      -0.176     -0.008       0.160      0.212
+    W5DIST3           0.076       0.127      0.290       0.452      0.504
+    W6DIST3          -0.113      -0.057      0.123       0.302      0.359
+    W8DIST3          -0.132      -0.074      0.110       0.294      0.352
+    W9DIST3          -0.001       0.052      0.220       0.389      0.442
+
+ W3DIST3  WITH
+    W4DIST3           0.051       0.105      0.276       0.448      0.502
+    W5DIST3           0.045       0.099      0.271       0.443      0.497
+    W6DIST3          -0.031       0.024      0.200       0.376      0.432
+    W8DIST3          -0.085      -0.026      0.162       0.350      0.410
+    W9DIST3          -0.210      -0.151      0.037       0.224      0.283
+
+ W4DIST3  WITH
+    W5DIST3           0.004       0.056      0.223       0.390      0.443
+    W6DIST3           0.006       0.060      0.233       0.405      0.459
+    W8DIST3          -0.009       0.049      0.233       0.417      0.475
+    W9DIST3          -0.072      -0.015      0.169       0.352      0.409
+
+ W5DIST3  WITH
+    W6DIST3          -0.041       0.013      0.185       0.356      0.410
+    W8DIST3           0.045       0.102      0.280       0.459      0.515
+    W9DIST3          -0.095      -0.039      0.140       0.319      0.375
+
+ W6DIST3  WITH
+    W8DIST3          -0.056       0.003      0.190       0.377      0.436
+    W9DIST3           0.151       0.201      0.363       0.524      0.575
+
+ W8DIST3  WITH
+    W9DIST3           0.073       0.128      0.305       0.482      0.538
+
+ Intercepts
+    W1DIST1           1.081       1.130      1.282       1.435      1.483
+    W1DIST2           1.543       1.598      1.776       1.953      2.009
+    W1DIST3           1.094       1.143      1.297       1.452      1.500
+    W2DIST1           1.130       1.179      1.337       1.494      1.543
+    W2DIST2           1.437       1.490      1.661       1.831      1.884
+    W2DIST3           1.062       1.110      1.264       1.418      1.467
+    W3DIST1           1.007       1.055      1.208       1.362      1.410
+    W3DIST2           1.183       1.234      1.394       1.555      1.605
+    W3DIST3           0.915       0.963      1.113       1.263      1.310
+    W4DIST1           0.914       0.960      1.109       1.257      1.304
+    W4DIST2           1.161       1.210      1.369       1.527      1.577
+    W4DIST3           0.846       0.892      1.040       1.187      1.234
+    W5DIST1           0.910       0.957      1.108       1.258      1.306
+    W5DIST2           1.101       1.151      1.308       1.465      1.514
+    W5DIST3           0.875       0.922      1.071       1.221      1.268
+    W6DIST1           0.893       0.939      1.088       1.236      1.283
+    W6DIST2           1.173       1.223      1.381       1.540      1.590
+    W6DIST3           0.966       1.014      1.165       1.316      1.364
+    W8DIST1           0.793       0.839      0.989       1.138      1.185
+    W8DIST2           0.946       0.994      1.147       1.300      1.349
+    W8DIST3           0.698       0.744      0.891       1.038      1.084
+    W9DIST1           0.828       0.874      1.023       1.171      1.218
+    W9DIST2           1.081       1.130      1.287       1.443      1.492
+    W9DIST3           0.840       0.887      1.035       1.183      1.230
+
+ Variances
+    TRAIT             1.000       1.000      1.000       1.000      1.000
+    S1                1.000       1.000      1.000       1.000      1.000
+    S2                1.000       1.000      1.000       1.000      1.000
+    S3                1.000       1.000      1.000       1.000      1.000
+    S4                1.000       1.000      1.000       1.000      1.000
+    S5                1.000       1.000      1.000       1.000      1.000
+    S6                1.000       1.000      1.000       1.000      1.000
+    S8                1.000       1.000      1.000       1.000      1.000
+    S9                1.000       1.000      1.000       1.000      1.000
+
+ Residual Variances
+    W1DIST1           0.213       0.232      0.291       0.351      0.370
+    W1DIST2           0.105       0.121      0.173       0.225      0.241
+    W1DIST3           0.190       0.209      0.268       0.328      0.346
+    W2DIST1           0.107       0.123      0.175       0.227      0.244
+    W2DIST2           0.117       0.133      0.184       0.235      0.250
+    W2DIST3           0.244       0.263      0.323       0.384      0.403
+    W3DIST1           0.098       0.114      0.164       0.214      0.230
+    W3DIST2           0.163       0.181      0.236       0.291      0.309
+    W3DIST3           0.164       0.182      0.239       0.296      0.313
+    W4DIST1           0.188       0.207      0.266       0.325      0.344
+    W4DIST2           0.114       0.132      0.189       0.246      0.264
+    W4DIST3           0.209       0.229      0.289       0.350      0.369
+    W5DIST1           0.141       0.157      0.210       0.264      0.280
+    W5DIST2           0.089       0.105      0.156       0.207      0.223
+    W5DIST3           0.189       0.207      0.265       0.323      0.342
+    W6DIST1           0.149       0.166      0.218       0.270      0.286
+    W6DIST2           0.092       0.108      0.158       0.209      0.224
+    W6DIST3           0.158       0.175      0.230       0.284      0.301
+    W8DIST1           0.093       0.109      0.157       0.205      0.220
+    W8DIST2           0.108       0.124      0.176       0.227      0.244
+    W8DIST3           0.172       0.190      0.246       0.302      0.320
+    W9DIST1           0.121       0.137      0.187       0.237      0.253
+    W9DIST2           0.112       0.128      0.178       0.228      0.244
+    W9DIST3           0.149       0.166      0.222       0.278      0.295
+    F1DIST          999.000     999.000      0.000     999.000    999.000
+    F2DIST          999.000     999.000      0.000     999.000    999.000
+    F3DIST          999.000     999.000      0.000     999.000    999.000
+    F4DIST          999.000     999.000      0.000     999.000    999.000
+    F5DIST          999.000     999.000      0.000     999.000    999.000
+    F6DIST          999.000     999.000      0.000     999.000    999.000
+    F8DIST          999.000     999.000      0.000     999.000    999.000
+    F9DIST          999.000     999.000      0.000     999.000    999.000
+
+
+STDY Standardization
+
+                   Lower .5%  Lower 2.5%   Estimate  Upper 2.5%  Upper .5%
+
+ F1DIST   BY
+    W1DIST1           0.795       0.806      0.842       0.877      0.888
+    W1DIST2           0.872       0.881      0.909       0.938      0.947
+    W1DIST3           0.810       0.821      0.855       0.890      0.901
+
+ F2DIST   BY
+    W2DIST1           0.870       0.879      0.908       0.937      0.946
+    W2DIST2           0.867       0.875      0.903       0.931      0.940
+    W2DIST3           0.774       0.786      0.823       0.859      0.871
+
+ F3DIST   BY
+    W3DIST1           0.878       0.887      0.914       0.942      0.951
+    W3DIST2           0.833       0.843      0.874       0.906      0.916
+    W3DIST3           0.830       0.840      0.873       0.905      0.916
+
+ F4DIST   BY
+    W4DIST1           0.812       0.822      0.857       0.891      0.902
+    W4DIST2           0.859       0.869      0.901       0.932      0.942
+    W4DIST3           0.796       0.807      0.843       0.879      0.890
+
+ F5DIST   BY
+    W5DIST1           0.849       0.859      0.889       0.918      0.928
+    W5DIST2           0.882       0.891      0.919       0.946      0.955
+    W5DIST3           0.813       0.823      0.857       0.891      0.902
+
+ F6DIST   BY
+    W6DIST1           0.846       0.855      0.884       0.914      0.923
+    W6DIST2           0.881       0.890      0.918       0.945      0.954
+    W6DIST3           0.837       0.847      0.878       0.909      0.918
+
+ F8DIST   BY
+    W8DIST1           0.884       0.892      0.918       0.944      0.953
+    W8DIST2           0.871       0.879      0.908       0.936      0.945
+    W8DIST3           0.826       0.836      0.868       0.901      0.911
+
+ F9DIST   BY
+    W9DIST1           0.865       0.874      0.902       0.929      0.938
+    W9DIST2           0.870       0.879      0.907       0.934      0.943
+    W9DIST3           0.841       0.850      0.882       0.914      0.924
+
+ TRAIT    BY
+    F1DIST            0.767       0.777      0.809       0.841      0.851
+    F2DIST            0.767       0.777      0.809       0.841      0.851
+    F3DIST            0.767       0.777      0.809       0.841      0.851
+    F4DIST            0.767       0.777      0.809       0.841      0.851
+    F5DIST            0.767       0.777      0.809       0.841      0.851
+    F6DIST            0.767       0.777      0.809       0.841      0.851
+    F8DIST            0.767       0.777      0.809       0.841      0.851
+    F9DIST            0.767       0.777      0.809       0.841      0.851
+
+ S1       BY
+    F1DIST            0.531       0.544      0.588       0.632      0.645
+
+ S2       BY
+    F2DIST            0.531       0.544      0.588       0.632      0.645
+
+ S3       BY
+    F3DIST            0.531       0.544      0.588       0.632      0.645
+
+ S4       BY
+    F4DIST            0.531       0.544      0.588       0.632      0.645
+
+ S5       BY
+    F5DIST            0.531       0.544      0.588       0.632      0.645
+
+ S6       BY
+    F6DIST            0.531       0.544      0.588       0.632      0.645
+
+ S8       BY
+    F8DIST            0.531       0.544      0.588       0.632      0.645
+
+ S9       BY
+    F9DIST            0.531       0.544      0.588       0.632      0.645
+
+ W1DIST1  WITH
+    W2DIST1          -0.117      -0.055      0.140       0.336      0.397
+    W3DIST1          -0.161      -0.097      0.105       0.308      0.371
+    W4DIST1          -0.018       0.036      0.208       0.379      0.433
+    W5DIST1           0.005       0.060      0.237       0.413      0.469
+    W6DIST1          -0.065      -0.010      0.165       0.339      0.394
+    W8DIST1          -0.176      -0.113      0.086       0.285      0.348
+    W9DIST1          -0.285      -0.224     -0.029       0.166      0.228
+
+ W2DIST1  WITH
+    W3DIST1          -0.116      -0.047      0.173       0.393      0.462
+    W4DIST1          -0.140      -0.079      0.118       0.314      0.376
+    W5DIST1          -0.290      -0.222     -0.005       0.212      0.280
+    W6DIST1          -0.025       0.037      0.235       0.432      0.494
+    W8DIST1          -0.543      -0.468     -0.231       0.006      0.081
+    W9DIST1          -0.290      -0.222     -0.003       0.216      0.285
+
+ W3DIST1  WITH
+    W4DIST1          -0.087      -0.022      0.182       0.386      0.450
+    W5DIST1          -0.154      -0.087      0.127       0.342      0.409
+    W6DIST1          -0.008       0.055      0.259       0.462      0.526
+    W8DIST1          -0.007       0.063      0.287       0.511      0.581
+    W9DIST1          -0.262      -0.192      0.031       0.254      0.324
+
+ W4DIST1  WITH
+    W5DIST1          -0.088      -0.031      0.153       0.336      0.394
+    W6DIST1           0.086       0.141      0.315       0.489      0.544
+    W8DIST1          -0.079      -0.017      0.183       0.382      0.445
+    W9DIST1           0.012       0.069      0.251       0.434      0.491
+
+ W5DIST1  WITH
+    W6DIST1          -0.028       0.031      0.217       0.403      0.462
+    W8DIST1          -0.153      -0.084      0.134       0.353      0.422
+    W9DIST1          -0.084      -0.021      0.180       0.382      0.445
+
+ W6DIST1  WITH
+    W8DIST1          -0.075      -0.011      0.193       0.397      0.462
+    W9DIST1          -0.034       0.024      0.211       0.397      0.456
+
+ W8DIST1  WITH
+    W9DIST1          -0.037       0.029      0.240       0.452      0.518
+
+ W1DIST2  WITH
+    W2DIST2          -0.123      -0.054      0.166       0.386      0.455
+    W3DIST2           0.124       0.186      0.383       0.580      0.642
+    W4DIST2          -0.098      -0.027      0.199       0.426      0.497
+    W5DIST2          -0.412      -0.334     -0.089       0.156      0.233
+    W6DIST2          -0.256      -0.183      0.050       0.283      0.356
+    W8DIST2          -0.317      -0.244     -0.015       0.215      0.287
+    W9DIST2          -0.199      -0.130      0.091       0.311      0.381
+
+ W2DIST2  WITH
+    W3DIST2          -0.069      -0.006      0.196       0.397      0.460
+    W4DIST2           0.047       0.110      0.311       0.511      0.574
+    W5DIST2          -0.326      -0.254     -0.027       0.201      0.273
+    W6DIST2          -0.103      -0.036      0.175       0.386      0.453
+    W8DIST2          -0.261      -0.194      0.021       0.237      0.304
+    W9DIST2          -0.095      -0.030      0.175       0.381      0.446
+
+ W3DIST2  WITH
+    W4DIST2          -0.049       0.015      0.219       0.424      0.488
+    W5DIST2          -0.321      -0.253     -0.036       0.181      0.249
+    W6DIST2          -0.110      -0.046      0.158       0.362      0.426
+    W8DIST2          -0.292      -0.226     -0.015       0.196      0.262
+    W9DIST2          -0.187      -0.123      0.081       0.284      0.348
+
+ W4DIST2  WITH
+    W5DIST2           0.080       0.145      0.355       0.564      0.630
+    W6DIST2          -0.132      -0.061      0.165       0.391      0.462
+    W8DIST2          -0.094      -0.025      0.193       0.412      0.481
+    W9DIST2           0.196       0.256      0.446       0.635      0.695
+
+ W5DIST2  WITH
+    W6DIST2          -0.129      -0.058      0.169       0.396      0.467
+    W8DIST2          -0.116      -0.043      0.187       0.418      0.490
+    W9DIST2          -0.104      -0.034      0.188       0.411      0.481
+
+ W6DIST2  WITH
+    W8DIST2           0.032       0.096      0.300       0.504      0.568
+    W9DIST2           0.076       0.137      0.330       0.523      0.583
+
+ W8DIST2  WITH
+    W9DIST2          -0.035       0.029      0.233       0.437      0.501
+
+ W1DIST3  WITH
+    W2DIST3           0.030       0.080      0.241       0.402      0.452
+    W3DIST3           0.014       0.068      0.240       0.411      0.465
+    W4DIST3           0.060       0.111      0.274       0.437      0.488
+    W5DIST3           0.024       0.076      0.242       0.408      0.460
+    W6DIST3          -0.058      -0.003      0.172       0.347      0.402
+    W8DIST3          -0.242      -0.186     -0.006       0.174      0.231
+    W9DIST3          -0.026       0.028      0.202       0.375      0.429
+
+ W2DIST3  WITH
+    W3DIST3           0.088       0.138      0.298       0.459      0.509
+    W4DIST3          -0.228      -0.176     -0.008       0.160      0.212
+    W5DIST3           0.076       0.127      0.290       0.452      0.504
+    W6DIST3          -0.113      -0.057      0.123       0.302      0.359
+    W8DIST3          -0.132      -0.074      0.110       0.294      0.352
+    W9DIST3          -0.001       0.052      0.220       0.389      0.442
+
+ W3DIST3  WITH
+    W4DIST3           0.051       0.105      0.276       0.448      0.502
+    W5DIST3           0.045       0.099      0.271       0.443      0.497
+    W6DIST3          -0.031       0.024      0.200       0.376      0.432
+    W8DIST3          -0.085      -0.026      0.162       0.350      0.410
+    W9DIST3          -0.210      -0.151      0.037       0.224      0.283
+
+ W4DIST3  WITH
+    W5DIST3           0.004       0.056      0.223       0.390      0.443
+    W6DIST3           0.006       0.060      0.233       0.405      0.459
+    W8DIST3          -0.009       0.049      0.233       0.417      0.475
+    W9DIST3          -0.072      -0.015      0.169       0.352      0.409
+
+ W5DIST3  WITH
+    W6DIST3          -0.041       0.013      0.185       0.356      0.410
+    W8DIST3           0.045       0.102      0.280       0.459      0.515
+    W9DIST3          -0.095      -0.039      0.140       0.319      0.375
+
+ W6DIST3  WITH
+    W8DIST3          -0.056       0.003      0.190       0.377      0.436
+    W9DIST3           0.151       0.201      0.363       0.524      0.575
+
+ W8DIST3  WITH
+    W9DIST3           0.073       0.128      0.305       0.482      0.538
+
+ Intercepts
+    W1DIST1           1.081       1.130      1.282       1.435      1.483
+    W1DIST2           1.543       1.598      1.776       1.953      2.009
+    W1DIST3           1.094       1.143      1.297       1.452      1.500
+    W2DIST1           1.130       1.179      1.337       1.494      1.543
+    W2DIST2           1.437       1.490      1.661       1.831      1.884
+    W2DIST3           1.062       1.110      1.264       1.418      1.467
+    W3DIST1           1.007       1.055      1.208       1.362      1.410
+    W3DIST2           1.183       1.234      1.394       1.555      1.605
+    W3DIST3           0.915       0.963      1.113       1.263      1.310
+    W4DIST1           0.914       0.960      1.109       1.257      1.304
+    W4DIST2           1.161       1.210      1.369       1.527      1.577
+    W4DIST3           0.846       0.892      1.040       1.187      1.234
+    W5DIST1           0.910       0.957      1.108       1.258      1.306
+    W5DIST2           1.101       1.151      1.308       1.465      1.514
+    W5DIST3           0.875       0.922      1.071       1.221      1.268
+    W6DIST1           0.893       0.939      1.088       1.236      1.283
+    W6DIST2           1.173       1.223      1.381       1.540      1.590
+    W6DIST3           0.966       1.014      1.165       1.316      1.364
+    W8DIST1           0.793       0.839      0.989       1.138      1.185
+    W8DIST2           0.946       0.994      1.147       1.300      1.349
+    W8DIST3           0.698       0.744      0.891       1.038      1.084
+    W9DIST1           0.828       0.874      1.023       1.171      1.218
+    W9DIST2           1.081       1.130      1.287       1.443      1.492
+    W9DIST3           0.840       0.887      1.035       1.183      1.230
+
+ Variances
+    TRAIT             1.000       1.000      1.000       1.000      1.000
+    S1                1.000       1.000      1.000       1.000      1.000
+    S2                1.000       1.000      1.000       1.000      1.000
+    S3                1.000       1.000      1.000       1.000      1.000
+    S4                1.000       1.000      1.000       1.000      1.000
+    S5                1.000       1.000      1.000       1.000      1.000
+    S6                1.000       1.000      1.000       1.000      1.000
+    S8                1.000       1.000      1.000       1.000      1.000
+    S9                1.000       1.000      1.000       1.000      1.000
+
+ Residual Variances
+    W1DIST1           0.213       0.232      0.291       0.351      0.370
+    W1DIST2           0.105       0.121      0.173       0.225      0.241
+    W1DIST3           0.190       0.209      0.268       0.328      0.346
+    W2DIST1           0.107       0.123      0.175       0.227      0.244
+    W2DIST2           0.117       0.133      0.184       0.235      0.250
+    W2DIST3           0.244       0.263      0.323       0.384      0.403
+    W3DIST1           0.098       0.114      0.164       0.214      0.230
+    W3DIST2           0.163       0.181      0.236       0.291      0.309
+    W3DIST3           0.164       0.182      0.239       0.296      0.313
+    W4DIST1           0.188       0.207      0.266       0.325      0.344
+    W4DIST2           0.114       0.132      0.189       0.246      0.264
+    W4DIST3           0.209       0.229      0.289       0.350      0.369
+    W5DIST1           0.141       0.157      0.210       0.264      0.280
+    W5DIST2           0.089       0.105      0.156       0.207      0.223
+    W5DIST3           0.189       0.207      0.265       0.323      0.342
+    W6DIST1           0.149       0.166      0.218       0.270      0.286
+    W6DIST2           0.092       0.108      0.158       0.209      0.224
+    W6DIST3           0.158       0.175      0.230       0.284      0.301
+    W8DIST1           0.093       0.109      0.157       0.205      0.220
+    W8DIST2           0.108       0.124      0.176       0.227      0.244
+    W8DIST3           0.172       0.190      0.246       0.302      0.320
+    W9DIST1           0.121       0.137      0.187       0.237      0.253
+    W9DIST2           0.112       0.128      0.178       0.228      0.244
+    W9DIST3           0.149       0.166      0.222       0.278      0.295
+    F1DIST          999.000     999.000    999.000     999.000    999.000
+    F2DIST          999.000     999.000    999.000     999.000    999.000
+    F3DIST          999.000     999.000    999.000     999.000    999.000
+    F4DIST          999.000     999.000    999.000     999.000    999.000
+    F5DIST          999.000     999.000    999.000     999.000    999.000
+    F6DIST          999.000     999.000    999.000     999.000    999.000
+    F8DIST          999.000     999.000    999.000     999.000    999.000
+    F9DIST          999.000     999.000    999.000     999.000    999.000
+
+
+STD Standardization
+
+                   Lower .5%  Lower 2.5%   Estimate  Upper 2.5%  Upper .5%
+
+ F1DIST   BY
+    W1DIST1           0.321       0.329      0.355       0.381      0.389
+    W1DIST2           0.295       0.302      0.326       0.350      0.358
+    W1DIST3           0.310       0.319      0.345       0.372      0.380
+
+ F2DIST   BY
+    W2DIST1           0.321       0.329      0.355       0.381      0.389
+    W2DIST2           0.295       0.302      0.326       0.350      0.358
+    W2DIST3           0.310       0.319      0.345       0.372      0.380
+
+ F3DIST   BY
+    W3DIST1           0.321       0.329      0.355       0.381      0.389
+    W3DIST2           0.295       0.302      0.326       0.350      0.358
+    W3DIST3           0.310       0.319      0.345       0.372      0.380
+
+ F4DIST   BY
+    W4DIST1           0.321       0.329      0.355       0.381      0.389
+    W4DIST2           0.295       0.302      0.326       0.350      0.358
+    W4DIST3           0.310       0.319      0.345       0.372      0.380
+
+ F5DIST   BY
+    W5DIST1           0.321       0.329      0.355       0.381      0.389
+    W5DIST2           0.295       0.302      0.326       0.350      0.358
+    W5DIST3           0.310       0.319      0.345       0.372      0.380
+
+ F6DIST   BY
+    W6DIST1           0.321       0.329      0.355       0.381      0.389
+    W6DIST2           0.295       0.302      0.326       0.350      0.358
+    W6DIST3           0.310       0.319      0.345       0.372      0.380
+
+ F8DIST   BY
+    W8DIST1           0.321       0.329      0.355       0.381      0.389
+    W8DIST2           0.295       0.302      0.326       0.350      0.358
+    W8DIST3           0.310       0.319      0.345       0.372      0.380
+
+ F9DIST   BY
+    W9DIST1           0.321       0.329      0.355       0.381      0.389
+    W9DIST2           0.295       0.302      0.326       0.350      0.358
+    W9DIST3           0.310       0.319      0.345       0.372      0.380
+
+ TRAIT    BY
+    F1DIST            0.767       0.777      0.809       0.841      0.851
+    F2DIST            0.767       0.777      0.809       0.841      0.851
+    F3DIST            0.767       0.777      0.809       0.841      0.851
+    F4DIST            0.767       0.777      0.809       0.841      0.851
+    F5DIST            0.767       0.777      0.809       0.841      0.851
+    F6DIST            0.767       0.777      0.809       0.841      0.851
+    F8DIST            0.767       0.777      0.809       0.841      0.851
+    F9DIST            0.767       0.777      0.809       0.841      0.851
+
+ S1       BY
+    F1DIST            0.531       0.544      0.588       0.632      0.645
+
+ S2       BY
+    F2DIST            0.531       0.544      0.588       0.632      0.645
+
+ S3       BY
+    F3DIST            0.531       0.544      0.588       0.632      0.645
+
+ S4       BY
+    F4DIST            0.531       0.544      0.588       0.632      0.645
+
+ S5       BY
+    F5DIST            0.531       0.544      0.588       0.632      0.645
+
+ S6       BY
+    F6DIST            0.531       0.544      0.588       0.632      0.645
+
+ S8       BY
+    F8DIST            0.531       0.544      0.588       0.632      0.645
+
+ S9       BY
+    F9DIST            0.531       0.544      0.588       0.632      0.645
+
+ W1DIST1  WITH
+    W2DIST1          -0.005      -0.002      0.005       0.013      0.015
+    W3DIST1          -0.006      -0.004      0.004       0.011      0.014
+    W4DIST1          -0.002       0.001      0.010       0.019      0.022
+    W5DIST1          -0.001       0.002      0.010       0.018      0.020
+    W6DIST1          -0.003      -0.001      0.007       0.015      0.017
+    W8DIST1          -0.006      -0.004      0.003       0.010      0.012
+    W9DIST1          -0.011      -0.009     -0.001       0.006      0.009
+
+ W2DIST1  WITH
+    W3DIST1          -0.003      -0.002      0.004       0.010      0.012
+    W4DIST1          -0.005      -0.003      0.004       0.011      0.013
+    W5DIST1          -0.009      -0.007      0.000       0.006      0.008
+    W6DIST1          -0.001       0.001      0.007       0.014      0.016
+    W8DIST1          -0.014      -0.012     -0.006       0.000      0.002
+    W9DIST1          -0.008      -0.006      0.000       0.006      0.008
+
+ W3DIST1  WITH
+    W4DIST1          -0.004      -0.001      0.006       0.013      0.016
+    W5DIST1          -0.005      -0.003      0.004       0.010      0.012
+    W6DIST1          -0.001       0.001      0.008       0.014      0.016
+    W8DIST1          -0.001       0.001      0.007       0.013      0.015
+    W9DIST1          -0.007      -0.005      0.001       0.007      0.009
+
+ W4DIST1  WITH
+    W5DIST1          -0.004      -0.002      0.006       0.014      0.016
+    W6DIST1           0.002       0.005      0.013       0.021      0.023
+    W8DIST1          -0.003      -0.001      0.006       0.013      0.015
+    W9DIST1          -0.001       0.002      0.009       0.017      0.019
+
+ W5DIST1  WITH
+    W6DIST1          -0.002       0.001      0.007       0.014      0.017
+    W8DIST1          -0.005      -0.003      0.004       0.010      0.012
+    W9DIST1          -0.003      -0.001      0.006       0.012      0.014
+
+ W6DIST1  WITH
+    W8DIST1          -0.003      -0.001      0.006       0.012      0.014
+    W9DIST1          -0.002       0.000      0.007       0.013      0.015
+
+ W8DIST1  WITH
+    W9DIST1          -0.002       0.000      0.006       0.012      0.014
+
+ W1DIST2  WITH
+    W2DIST2          -0.003      -0.001      0.004       0.009      0.011
+    W3DIST2           0.002       0.004      0.010       0.017      0.019
+    W4DIST2          -0.003      -0.001      0.005       0.010      0.012
+    W5DIST2          -0.008      -0.007     -0.002       0.003      0.005
+    W6DIST2          -0.005      -0.004      0.001       0.006      0.008
+    W8DIST2          -0.007      -0.005      0.000       0.005      0.006
+    W9DIST2          -0.005      -0.003      0.002       0.007      0.009
+
+ W2DIST2  WITH
+    W3DIST2          -0.002       0.000      0.005       0.011      0.013
+    W4DIST2           0.000       0.002      0.008       0.013      0.015
+    W5DIST2          -0.007      -0.006     -0.001       0.004      0.006
+    W6DIST2          -0.003      -0.001      0.004       0.009      0.010
+    W8DIST2          -0.006      -0.005      0.001       0.006      0.007
+    W9DIST2          -0.003      -0.001      0.004       0.009      0.011
+
+ W3DIST2  WITH
+    W4DIST2          -0.002       0.000      0.006       0.013      0.015
+    W5DIST2          -0.008      -0.006     -0.001       0.005      0.006
+    W6DIST2          -0.003      -0.001      0.004       0.010      0.011
+    W8DIST2          -0.008      -0.006      0.000       0.005      0.007
+    W9DIST2          -0.005      -0.003      0.002       0.008      0.010
+
+ W4DIST2  WITH
+    W5DIST2           0.001       0.002      0.008       0.013      0.015
+    W6DIST2          -0.003      -0.002      0.004       0.009      0.011
+    W8DIST2          -0.003      -0.001      0.005       0.010      0.012
+    W9DIST2           0.003       0.005      0.011       0.016      0.018
+
+ W5DIST2  WITH
+    W6DIST2          -0.003      -0.001      0.003       0.008      0.010
+    W8DIST2          -0.003      -0.001      0.004       0.009      0.011
+    W9DIST2          -0.003      -0.001      0.004       0.009      0.011
+
+ W6DIST2  WITH
+    W8DIST2           0.000       0.001      0.006       0.011      0.013
+    W9DIST2           0.001       0.002      0.007       0.012      0.014
+
+ W8DIST2  WITH
+    W9DIST2          -0.001       0.000      0.005       0.010      0.012
+
+ W1DIST3  WITH
+    W2DIST3           0.001       0.003      0.012       0.021      0.023
+    W3DIST3           0.000       0.002      0.010       0.017      0.020
+    W4DIST3           0.002       0.004      0.013       0.021      0.024
+    W5DIST3           0.000       0.003      0.010       0.018      0.021
+    W6DIST3          -0.003       0.000      0.007       0.014      0.016
+    W8DIST3          -0.010      -0.008      0.000       0.007      0.010
+    W9DIST3          -0.002       0.001      0.008       0.015      0.017
+
+ W2DIST3  WITH
+    W3DIST3           0.003       0.005      0.014       0.022      0.025
+    W4DIST3          -0.012      -0.009      0.000       0.008      0.011
+    W5DIST3           0.003       0.005      0.014       0.023      0.026
+    W6DIST3          -0.005      -0.003      0.006       0.014      0.016
+    W8DIST3          -0.006      -0.004      0.005       0.014      0.017
+    W9DIST3          -0.001       0.002      0.010       0.018      0.020
+
+ W3DIST3  WITH
+    W4DIST3           0.001       0.004      0.012       0.020      0.022
+    W5DIST3           0.001       0.003      0.011       0.018      0.021
+    W6DIST3          -0.002       0.000      0.007       0.014      0.016
+    W8DIST3          -0.004      -0.001      0.006       0.014      0.016
+    W9DIST3          -0.008      -0.005      0.001       0.008      0.010
+
+ W4DIST3  WITH
+    W5DIST3          -0.001       0.002      0.010       0.018      0.021
+    W6DIST3          -0.001       0.002      0.010       0.017      0.020
+    W8DIST3          -0.001       0.002      0.010       0.019      0.021
+    W9DIST3          -0.004      -0.001      0.007       0.015      0.017
+
+ W5DIST3  WITH
+    W6DIST3          -0.002       0.000      0.007       0.014      0.017
+    W8DIST3           0.001       0.003      0.011       0.019      0.022
+    W9DIST3          -0.004      -0.002      0.005       0.012      0.015
+
+ W6DIST3  WITH
+    W8DIST3          -0.003       0.000      0.007       0.014      0.017
+    W9DIST3           0.004       0.006      0.013       0.019      0.022
+
+ W8DIST3  WITH
+    W9DIST3           0.002       0.004      0.011       0.018      0.021
+
+ Intercepts
+    W1DIST1           0.469       0.486      0.541       0.597      0.614
+    W1DIST2           0.575       0.590      0.637       0.684      0.698
+    W1DIST3           0.454       0.470      0.523       0.576      0.593
+    W2DIST1           0.455       0.471      0.523       0.575      0.591
+    W2DIST2           0.537       0.552      0.599       0.647      0.662
+    W2DIST3           0.458       0.475      0.530       0.586      0.603
+    W3DIST1           0.402       0.418      0.470       0.521      0.537
+    W3DIST2           0.455       0.471      0.520       0.570      0.585
+    W3DIST3           0.371       0.388      0.440       0.492      0.509
+    W4DIST1           0.388       0.405      0.460       0.514      0.532
+    W4DIST2           0.433       0.448      0.496       0.543      0.558
+    W4DIST3           0.355       0.372      0.426       0.480      0.496
+    W5DIST1           0.373       0.390      0.443       0.496      0.513
+    W5DIST2           0.402       0.417      0.464       0.511      0.526
+    W5DIST3           0.361       0.378      0.431       0.485      0.502
+    W6DIST1           0.368       0.384      0.437       0.490      0.507
+    W6DIST2           0.429       0.444      0.491       0.538      0.553
+    W6DIST3           0.390       0.406      0.458       0.510      0.526
+    W8DIST1           0.314       0.330      0.383       0.435      0.451
+    W8DIST2           0.348       0.364      0.412       0.461      0.476
+    W8DIST3           0.283       0.300      0.354       0.408      0.425
+    W9DIST1           0.334       0.351      0.403       0.456      0.472
+    W9DIST2           0.400       0.415      0.463       0.511      0.526
+    W9DIST3           0.336       0.353      0.405       0.457      0.473
+
+ Variances
+    TRAIT             1.000       1.000      1.000       1.000      1.000
+    S1                1.000       1.000      1.000       1.000      1.000
+    S2                1.000       1.000      1.000       1.000      1.000
+    S3                1.000       1.000      1.000       1.000      1.000
+    S4                1.000       1.000      1.000       1.000      1.000
+    S5                1.000       1.000      1.000       1.000      1.000
+    S6                1.000       1.000      1.000       1.000      1.000
+    S8                1.000       1.000      1.000       1.000      1.000
+    S9                1.000       1.000      1.000       1.000      1.000
+
+ Residual Variances
+    W1DIST1           0.035       0.039      0.052       0.065      0.069
+    W1DIST2           0.013       0.015      0.022       0.030      0.032
+    W1DIST3           0.029       0.033      0.044       0.055      0.058
+    W2DIST1           0.016       0.018      0.027       0.035      0.038
+    W2DIST2           0.015       0.017      0.024       0.031      0.033
+    W2DIST3           0.040       0.044      0.057       0.070      0.074
+    W3DIST1           0.014       0.017      0.025       0.033      0.035
+    W3DIST2           0.021       0.024      0.033       0.042      0.044
+    W3DIST3           0.024       0.028      0.037       0.047      0.050
+    W4DIST1           0.030       0.034      0.046       0.058      0.061
+    W4DIST2           0.014       0.017      0.025       0.033      0.035
+    W4DIST3           0.033       0.037      0.049       0.061      0.064
+    W5DIST1           0.021       0.024      0.034       0.043      0.046
+    W5DIST2           0.011       0.013      0.020       0.026      0.029
+    W5DIST3           0.029       0.032      0.043       0.054      0.057
+    W6DIST1           0.023       0.026      0.035       0.045      0.047
+    W6DIST2           0.011       0.013      0.020       0.027      0.029
+    W6DIST3           0.023       0.026      0.036       0.045      0.048
+    W8DIST1           0.013       0.016      0.024       0.031      0.034
+    W8DIST2           0.014       0.016      0.023       0.030      0.032
+    W8DIST3           0.026       0.029      0.039       0.049      0.052
+    W9DIST1           0.018       0.021      0.029       0.037      0.040
+    W9DIST2           0.014       0.016      0.023       0.030      0.032
+    W9DIST3           0.022       0.025      0.034       0.043      0.046
+    F1DIST          999.000     999.000    999.000     999.000    999.000
+    F2DIST          999.000     999.000    999.000     999.000    999.000
+    F3DIST          999.000     999.000    999.000     999.000    999.000
+    F4DIST          999.000     999.000    999.000     999.000    999.000
+    F5DIST          999.000     999.000    999.000     999.000    999.000
+    F6DIST          999.000     999.000    999.000     999.000    999.000
+    F8DIST          999.000     999.000    999.000     999.000    999.000
+    F9DIST          999.000     999.000    999.000     999.000    999.000
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              F1DIST        F2DIST        F3DIST        F4DIST        F5DIST
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              F6DIST        F8DIST        F9DIST        TRAIT         S1
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              S2            S3            S4            S5            S6
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              S8            S9
+              ________      ________
+      1         0.000         0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              F1DIST        F2DIST        F3DIST        F4DIST        F5DIST
+              ________      ________      ________      ________      ________
+ F1DIST         0.126
+ F2DIST         0.083         0.126
+ F3DIST         0.083         0.083         0.126
+ F4DIST         0.083         0.083         0.083         0.126
+ F5DIST         0.083         0.083         0.083         0.083         0.126
+ F6DIST         0.083         0.083         0.083         0.083         0.083
+ F8DIST         0.083         0.083         0.083         0.083         0.083
+ F9DIST         0.083         0.083         0.083         0.083         0.083
+ TRAIT          0.083         0.083         0.083         0.083         0.083
+ S1             0.044         0.000         0.000         0.000         0.000
+ S2             0.000         0.044         0.000         0.000         0.000
+ S3             0.000         0.000         0.044         0.000         0.000
+ S4             0.000         0.000         0.000         0.044         0.000
+ S5             0.000         0.000         0.000         0.000         0.044
+ S6             0.000         0.000         0.000         0.000         0.000
+ S8             0.000         0.000         0.000         0.000         0.000
+ S9             0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              F6DIST        F8DIST        F9DIST        TRAIT         S1
+              ________      ________      ________      ________      ________
+ F6DIST         0.126
+ F8DIST         0.083         0.126
+ F9DIST         0.083         0.083         0.126
+ TRAIT          0.083         0.083         0.083         0.083
+ S1             0.000         0.000         0.000         0.000         0.044
+ S2             0.000         0.000         0.000         0.000         0.000
+ S3             0.000         0.000         0.000         0.000         0.000
+ S4             0.000         0.000         0.000         0.000         0.000
+ S5             0.000         0.000         0.000         0.000         0.000
+ S6             0.044         0.000         0.000         0.000         0.000
+ S8             0.000         0.044         0.000         0.000         0.000
+ S9             0.000         0.000         0.044         0.000         0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              S2            S3            S4            S5            S6
+              ________      ________      ________      ________      ________
+ S2             0.044
+ S3             0.000         0.044
+ S4             0.000         0.000         0.044
+ S5             0.000         0.000         0.000         0.044
+ S6             0.000         0.000         0.000         0.000         0.044
+ S8             0.000         0.000         0.000         0.000         0.000
+ S9             0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              S8            S9
+              ________      ________
+ S8             0.044
+ S9             0.000         0.044
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              F1DIST        F2DIST        F3DIST        F4DIST        F5DIST
+              ________      ________      ________      ________      ________
+ F1DIST         1.000
+ F2DIST         0.654         1.000
+ F3DIST         0.654         0.654         1.000
+ F4DIST         0.654         0.654         0.654         1.000
+ F5DIST         0.654         0.654         0.654         0.654         1.000
+ F6DIST         0.654         0.654         0.654         0.654         0.654
+ F8DIST         0.654         0.654         0.654         0.654         0.654
+ F9DIST         0.654         0.654         0.654         0.654         0.654
+ TRAIT          0.809         0.809         0.809         0.809         0.809
+ S1             0.588         0.000         0.000         0.000         0.000
+ S2             0.000         0.588         0.000         0.000         0.000
+ S3             0.000         0.000         0.588         0.000         0.000
+ S4             0.000         0.000         0.000         0.588         0.000
+ S5             0.000         0.000         0.000         0.000         0.588
+ S6             0.000         0.000         0.000         0.000         0.000
+ S8             0.000         0.000         0.000         0.000         0.000
+ S9             0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              F6DIST        F8DIST        F9DIST        TRAIT         S1
+              ________      ________      ________      ________      ________
+ F6DIST         1.000
+ F8DIST         0.654         1.000
+ F9DIST         0.654         0.654         1.000
+ TRAIT          0.809         0.809         0.809         1.000
+ S1             0.000         0.000         0.000         0.000         1.000
+ S2             0.000         0.000         0.000         0.000         0.000
+ S3             0.000         0.000         0.000         0.000         0.000
+ S4             0.000         0.000         0.000         0.000         0.000
+ S5             0.000         0.000         0.000         0.000         0.000
+ S6             0.588         0.000         0.000         0.000         0.000
+ S8             0.000         0.588         0.000         0.000         0.000
+ S9             0.000         0.000         0.588         0.000         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              S2            S3            S4            S5            S6
+              ________      ________      ________      ________      ________
+ S2             1.000
+ S3             0.000         1.000
+ S4             0.000         0.000         1.000
+ S5             0.000         0.000         0.000         1.000
+ S6             0.000         0.000         0.000         0.000         1.000
+ S8             0.000         0.000         0.000         0.000         0.000
+ S9             0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              S8            S9
+              ________      ________
+ S8             1.000
+ S9             0.000         1.000
+
+
+     Beginning Time:  13:53:14
+        Ending Time:  13:53:15
+       Elapsed Time:  00:00:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2009 Muthen & Muthen

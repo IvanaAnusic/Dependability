@@ -1,0 +1,122 @@
+TITLE: START model for POT study
+
+DATA: file is 'Titemparcels.dat';
+
+VARIABLE:
+    NAMES ARE id
+    w1dist1-w1dist3 w2dist1-w2dist3 w3dist1-w3dist3 w4dist1-w4dist3
+    w5dist1-w5dist3 w6dist1-w6dist3 w8dist1-w8dist3 w9dist1-w9dist3
+    w1dep1-w1dep3 w2dep1-w2dep3 w3dep1-w3dep3 w4dep1-w4dep3
+    w5dep1-w5dep3 w6dep1-w6dep3 w8dep1-w8dep3 w9dep1-w9dep3
+    w1anx1-w1anx3 w2anx1-w2anx3 w3anx1-w3anx3 w4anx1-w4anx3
+    w5anx1-w5anx3 w6anx1-w6anx3 w8anx1-w8anx3 w9anx1-w9anx3;
+
+    USEVAR =
+    w1dist1-w9dist3;
+
+    MISSING IS all (999);
+
+
+ANALYSIS: 
+    TYPE = MISSING H1;
+!    BOOTSTRAP = 500;
+    ESTIMATOR = ml;
+    MODEL = NOCOVARIANCES;
+
+MODEL: 
+    f1DIST by w1dist1@1 (l1);
+    f1DIST by w1dist2*1 (l2);
+    f1DIST by w1dist3*1 (l3);
+
+    f2DIST by w2dist1@1 (l1);
+    f2DIST by w2dist2*1 (l2);
+    f2DIST by w2dist3*1 (l3);
+
+    f3DIST by w3dist1@1 (l1);
+    f3DIST by w3dist2*1 (l2);
+    f3DIST by w3dist3*1 (l3);
+
+    f4DIST by w4dist1@1 (l1);
+    f4DIST by w4dist2*1 (l2);
+    f4DIST by w4dist3*1 (l3);
+
+    f5DIST by w5dist1@1 (l1);
+    f5DIST by w5dist2*1 (l2);
+    f5DIST by w5dist3*1 (l3);
+
+    f6DIST by w6dist1@1 (l1);
+    f6DIST by w6dist2*1 (l2);
+    f6DIST by w6dist3*1 (l3);
+
+    f8DIST by w8dist1@1 (l1);
+    f8DIST by w8dist2*1 (l2);
+    f8DIST by w8dist3*1 (l3);
+
+    f9DIST by w9dist1@1 (l1);
+    f9DIST by w9dist2*1 (l2);
+    f9DIST by w9dist3*1 (l3);
+
+    
+    ar1 by f1DIST@1;
+    ar2 by f2DIST@1;
+    ar3 by f3DIST@1;
+    ar4 by f4DIST@1;
+    ar5 by f5DIST@1;
+    ar6 by f6DIST@1;
+    ar7 by f1DIST@0; !This is a phantom variable
+    ar8 by f8DIST@1;
+    ar9 by f9DIST@1;
+
+    s1 by f1DIST@1;
+    s2 by f2DIST@1;
+    s3 by f3DIST@1;
+    s4 by f4DIST@1;
+    s5 by f5DIST@1;
+    s6 by f6DIST@1;
+    s8 by f8DIST@1;
+    s9 by f9DIST@1;
+
+    ar2 on ar1 (arstab);
+    ar3 on ar2 (arstab);
+    ar4 on ar3 (arstab);
+    ar5 on ar4 (arstab);
+    ar6 on ar5 (arstab);
+    ar7 on ar6 (arstab);
+    ar8 on ar7 (arstab);
+    ar9 on ar8 (arstab);
+
+    s1-s9 (S);
+    ar2-ar9 (newAR);
+    ar1 (AR);
+    f1DIST-f9DIST@0;
+
+    w1dist1 with w2dist1 w3dist1 w4dist1 w5dist1 w6dist1 w8dist1 w9dist1*;
+    w2dist1 with w3dist1 w4dist1 w5dist1 w6dist1 w8dist1 w9dist1*;
+    w3dist1 with w4dist1 w5dist1 w6dist1 w8dist1 w9dist1*;
+    w4dist1 with w5dist1 w6dist1 w8dist1 w9dist1*;
+    w5dist1 with w6dist1 w8dist1 w9dist1*;
+    w6dist1 with w8dist1 w9dist1*;
+    w8dist1 with w9dist1*;
+
+    w1dist2 with w2dist2 w3dist2 w4dist2 w5dist2 w6dist2 w8dist2 w9dist2*;
+    w2dist2 with w3dist2 w4dist2 w5dist2 w6dist2 w8dist2 w9dist2*;
+    w3dist2 with w4dist2 w5dist2 w6dist2 w8dist2 w9dist2*;
+    w4dist2 with w5dist2 w6dist2 w8dist2 w9dist2*;
+    w5dist2 with w6dist2 w8dist2 w9dist2*;
+    w6dist2 with w8dist2 w9dist2*;
+    w8dist2 with w9dist2*;
+
+    w1dist3 with w2dist3 w3dist3 w4dist3 w5dist3 w6dist3 w8dist3 w9dist3*;
+    w2dist3 with w3dist3 w4dist3 w5dist3 w6dist3 w8dist3 w9dist3*;
+    w3dist3 with w4dist3 w5dist3 w6dist3 w8dist3 w9dist3*;
+    w4dist3 with w5dist3 w6dist3 w8dist3 w9dist3*;
+    w5dist3 with w6dist3 w8dist3 w9dist3*;
+    w6dist3 with w8dist3 w9dist3*;
+    w8dist3 with w9dist3*;
+
+MODEL CONSTRAINT:
+    newAR = AR - AR*arstab**2;
+
+OUTPUT: samp stand tech4 cinterval;
+
+
